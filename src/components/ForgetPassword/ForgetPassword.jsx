@@ -7,6 +7,7 @@ import { fetchResetPassword } from "../../redux/reducers/ResetPasswordReducer";
 import styles from "./ForgetPassword.module.scss";
 
 import { Button, PasswordRecoveryInfo, UserCheckField } from "../../components";
+import repairInfo from "../../assets/repairPassword.png";
 
 export const ForgetPassword = ({ setIsOpenForgetPassword }) => {
   const forgetPasswordRef = useRef();
@@ -40,7 +41,7 @@ export const ForgetPassword = ({ setIsOpenForgetPassword }) => {
     <>
       {isRecoveryInfoOpen ? (
         <div ref={forgetPasswordRef}>
-          <PasswordRecoveryInfo />
+          <PasswordRecoveryInfo text={'На вашу почту отправлена ссылка для восстановления'} img={repairInfo} />
         </div>
       ) : (
         <div className={styles.wrapper}>

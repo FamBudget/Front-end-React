@@ -1,17 +1,17 @@
-import React, {useEffect,useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Outlet, useLocation} from "react-router-dom";
-import {ForgetPassword, Sprite} from "../../../components";
+import {Sprite} from "../../../components";
 import {useDispatch} from "react-redux";
 import {setAuth} from "../../../redux/reducers/AuthReducer";
+import {RecoveryPassword} from "../../../components/RecoveryPassword";
 
 export const Layout = () => {
     const search = useLocation().search
     const searchParams = new URLSearchParams(search)
     const code = searchParams.get('code')
-    const [isOpenRecover, setIsOpenRecovery] = useState(false);
-    useEffect(() => {
-        setIsOpenRecovery(!!code)
-    },[])
+    const email = searchParams.get('email')
+    const [isOpenRecover, setIsOpenRecovery] = useState(!!code);
+
     const dispatch = useDispatch();
 
 
@@ -25,7 +25,7 @@ export const Layout = () => {
       <Sprite />
       <Outlet />
         {isOpenRecover && (
-            <ForgetPassword setIsOpenForgetPassword={setIsOpenRecovery} />
+            <RecoveryPassword code={code} email={email} setIsOpenRecovery={setIsOpenRecovery} />
         )}
     </>
   );

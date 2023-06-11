@@ -5,15 +5,17 @@
   flex-direction: column;
   gap: 42px;
   padding-top: 76px;
+
 }
 .menuItem {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 16px;
+
 }
 
-span {
+.menuItem span {
   font-weight: 500;
   font-size: 20px;
   line-height: 28px;
@@ -24,8 +26,7 @@ span {
 a.active span{
   color: $greenColor;
   font-weight: 600;
-  font-size: 20px;
-  line-height: 28px;
+
 
 }
 
@@ -38,7 +39,7 @@ a.active ::after {
   background: $greenColor;
   border-radius: 100px;
 }
-svg {
+.menuItem svg {
   width: 24px;
   height: 24px;
 }

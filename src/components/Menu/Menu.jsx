@@ -26,19 +26,19 @@ const menuData = [
         path: "/operations",
         name: "Доходы",
         icon: "#revenues",
-        iconActive: "#transactionsActive"
+        iconActive: "#revenuesActive"
     },{
         id: 5,
         path: "/operations",
         name: "Расходы",
         icon: "#expenses",
-        iconActive: "#transactionsActive"
+        iconActive: "#expensesActive"
     },{
         id: 6,
         path: "/operations",
         name: "Отчеты",
         icon: "#reports",
-        iconActive: "#transactionsActive"
+        iconActive: "#reportsActive"
     },
 ]
 
