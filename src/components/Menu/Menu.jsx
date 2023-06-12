@@ -51,6 +51,8 @@ const [active, setActive] = useState(1)
             <svg>
                 <use href={active === t.id ? t.iconActive : t.icon}/>
             </svg>
+
+
             <span>{t.title}</span> </NavLink>)}
 
 

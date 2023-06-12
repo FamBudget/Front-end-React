@@ -219,6 +219,31 @@ export const Sprite = () => {
                 </svg>
 
             </symbol>
+            <symbol
+                id="plus"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <svg width="20px" height="20px" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="10" cy="10" r="10" fill="white"/>
+                    <path d="M10 5V15" stroke="#1B9B85" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M5 10H15" stroke="#1B9B85" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+            </symbol>
+            <symbol
+                id="1"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="18" cy="18" r="18" fill="#F9FFFE"/>
+                    <path d="M29.1429 10.8H6.85714C6.34286 10.8 6 11.1428 6 11.6571V23.6571C6 24.1714 6.34286 24.5143 6.85714 24.5143H29.1429C29.6571 24.5143 30 24.1714 30 23.6571V11.6571C30 11.1428 29.6571 10.8 29.1429 10.8ZM24.9429 22.8H11.0571C10.7143 21.0857 9.42857 19.8 7.71429 19.4571V15.8571C9.42857 15.5143 10.7143 14.2286 11.0571 12.5143H24.9429C25.2857 14.2286 26.5714 15.5143 28.2857 15.8571V19.4571C26.5714 19.8 25.2857 21.0857 24.9429 22.8Z" fill="#1B9B85"/>
+                    <path d="M17.9999 13.3714C16.1141 13.3714 14.5713 15.2571 14.5713 17.6571C14.5713 20.0571 16.1141 21.9428 17.9999 21.9428C19.8856 21.9428 21.4284 20.0571 21.4284 17.6571C21.4284 15.2571 19.8856 13.3714 17.9999 13.3714Z" fill="#1B9B85"/>
+                </svg>
+
+
+
+            </symbol>
         </svg>
     );
 };

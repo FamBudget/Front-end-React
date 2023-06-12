@@ -1,0 +1,99 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 340px;
+  padding-top: 40px;
+  padding-right: 32px;
+  background: #F9FFFE;
+
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  & h1 {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 46px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  padding-top: 34px;
+}
+
+.accounts {
+  width: 562px;
+  background: #FFFFFF;
+  box-shadow: -2px -2px 16px rgba(39, 222, 191, 0.06), 2px 2px 16px rgba(39, 222, 191, 0.06);
+  border-radius: 20px;
+  padding: 24px;
+
+  & .accountsHeader {
+    display: flex;
+    flex-direction: row;
+    gap: 255px;
+
+    & h2 {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+}
+
+.accountsButton {
+  padding: 12px 24px;
+  gap: 12px;
+  width: 100%;
+  height: 46px;
+  background: #1B9B85;
+  box-shadow: inset -5px -5px 32px rgba(255, 255, 255, 0.16), inset 5px 5px 32px rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:active {
+    border: none
+  }
+
+}
+
+.AccountsList {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  padding: 48px 56px;
+}
+.AccountsItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  & svg {
+    width: 36px;
+    height: 36px;
+  }
+  & span {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+.itemLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}

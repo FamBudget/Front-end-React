@@ -1,24 +1,20 @@
-import React, { useState } from "react";
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import { useDispatch } from "react-redux";
+import React, {useState} from "react";
+import {ErrorMessage, Field, Form, Formik} from "formik";
+import {useDispatch, useSelector} from "react-redux";
 
-import { apiInstance } from "../../redux/api/api";
-import { setAuth } from "../../redux/reducers/AuthReducer";
+import {apiInstance} from "../../redux/api/api";
+import {setAuth, setEmail, setError} from "../../redux/reducers/AuthReducer";
 
 import "./styles.scss";
 
-import {
-  Button,
-  RegistrationForm,
-  PasswordField,
-  ForgetPassword,
-} from "../../components";
-import { Facebook, Google } from "../../icons";
+import {Button, ForgetPassword, PasswordField, RegistrationForm,} from "../../components";
+import {Facebook, Google} from "../../icons";
 
 export const AuthForm = () => {
   const dispatch = useDispatch();
   const [isOpenRegistration, setIsOpenRegistration] = useState(false);
   const [isOpenForgetPassword, setIsOpenForgetPassword] = useState(false);
+    const error = useSelector(state => state.auth.error)
 
   return (
     <div>
@@ -32,7 +28,8 @@ export const AuthForm = () => {
             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
           ) {
             errors.email = "Неверный адрес";
-          }
+          } else if (!values.password) {
+              errors.password = "Обязательное поле";}
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
@@ -43,9 +40,10 @@ export const AuthForm = () => {
             })
             .then((res) => {
               dispatch(setAuth(res.data.token));
+              dispatch(setEmail(values.email))
               localStorage.token = res.data.token;
-            }).catch(console.log);
-
+              localStorage.email = values.email;
+            }).catch(error => dispatch(setError(error?.response?.data?.message)));
           setSubmitting(false);
         }}
       >
@@ -62,6 +60,7 @@ export const AuthForm = () => {
             >
               Забыли пароль?
             </div>
+              {error && <p>{error}</p>}
             <Button
               className="main-form-button"
               isSubmitting={isSubmitting}

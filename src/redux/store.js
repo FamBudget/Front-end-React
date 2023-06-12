@@ -3,6 +3,7 @@ import AuthReducer from "./reducers/AuthReducer";
 import RegistrationReducer from "./reducers/RegistrationReducer";
 import ResetPasswordReducer from "./reducers/ResetPasswordReducer";
 import RecoveryPasswordReducer from "./reducers/RecoveryPasswordReducer";
+import AccountsReducer from "./reducers/AccountsReducer";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,7 @@ export const store = configureStore({
     registration: RegistrationReducer,
     resetPassword: ResetPasswordReducer,
     recoveryPassword: RecoveryPasswordReducer,
+    Accounts: AccountsReducer,
+
   },
 });
