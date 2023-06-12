@@ -44,7 +44,7 @@ export const AuthForm = () => {
             .then((res) => {
               dispatch(setAuth(res.data.token));
               localStorage.token = res.data.token;
-            });
+            }).catch(console.log);
 
           setSubmitting(false);
         }}

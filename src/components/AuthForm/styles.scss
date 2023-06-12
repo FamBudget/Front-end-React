@@ -2,18 +2,10 @@
 
 .form {
   background: #0e101c;
-  max-width: 400px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
-p {
-  color: #bf1650;
-}
-
-p::before {
-  display: inline;
-  content: "⚠ ";
-}
 
 input,
 select {
@@ -32,6 +24,7 @@ select {
   color: #263834;
   font-style: normal;
   font-weight: 500;
+
   &::placeholder {
     font-weight: 500;
     font-size: 16px;
@@ -39,6 +32,7 @@ select {
     color: $lightGrayColor;
   }
 }
+
 p {
   margin-bottom: 16px;
   margin-top: -16px;
@@ -52,6 +46,7 @@ label {
   line-height: 22px;
   color: #263834;
 }
+
 .view-hide {
   background-color: transparent;
   position: absolute;
@@ -78,10 +73,12 @@ hr {
   padding: 0;
   margin: 0;
 }
+
 .main-form-button {
   margin-top: 32px;
   margin-bottom: 32px;
 }
+
 .forget-password {
   font-weight: 500;
   font-size: 16px;
@@ -91,15 +88,18 @@ hr {
   margin-top: -8px;
   cursor: pointer;
 }
+
 .alter-auth {
   position: relative;
   display: flex;
   justify-content: center;
+
   & span {
     font-weight: 500;
     font-size: 16px;
     line-height: 22px;
     color: $darkColor;
+
     &:before {
       content: "";
       left: 0;
@@ -107,8 +107,9 @@ hr {
       display: block;
       position: absolute;
       border: 1px solid #e3e3e3;
-      width: 248px;
+      width: 33%;
     }
+
     &:after {
       content: "";
       right: 0;
@@ -116,7 +117,7 @@ hr {
       display: block;
       position: absolute;
       border: 1px solid #e3e3e3;
-      width: 248px;
+      width: 33%;
     }
   }
 }
@@ -126,6 +127,8 @@ hr {
   justify-content: space-between;
   margin-top: 24px;
   margin-bottom: 32px;
+  gap: 24px;
+
   & button {
     display: flex;
     align-items: center;
@@ -145,11 +148,35 @@ hr {
 
 .register {
   text-align: center;
+
   & span {
     font-weight: 700;
     font-size: 16px;
     line-height: 22px;
     color: $darkColor;
     cursor: pointer;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .forget-password {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .label {
+    line-height: 21px;
+  }
+  input,
+  select {
+    height: 45px;
+    padding: 12px 20px;
+    line-height: 21px;
+  }
+  .buttons-block {
+    & button {
+      height: 48px;
+      line-height: 21px;
+    }
   }
 }

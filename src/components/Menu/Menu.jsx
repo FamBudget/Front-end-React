@@ -6,37 +6,37 @@ const menuData = [
     {
         id: 1,
         path: "/operations",
-        name: "Операции",
+        title: "Операции",
         icon: "#transactions",
         iconActive: "#transactionsActive"
     },{
         id: 2,
         path: "/accounts",
-        name: "Счета",
+        title: "Счета",
         icon: "#accounts",
         iconActive: "#accountsActive"
     },{
         id: 3,
         path: "/operations",
-        name: "Бюджет",
+        title: "Бюджет",
         icon: "#budget",
         iconActive: "#budgetActive"
     },{
         id: 4,
         path: "/operations",
-        name: "Доходы",
+        title: "Доходы",
         icon: "#revenues",
         iconActive: "#revenuesActive"
     },{
         id: 5,
         path: "/operations",
-        name: "Расходы",
+        title: "Расходы",
         icon: "#expenses",
         iconActive: "#expensesActive"
     },{
         id: 6,
         path: "/operations",
-        name: "Отчеты",
+        title: "Отчеты",
         icon: "#reports",
         iconActive: "#reportsActive"
     },
@@ -51,7 +51,7 @@ const [active, setActive] = useState(1)
             <svg>
                 <use href={active === t.id ? t.iconActive : t.icon}/>
             </svg>
-            <span>{t.name}</span> </NavLink>)}
+            <span>{t.title}</span> </NavLink>)}
 
 
     </nav>

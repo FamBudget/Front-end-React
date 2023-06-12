@@ -10,6 +10,7 @@ export const Layout = () => {
     const searchParams = new URLSearchParams(search)
     const code = searchParams.get('code')
     const email = searchParams.get('email')
+    
     const [isOpenRecover, setIsOpenRecovery] = useState(!!code);
 
     const dispatch = useDispatch();

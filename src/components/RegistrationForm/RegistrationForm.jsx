@@ -83,6 +83,7 @@ export const RegistrationForm = ({ setIsOpenRegistration }) => {
       >
         {({ isSubmitting, errors }) => (
           <Form ref={registrationRef} className={styles.form}>
+              <h2>Регистрация</h2>
             <label>Электронная почта*</label>
             <Field type="email" name="email" placeholder="Введите вашу почту" />
             {errors.email && <p>{errors.email}</p>}

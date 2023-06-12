@@ -15,22 +15,26 @@
   background: #e2fffa;
   border-radius: 0px 64px 64px 0px;
 }
+
 .leftImage img {
   display: block;
   max-width: 90%;
   height: auto;
   object-fit: contain;
 }
+
 .rightAuth {
   display: flex;
   flex-direction: column;
   width: 50vw;
 }
+
 .arrow {
   position: absolute;
-  padding-top: 35px;
-  padding-left: 45px;
+  margin-top: 35px;
+  margin-left: 45px;
 }
+
 h1 {
   font-style: normal;
   font-weight: 700;
@@ -39,16 +43,19 @@ h1 {
   color: $darkColor;
   padding-bottom: 32px;
 }
+
 h1 span {
   color: $greenColor;
 }
+
 .containerForm {
   padding: 120px 176px 0 80px;
 }
+
 .formAuth {
   background: #ffffff;
   box-shadow: -2px -2px 16px rgba(39, 222, 191, 0.06),
-    2px 2px 16px rgba(39, 222, 191, 0.06);
+  2px 2px 16px rgba(39, 222, 191, 0.06);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -69,4 +76,73 @@ h1 span {
   }
   .leftImage {
   }
+  .containerForm {
+    padding: 120px 96px 0 60px;
+  }
+  .arrow {
+    margin-top: 35px;
+    margin-left: 42px;
+    width: 104px;
+    height: 64px;
+  }
+
+}
+
+@media (max-width: 1220px) {
+  .containerForm {
+    padding: 0;
+  }
+  h1 {
+    font-size: 32px;
+    line-height: 42px;
+  }
+  .container {
+    flex-direction: column-reverse;
+  }
+  .leftImage {
+    width: 100%;
+    height: 316px;
+    background: #E2FFFA;
+    border-radius: 32px 32px 0px 0px;
+
+  }
+  .leftImage img {
+    width: 266px;
+    height: 240px;
+  }
+  .rightAuth {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 60px 0 40px 0;
+  }
+  .formAuth {
+    max-width: 566px;;
+  }
+  .arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 24px;
+    line-height: 31px;
+  }
+  .leftImage {
+    height: 199px;
+
+  }
+  .leftImage img {
+    width: 177.06px;
+    height: 160px;
+  }
+  .rightAuth {
+    padding: 40px 0 72px 0;
+  }
+  .formAuth {
+    max-width: 375px;
+    padding: 20px;
+  }
+
 }
