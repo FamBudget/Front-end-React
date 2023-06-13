@@ -179,4 +179,18 @@ hr {
       line-height: 21px;
     }
   }
+
+  .alter-auth {
+
+    & span {
+
+      &:before {
+        width: 28%;
+      }
+
+      &:after {
+        width: 28%;
+      }
+    }
+  }
 }

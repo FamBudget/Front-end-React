@@ -5,6 +5,7 @@ import {Sprite} from "../../../components";
 import {Outlet} from "react-router-dom";
 import {setAuth, setEmail} from "../../../redux/reducers/AuthReducer";
 import {useDispatch} from "react-redux";
+import {Headers} from "../../../components/Headers/Headers";
 
 export const LayoutMain = () => {
     const dispatch = useDispatch();
@@ -17,6 +18,7 @@ export const LayoutMain = () => {
 
     return (
         <>
+            <Headers />
             <div className={styles.container}>
                 <Sidebar/>
             </div>
