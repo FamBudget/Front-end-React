@@ -36,7 +36,15 @@ body {
   font-family: Gilroy, sans-serif;
   background-color: #FFFFFF;
   color: $darkColor;
+
+
 }
+@media (-webkit-min-device-pixel-ratio: 1.25) {
+  body {
+    zoom: 0.88;
+  }
+}
+
 h1,
 h2,
 h3,

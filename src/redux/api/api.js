@@ -7,10 +7,6 @@ const email = localStorage.getItem('email')
 const settings = {
     headers: {
         "Content-Type": "application/json",
-        Authorization : `Bearer ${localStorage.getItem("token")}`
-
-
-
     },
 };
 

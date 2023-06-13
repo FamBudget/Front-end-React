@@ -61,6 +61,7 @@ export const RegistrationForm = ({ setIsOpenRegistration }) => {
 
   return (
     <div className={styles.wrapper}>
+        <div className={styles.dark}> </div>
       <Formik
         initialValues={{
           email: "",
@@ -87,6 +88,7 @@ export const RegistrationForm = ({ setIsOpenRegistration }) => {
             <label>Электронная почта*</label>
             <Field type="email" name="email" placeholder="Введите вашу почту" />
             {errors.email && <p>{errors.email}</p>}
+
             <div className={styles.inputsWrapper}>
               <div>
                 <label>Имя</label>
