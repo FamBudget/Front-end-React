@@ -1,0 +1,29 @@
+@import "src/styles/variables";
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $greenColor;
+  box-shadow: inset -5px -5px 32px rgba(255, 255, 255, 0.16),
+    inset 5px 5px 32px rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  height: 60px;
+  width: 100%;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: #ffffff;
+  &:active {
+    background-color: transparent;
+    color: $greenColor;
+    border: 2px solid $greenColor;
+  }
+}
+.text {
+}
+@media (max-width: 768px) {
+  .button {
+    height: 45px;
+    line-height: 21;
+  }
+}

@@ -1,0 +1,18 @@
+@import "src/styles/variables";
+
+
+.sidebarContainer {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 100vh;
+  padding: 40px 32px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 32px;
+  text-transform: uppercase;
+  color: $darkColor;
+}

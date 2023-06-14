@@ -1,0 +1,45 @@
+@import "src/styles/variables";
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+  padding-top: 76px;
+
+}
+.menuItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+
+}
+
+.menuItem span {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: $darkColor;
+
+}
+
+a.active span{
+  color: $greenColor;
+  font-weight: 600;
+
+
+}
+
+a.active ::after {
+  position: absolute;
+  left: 0;
+  content: '';
+  width: 4px;
+  height: 32px;
+  background: $greenColor;
+  border-radius: 100px;
+}
+.menuItem svg {
+  width: 24px;
+  height: 24px;
+}
