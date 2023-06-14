@@ -53,5 +53,5 @@ jobs:
              sudo docker stop fambudget_react_front
              sudo docker rm fambudget_react_front
              sudo docker rmi fambudget/fambudget_react_front
-             sudo docker run -d --name 'fambudget_react_front' -p 80:3000 fambudget/fambudget_react_front:latest
+             sudo docker run -d --name 'fambudget_react_front' -p 3000:3000 fambudget/fambudget_react_front:latest
             '
