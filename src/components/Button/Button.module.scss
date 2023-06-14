@@ -18,6 +18,16 @@
     color: $greenColor;
     border: 2px solid $greenColor;
   }
+  &:disabled {
+    background: #dde7e0;
+    cursor: auto;
+    &:active {
+      border: none;
+      color: #ffffff;
+    }
+
+
+  }
 }
 .text {
 }

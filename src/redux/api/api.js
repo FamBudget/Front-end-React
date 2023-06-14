@@ -1,7 +1,6 @@
 import axios from "axios";
 
 
-const email = localStorage.getItem('email')
 
 
 const settings = {
@@ -18,6 +17,7 @@ export const apiInstance = axios.create({
 });
 apiInstance.interceptors.request.use(function (config) {
     const token = localStorage.getItem('token');
+
     config.headers.Authorization =  token ? `Bearer ${token}` : '';
     return config;
 });
@@ -48,7 +48,7 @@ export const authApi = {
             password: values.password
         });
     },
-    Accounts() {
+    Accounts(email) {
         return apiInstance.get(`/accounts?email=${email}&size=1000000000`);
     },
 };

@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { Field } from "formik";
-import { BsCheckLg } from "react-icons/bs";
+import React from "react";
+import {Field} from "formik";
+import {BsCheckLg} from "react-icons/bs";
 
 import styles from "./UserCheckField.module.scss";
 
-export const UserCheckField = () => {
-  const [isChecked, setIsChecked] = useState(false);
+export const UserCheckField = ({isChecked, setIsChecked}) => {
   return (
     <>
       <label>Проверка</label>

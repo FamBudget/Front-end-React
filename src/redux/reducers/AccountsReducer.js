@@ -4,8 +4,9 @@ import {authApi} from "../api/api";
 
 export const fetchAccounts = createAsyncThunk(
     "Accounts/fetchAccounts",
-    async () => {
-        const response = await authApi.Accounts()
+    async (_, {getState}) => {
+        const email = getState().auth.email
+        const response = await authApi.Accounts(email)
         return response.data
 
 

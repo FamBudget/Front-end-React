@@ -14,6 +14,7 @@ export const ForgetPassword = ({ setIsOpenForgetPassword }) => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.resetPassword.status);
   const [isRecoveryInfoOpen, setIsRecoveryInfoOpen] = useState(false);
+  const [isChecked, setIsChecked] = useState(false)
 
   useEffect(() => {
     let handler = (e) => {
@@ -69,8 +70,9 @@ export const ForgetPassword = ({ setIsOpenForgetPassword }) => {
                   placeholder="Введите вашу почту"
                 />
                 {errors.email && <p>{errors.email}</p>}
-                <UserCheckField />
+                <UserCheckField  isChecked={isChecked} setIsChecked={setIsChecked} />
                 <Button
+                    disabled={!isChecked}
                   className={styles.registrButton}
                   isSubmitting={isSubmitting}
                   type="submit"

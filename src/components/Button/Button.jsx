@@ -3,10 +3,10 @@ import classNames from "classnames";
 
 import styles from "./Button.module.scss";
 
-export const Button = ({ text, type, isSubmitting, className, children }) => {
+export const Button = ({ text, type, className, children, disabled}) => {
   return (
     <button
-      disabled={isSubmitting}
+      disabled={disabled}
       type={type}
       className={classNames(styles.button, className)}
     >
