@@ -1,20 +1,29 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
 import styles from './Accaunts.module.scss'
 import {Button} from "../../components";
 import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
+import {Modal} from "@mui/material";
+import {AddingAccount} from "../../components/AddingAccount/AddingAccount";
 
 
 export const Accounts = () => {
     const isAuth = useSelector((state) => state.auth.auth);
     const dispatch = useDispatch();
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     useEffect(() => {
         dispatch(fetchAccounts())
     }, [])
     const AccountsData = useSelector(state => state.Accounts.data)
-
+console.log(open)
     return !isAuth ? (
         <Navigate to="/login"/>
     ) : (
@@ -26,7 +35,7 @@ export const Accounts = () => {
                         <h2>Счета</h2>
 
                         {/* eslint-disable-next-line react/no-children-prop */}
-                        <Button className={styles.accountsButton} children={<svg>
+                        <Button className={styles.accountsButton} handleOpen={handleOpen} children={<svg>
                             <use href="#plus"/>
                         </svg>} text={"Добавить счёт"}/>
                     </div>
@@ -42,6 +51,14 @@ export const Accounts = () => {
                     </div>}
                 </div>
             </div>
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="parent-modal-title"
+                aria-describedby="parent-modal-description"
+            >
+                <AddingAccount />
+            </Modal>
         </div>
     );
 };
