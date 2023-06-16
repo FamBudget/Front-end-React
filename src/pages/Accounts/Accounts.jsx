@@ -39,6 +39,7 @@ console.log(open)
                             <use href="#plus"/>
                         </svg>} text={"Добавить счёт"}/>
                     </div>
+
                     { Array.isArray(AccountsData) &&   <div className={styles.AccountsList}>
                         { AccountsData?.map(t => <div key={t.id} className={styles.AccountsItem}>
                             <div className={styles.itemLeft}><svg>
@@ -57,7 +58,7 @@ console.log(open)
                 aria-labelledby="parent-modal-title"
                 aria-describedby="parent-modal-description"
             >
-                <AddingAccount />
+                <AddingAccount setOpen={setOpen} />
             </Modal>
         </div>
     );

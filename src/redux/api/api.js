@@ -48,8 +48,13 @@ export const authApi = {
             password: values.password
         });
     },
-    Accounts(email) {
+    getAccounts(email) {
         return apiInstance.get(`/accounts?email=${email}&size=1000000000`);
+    },
+    addAccount(email, {createdOn, currency, iconNumber,name,startAmount}) {
+        return apiInstance.post(`/accounts?email=${email}`, {
+            startAmount, createdOn, currency, iconNumber, name
+        });
     },
 };
 
