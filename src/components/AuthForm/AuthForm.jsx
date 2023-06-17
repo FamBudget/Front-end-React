@@ -14,6 +14,7 @@ import {
   RegistrationForm,
 } from "../../components";
 import { Facebook, Google } from "../../icons";
+import { Modal } from "@mui/material";
 
 export const AuthForm = () => {
   const dispatch = useDispatch();
@@ -100,12 +101,13 @@ export const AuthForm = () => {
           </Form>
         )}
       </Formik>
-      {isOpenRegistration && (
+
+      <Modal open={isOpenRegistration}>
         <RegistrationForm setIsOpenRegistration={setIsOpenRegistration} />
-      )}
-      {isOpenForgetPassword && (
+      </Modal>
+      <Modal open={isOpenForgetPassword}>
         <ForgetPassword setIsOpenForgetPassword={setIsOpenForgetPassword} />
-      )}
+      </Modal>
     </div>
   );
 };
