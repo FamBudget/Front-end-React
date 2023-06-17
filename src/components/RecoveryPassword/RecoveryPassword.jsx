@@ -1,13 +1,34 @@
-import React, {useEffect, useRef, useState} from "react";
-import {Field, Form, Formik} from "formik";
-import {useDispatch, useSelector} from "react-redux";
-import recoveryPass from '../../assets/recoverypass.png'
+import React, { useEffect, useRef, useState } from "react";
+import { Form, Formik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
+import recoveryPass from "../../assets/recoverypass.png";
 import styles from "./RecoveryPassword.module.scss";
 
-import {Button, PasswordRecoveryInfo} from "../../components";
-import {fetchRecoveryPassword} from "../../redux/reducers/RecoveryPasswordReducer";
+import { Button, PasswordField, PasswordRecoveryInfo } from "../../components";
+import { fetchRecoveryPassword } from "../../redux/reducers/RecoveryPasswordReducer";
+import * as yup from "yup";
 
-export const RecoveryPassword = ({ setIsOpenRecovery, code, email}) => {
+const FormSchema = yup.object().shape({
+  password: yup
+    .string()
+    .min(8, "Минимальная длинна 8 символов")
+    .matches(/(?=.*\d)/, "Пароль должен содержать цифру от 0 до 9")
+    .matches(/(?=.*[a-z])/, "Пароль должен содержать буквы в нижнем регистре")
+    .matches(/(?=.*[A-Z])/, "Пароль должен содержать буквы в верхнем регистре")
+    .matches(/(?=.*[@$!%*?&])/, "Пароль должен содержать хотя бы один символ")
+    .matches(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{5,16}$/,
+      "Пароль не должен содержать последовательность 5 цифр или букв"
+    )
+    .required("Обязательное поле"),
+
+  confirmPassword: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Пароли не совпадают")
+    .required("Обязательное поле"),
+});
+
+export const RecoveryPassword = ({ setIsOpenRecovery, code, email }) => {
   const forgetPasswordRef = useRef();
   const dispatch = useDispatch();
   const status = useSelector((state) => state.recoveryPassword.status);
@@ -38,17 +59,22 @@ export const RecoveryPassword = ({ setIsOpenRecovery, code, email}) => {
   return (
     <>
       {isRecoveryInfoOpen ? (
-        <div  ref={forgetPasswordRef}>
-          <PasswordRecoveryInfo  text={'Пароль успешно восстановлен'} img={recoveryPass}/>
+        <div ref={forgetPasswordRef}>
+          <PasswordRecoveryInfo
+            text={"Пароль успешно восстановлен"}
+            img={recoveryPass}
+          />
         </div>
       ) : (
-        <div  className={styles.wrapper}>
+        <div className={styles.wrapper}>
           <Formik
+            validateOnMount={true}
+            validationSchema={FormSchema}
             initialValues={{
               password: "",
-              password2: "",
+              confirmPassword: "",
               code,
-              email
+              email,
             }}
             onSubmit={(values, { setSubmitting }) => {
               dispatch(fetchRecoveryPassword(values));
@@ -58,20 +84,18 @@ export const RecoveryPassword = ({ setIsOpenRecovery, code, email}) => {
             {({ isSubmitting, errors }) => (
               <Form ref={forgetPasswordRef} className={styles.form}>
                 <h2>Восстановление пароля</h2>
-                <Field
-                  type="password"
-                  name="password"
-                  placeholder="Новый пароль"
-                />
+                <PasswordField name="password" placeholder="Новый пароль" />
                 {errors.password && <p>{errors.password}</p>}
-                <Field
-                  type="password"
-                  name="password2"
+                <PasswordField
+                  name="confirmPassword"
                   placeholder="Повторно новый пароль"
                 />
-                {errors.password2 && <p>{errors.password2}</p>}
-
+                {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
                 <Button
+                  disabled={
+                    Array.isArray(errors) ||
+                    Object.values(errors).toString() !== ""
+                  }
                   className={styles.registrButton}
                   isSubmitting={isSubmitting}
                   type="submit"

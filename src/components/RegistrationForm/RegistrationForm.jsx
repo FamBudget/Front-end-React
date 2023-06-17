@@ -1,15 +1,15 @@
-import React, {useEffect, useRef, useState} from "react";
-import {Field, Form, Formik} from "formik";
-import {useDispatch, useSelector} from "react-redux";
+import React, { useEffect, useRef, useState } from "react";
+import { Field, Form, Formik } from "formik";
+import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 
-import {fetchRegistration} from "../../redux/reducers/RegistrationReducer";
-import {setAuth} from "../../redux/reducers/AuthReducer";
+import { fetchRegistration } from "../../redux/reducers/RegistrationReducer";
+import { setAuth } from "../../redux/reducers/AuthReducer";
 
 import styles from "./RegistrationForm.module.scss";
 
-import {ArrowDown} from "../../icons";
-import {Button, PasswordField, UserCheckField} from "../../components";
+import { ArrowDown } from "../../icons";
+import { Button, PasswordField, UserCheckField } from "../../components";
 
 const FormSchema = yup.object().shape({
   password: yup
@@ -40,11 +40,10 @@ const FormSchema = yup.object().shape({
 
 export const RegistrationForm = ({ setIsOpenRegistration }) => {
   const dispatch = useDispatch();
-    const [isChecked, setIsChecked] = useState(false)
+  const [isChecked, setIsChecked] = useState(false);
 
   const registrationRef = useRef();
   let status = useSelector((state) => state.registration.status);
-
 
   useEffect(() => {
     let handler = (e) => {
@@ -61,7 +60,7 @@ export const RegistrationForm = ({ setIsOpenRegistration }) => {
 
   return (
     <div className={styles.wrapper}>
-        <div className={styles.dark}> </div>
+      <div className={styles.dark}> </div>
       <Formik
         initialValues={{
           email: "",
@@ -84,7 +83,7 @@ export const RegistrationForm = ({ setIsOpenRegistration }) => {
       >
         {({ isSubmitting, errors }) => (
           <Form ref={registrationRef} className={styles.form}>
-              <h2>Регистрация</h2>
+            <h2>Регистрация</h2>
             <label>Электронная почта*</label>
             <Field type="email" name="email" placeholder="Введите вашу почту" />
             {errors.email && <p>{errors.email}</p>}
@@ -125,9 +124,9 @@ export const RegistrationForm = ({ setIsOpenRegistration }) => {
               placeholder="Введите повторно пароль"
             />
             {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
-              <UserCheckField  isChecked={isChecked} setIsChecked={setIsChecked} />
+            <UserCheckField isChecked={isChecked} setIsChecked={setIsChecked} />
             <Button
-                disabled={!isChecked}
+              disabled={Array.isArray(errors) || !isChecked}
               className={styles.registrButton}
               isSubmitting={isSubmitting}
               type="submit"

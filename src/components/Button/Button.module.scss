@@ -1,5 +1,6 @@
 @import "src/styles/variables";
 .button {
+  transition: all 200ms;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,8 +26,6 @@
       border: none;
       color: #ffffff;
     }
-
-
   }
 }
 .text {

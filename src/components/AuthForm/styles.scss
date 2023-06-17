@@ -6,7 +6,6 @@
   margin: 0 auto;
 }
 
-
 input,
 select {
   display: block;
@@ -35,7 +34,10 @@ select {
 
 p {
   margin-bottom: 16px;
-  color: red
+  margin-top: -16px;
+  font-size: 14px;
+  line-height: 16px;
+  color: red;
 }
 
 label {
@@ -78,8 +80,12 @@ hr {
   margin-top: 32px;
   margin-bottom: 32px;
 }
+.forget-wrapper {
+  text-align: right;
+}
 
 .forget-password {
+  display: inline-block;
   font-weight: 500;
   font-size: 16px;
   line-height: 22px;
@@ -158,8 +164,10 @@ hr {
   }
 }
 
-
 @media (max-width: 768px) {
+  p {
+    margin-top: -10px;
+  }
   .forget-password {
     font-size: 14px;
     line-height: 20px;
@@ -172,6 +180,7 @@ hr {
     height: 45px;
     padding: 12px 20px;
     line-height: 21px;
+    margin-bottom: 16px;
   }
   .buttons-block {
     & button {
@@ -181,9 +190,7 @@ hr {
   }
 
   .alter-auth {
-
     & span {
-
       &:before {
         width: 28%;
       }

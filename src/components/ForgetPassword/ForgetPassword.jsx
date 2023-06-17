@@ -14,7 +14,7 @@ export const ForgetPassword = ({ setIsOpenForgetPassword }) => {
   const dispatch = useDispatch();
   const status = useSelector((state) => state.resetPassword.status);
   const [isRecoveryInfoOpen, setIsRecoveryInfoOpen] = useState(false);
-  const [isChecked, setIsChecked] = useState(false)
+  const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
     let handler = (e) => {
@@ -42,7 +42,10 @@ export const ForgetPassword = ({ setIsOpenForgetPassword }) => {
     <>
       {isRecoveryInfoOpen ? (
         <div ref={forgetPasswordRef}>
-          <PasswordRecoveryInfo text={'На вашу почту отправлена ссылка для восстановления'} img={repairInfo} />
+          <PasswordRecoveryInfo
+            text={"На вашу почту отправлена ссылка для восстановления"}
+            img={repairInfo}
+          />
         </div>
       ) : (
         <div className={styles.wrapper}>
@@ -50,6 +53,17 @@ export const ForgetPassword = ({ setIsOpenForgetPassword }) => {
             initialValues={{
               email: "",
               userCheck: false,
+            }}
+            validate={(values) => {
+              const errors = {};
+              if (!values.email) {
+                errors.email = "Обязательное поле";
+              } else if (
+                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+              ) {
+                errors.email = "Неверный адрес";
+              }
+              return errors;
             }}
             onSubmit={(values, { setSubmitting }) => {
               dispatch(fetchResetPassword(values.email));
@@ -70,9 +84,12 @@ export const ForgetPassword = ({ setIsOpenForgetPassword }) => {
                   placeholder="Введите вашу почту"
                 />
                 {errors.email && <p>{errors.email}</p>}
-                <UserCheckField  isChecked={isChecked} setIsChecked={setIsChecked} />
+                <UserCheckField
+                  isChecked={isChecked}
+                  setIsChecked={setIsChecked}
+                />
                 <Button
-                    disabled={!isChecked}
+                  disabled={!isChecked}
                   className={styles.registrButton}
                   isSubmitting={isSubmitting}
                   type="submit"
