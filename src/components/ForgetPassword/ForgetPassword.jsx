@@ -8,6 +8,7 @@ import styles from "./ForgetPassword.module.scss";
 
 import { Button, PasswordRecoveryInfo, UserCheckField } from "../../components";
 import repairInfo from "../../assets/repairPassword.png";
+import { Modal } from "@mui/material";
 
 export const ForgetPassword = ({ setIsOpenForgetPassword }) => {
   const forgetPasswordRef = useRef();
@@ -35,18 +36,20 @@ export const ForgetPassword = ({ setIsOpenForgetPassword }) => {
       setTimeout(() => {
         setIsRecoveryInfoOpen(false);
         setIsOpenForgetPassword(false);
-      }, 5000);
+      }, 3000);
     }
   }, [status]);
   return (
     <>
       {isRecoveryInfoOpen ? (
-        <div ref={forgetPasswordRef}>
-          <PasswordRecoveryInfo
-            text={"На вашу почту отправлена ссылка для восстановления"}
-            img={repairInfo}
-          />
-        </div>
+        <Modal open={isRecoveryInfoOpen}>
+          <div>
+            <PasswordRecoveryInfo
+              text={"На вашу почту отправлена ссылка для восстановления"}
+              img={repairInfo}
+            />
+          </div>
+        </Modal>
       ) : (
         <div className={styles.wrapper}>
           <Formik

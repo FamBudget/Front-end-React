@@ -103,10 +103,15 @@ export const AuthForm = () => {
       </Formik>
 
       <Modal open={isOpenRegistration}>
-        <RegistrationForm setIsOpenRegistration={setIsOpenRegistration} />
+        <div>
+          <RegistrationForm setIsOpenRegistration={setIsOpenRegistration} />
+        </div>
       </Modal>
       <Modal open={isOpenForgetPassword}>
-        <ForgetPassword setIsOpenForgetPassword={setIsOpenForgetPassword} />
+        <div>
+          {" "}
+          <ForgetPassword setIsOpenForgetPassword={setIsOpenForgetPassword} />
+        </div>
       </Modal>
     </div>
   );
