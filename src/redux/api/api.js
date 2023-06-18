@@ -5,6 +5,7 @@ import {formatDate} from "../../components/DatePickerFields/DatePickerFileds";
 const settings = {
     headers: {
         "Content-Type": "application/json",
+        "X-Client-Platform": "REACT"
     },
 };
 

@@ -52,7 +52,7 @@ export const Accounts = () => {
 
                     </div>}
                 </div>
-                <MovingAccounts />
+                <MovingAccounts/>
             </div>
             <Modal
                 open={open}
