@@ -19,7 +19,6 @@ export const Headers = () => {
 
     }
 
-    console.log(url)
     const logout = () => {
         dispatch(setAuth(null));
         localStorage.clear()

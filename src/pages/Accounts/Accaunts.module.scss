@@ -13,6 +13,7 @@
 .wrapper {
   display: flex;
   flex-direction: row;
+  gap: 40px;
 }
 
 .accounts {
@@ -42,6 +43,7 @@
   width: 100%;
   height: 46px;
   background: #1B9B85;
+  white-space: nowrap;
   box-shadow: inset -5px -5px 32px rgba(255, 255, 255, 0.16), inset 5px 5px 32px rgba(255, 255, 255, 0.16);
   border-radius: 10px;
   font-weight: 500;
@@ -86,3 +88,5 @@
   align-items: center;
   gap: 12px;
 }
+
+
