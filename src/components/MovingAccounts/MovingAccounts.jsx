@@ -49,10 +49,12 @@ function subtractMonths(date) {
     date.setMonth(date.getMonth() - 1);
     return date;
 }
+
 function subtractWeek(date) {
     date.setDate(date.getDate() - 7);
     return date;
 }
+
 function subtractDay(date) {
     date.setDate(date.getDate() - 1);
     return date;
@@ -68,7 +70,7 @@ export const MovingAccounts = () => {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchMoving(query))
-    }, [query])
+    }, [])
     const sorts = (sortName) => {
         setQuery({...query, sort: sortName})
         dispatch(fetchMoving({...query, sort: sortName}))

@@ -10,6 +10,7 @@ import {MovingAccounts} from "../../components/MovingAccounts/MovingAccounts";
 
 
 export const Accounts = () => {
+
     const isAuth = useSelector((state) => state.auth.auth);
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
@@ -44,7 +45,7 @@ export const Accounts = () => {
                         {AccountsData?.map(t => <div key={t.id} className={styles.AccountsItem}>
                             <div className={styles.itemLeft}>
                                 <svg>
-                                    <use href="#1"/>
+                                    <use href={`#${t.iconNumber}`}/>
                                 </svg>
                                 <span>{t.name}</span></div>
                             <span>{t.amount} {t.currency} </span>

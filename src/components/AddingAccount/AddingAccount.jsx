@@ -5,13 +5,14 @@ import styles from "./AddingAccount.module.scss";
 import {Button} from "../../components";
 import {DatePickerField, formatDate} from "../DatePickerFields/DatePickerFileds";
 import {addAccount} from "../../redux/reducers/AccountsReducer";
+import {SelectIcon} from "./SelectIcon";
 
 
 export const AddingAccount = ({setOpen}) => {
     const forgetPasswordRef = useRef();
-    const currency = useSelector(state => state.Accounts.data[0].currency)
+    const currency = useSelector(state => state.Accounts?.data[0]?.currency)
     var newDate = formatDate(new Date())
-    const dispatch= useDispatch()
+    const dispatch = useDispatch()
     return (
         <>
             <div className={styles.wrapper}>
@@ -27,11 +28,12 @@ export const AddingAccount = ({setOpen}) => {
                         dispatch(addAccount(values))
                         setSubmitting(false);
                         setOpen(false)
+                        console.log(values)
                     }}
                 >
-                    {({isSubmitting, errors}) => (
+                    {({isSubmitting, errors, values}) => (
                         <Form ref={forgetPasswordRef} className={styles.form}>
-                            <h2>Добавить счет</h2>
+                            <div className={styles.header}><h2>Добавить счет</h2><SelectIcon iconNumber={values.iconNumber}/></div>
                             <label>Название счета</label>
                             <Field
                                 type="text"
@@ -55,21 +57,25 @@ export const AddingAccount = ({setOpen}) => {
                                 <span>{currency}</span>
                             </div>
                             <label>Дата начального остатка</label>
-                            <DatePickerField name="createdOn" />
+                            <DatePickerField name="createdOn"/>
 
 
-
-<div className={styles.buttons}>     <div     className={styles.cancelWrap} onClick={() => setOpen(false)}><Button
-    className={styles.cancelButton}
-    text="Отмена"
-/>
-</div>
-    <Button
-        className={styles.submitButton}
-        isSubmitting={isSubmitting}
-        type="submit"
-        text="Ок"
-    /></div>
+                            <div className={styles.buttons}>
+                                <div className={styles.WrapBtn} onClick={() => setOpen(false)}>
+                                    <Button
+                                        className={styles.cancelButton}
+                                        text="Отмена"
+                                    />
+                                </div>
+                                <div className={styles.WrapBtn}>
+                                    <Button
+                                        className={styles.submitButton}
+                                        isSubmitting={isSubmitting}
+                                        type="submit"
+                                        text="Ок"
+                                    />
+                                </div>
+                            </div>
 
                         </Form>
                     )}
