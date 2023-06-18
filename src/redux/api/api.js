@@ -1,6 +1,5 @@
 import axios from "axios";
-
-
+import {formatDate} from "../../components/DatePickerFields/DatePickerFileds";
 
 
 const settings = {
@@ -8,7 +7,6 @@ const settings = {
         "Content-Type": "application/json",
     },
 };
-
 
 export const apiInstance = axios.create({
     baseURL: "http://13.50.233.192:8080",
@@ -18,7 +16,7 @@ export const apiInstance = axios.create({
 apiInstance.interceptors.request.use(function (config) {
     const token = localStorage.getItem('token');
 
-    config.headers.Authorization =  token ? `Bearer ${token}` : '';
+    config.headers.Authorization = token ? `Bearer ${token}` : '';
     return config;
 });
 
@@ -51,10 +49,16 @@ export const authApi = {
     getAccounts(email) {
         return apiInstance.get(`/accounts?email=${email}&size=1000000000`);
     },
-    addAccount(email, {createdOn, currency, iconNumber,name,startAmount}) {
+    addAccount(email, {createdOn, currency, iconNumber, name, startAmount}) {
         return apiInstance.post(`/accounts?email=${email}`, {
-            startAmount, createdOn, currency, iconNumber, name
+            startAmount, createdOn: createdOn +
+                ' ' + "00:00:00", currency, iconNumber, name
         });
+    },
+    getMoving(email, { endDate, startDate, sort}) {
+        const formatEndDate = formatDate(endDate) + ' ' + "23:59:59"
+        const formatStartDate = formatDate(startDate) + ' ' + "00:00:00"
+        return apiInstance.get(`/operations/moving?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`);
     },
 };
 

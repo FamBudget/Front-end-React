@@ -2,7 +2,6 @@ import React, {useRef} from "react";
 import {Field, Form, Formik} from "formik";
 import {useDispatch, useSelector} from "react-redux";
 import styles from "./AddingAccount.module.scss";
-import './styles.css'
 import {Button} from "../../components";
 import {DatePickerField, formatDate} from "../DatePickerFields/DatePickerFileds";
 import {addAccount} from "../../redux/reducers/AccountsReducer";
@@ -22,7 +21,7 @@ export const AddingAccount = ({setOpen}) => {
                         currency: currency,
                         iconNumber: 0,
                         name: '',
-                        startAmount: null
+                        startAmount: ''
                     }}
                     onSubmit={(values, {setSubmitting}) => {
                         dispatch(addAccount(values))
@@ -60,13 +59,18 @@ export const AddingAccount = ({setOpen}) => {
 
 
 
+<div className={styles.buttons}>     <div     className={styles.cancelWrap} onClick={() => setOpen(false)}><Button
+    className={styles.cancelButton}
+    text="Отмена"
+/>
+</div>
+    <Button
+        className={styles.submitButton}
+        isSubmitting={isSubmitting}
+        type="submit"
+        text="Ок"
+    /></div>
 
-                            <Button
-                                className={styles.registrButton}
-                                isSubmitting={isSubmitting}
-                                type="submit"
-                                text="Восстановить пароль"
-                            />
                         </Form>
                     )}
                 </Formik>

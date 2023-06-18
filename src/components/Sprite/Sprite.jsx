@@ -241,7 +241,18 @@ export const Sprite = () => {
                     <path d="M17.9999 13.3714C16.1141 13.3714 14.5713 15.2571 14.5713 17.6571C14.5713 20.0571 16.1141 21.9428 17.9999 21.9428C19.8856 21.9428 21.4284 20.0571 21.4284 17.6571C21.4284 15.2571 19.8856 13.3714 17.9999 13.3714Z" fill="#1B9B85"/>
                 </svg>
 
-
+            </symbol>
+            <symbol
+                id="calendar"
+                viewBox="0 0 36 36"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="8" width="24" height="20" rx="2" stroke="#1B9B85" strokeWidth="2"/>
+                    <path d="M4 12C4 10.1144 4 9.17157 4.58579 8.58579C5.17157 8 6.11438 8 8 8H24C25.8856 8 26.8284 8 27.4142 8.58579C28 9.17157 28 10.1144 28 12V13.3333H4V12Z" fill="#1B9B85"/>
+                    <path d="M9.33333 4L9.33333 8" stroke="#1B9B85" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M22.6667 4L22.6667 8" stroke="#1B9B85" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
 
             </symbol>
         </svg>

@@ -1,3 +1,5 @@
+@import "src/styles/variables";
+
 .wrapper {
   position: absolute;
   padding: 32px;
@@ -38,8 +40,28 @@
   }
 }
 
-.dateCalendar {
-  & .Mui-selected {
-    background-color: green;
+
+
+.buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 24px;
+}
+.submitButton {
+  width: 50%;
+}
+.cancelWrap {
+  width: 50%;
+  & .cancelButton {
+    border: 2px solid $greenColor;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    color: $greenColor
+
   }
- }
+}
+
+.cancelButton {
+
+}

@@ -6,6 +6,7 @@ import {Button} from "../../components";
 import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
 import {Modal} from "@mui/material";
 import {AddingAccount} from "../../components/AddingAccount/AddingAccount";
+import {MovingAccounts} from "../../components/MovingAccounts/MovingAccounts";
 
 
 export const Accounts = () => {
@@ -23,7 +24,6 @@ export const Accounts = () => {
         dispatch(fetchAccounts())
     }, [])
     const AccountsData = useSelector(state => state.Accounts.data)
-console.log(open)
     return !isAuth ? (
         <Navigate to="/login"/>
     ) : (
@@ -40,17 +40,19 @@ console.log(open)
                         </svg>} text={"Добавить счёт"}/>
                     </div>
 
-                    { Array.isArray(AccountsData) &&   <div className={styles.AccountsList}>
-                        { AccountsData?.map(t => <div key={t.id} className={styles.AccountsItem}>
-                            <div className={styles.itemLeft}><svg>
-                                <use href="#1"/>
-                            </svg>
+                    {Array.isArray(AccountsData) && <div className={styles.AccountsList}>
+                        {AccountsData?.map(t => <div key={t.id} className={styles.AccountsItem}>
+                            <div className={styles.itemLeft}>
+                                <svg>
+                                    <use href="#1"/>
+                                </svg>
                                 <span>{t.name}</span></div>
                             <span>{t.amount} {t.currency} </span>
                         </div>)}
 
                     </div>}
                 </div>
+                <MovingAccounts />
             </div>
             <Modal
                 open={open}
@@ -58,7 +60,7 @@ console.log(open)
                 aria-labelledby="parent-modal-title"
                 aria-describedby="parent-modal-description"
             >
-                <AddingAccount setOpen={setOpen} />
+                <div><AddingAccount setOpen={setOpen}/></div>
             </Modal>
         </div>
     );

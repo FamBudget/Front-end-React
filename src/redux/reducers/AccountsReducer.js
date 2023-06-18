@@ -6,9 +6,10 @@ export const fetchAccounts = createAsyncThunk(
     "Accounts/fetchAccounts",
     async (_, {getState}) => {
         const email = getState().auth.email
-        const response = await authApi.getAccounts(email)
-        return response.data
-
+        if (email != null) {
+            const response = await authApi.getAccounts(email)
+            return response.data
+        }
 
     }
 );
@@ -17,9 +18,7 @@ export const addAccount = createAsyncThunk(
     async (values, {getState}) => {
         const email = getState().auth.email
         const response = await authApi.addAccount(email, values)
-        console.log(response)
         return response.data
-
 
     }
 );
@@ -50,7 +49,6 @@ export const AccountsSlice = createSlice({
             state.status = "rejected";
         });
         builder.addCase(addAccount.fulfilled, (state, action) => {
-            console.log(action.payload)
             state.data = [...state.data, action.payload]
         });
     },

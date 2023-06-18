@@ -5,3 +5,10 @@
     background-color: #1b9b85;
 
 }
+.react-datepicker__day--in-range {
+    background-color: #1b9b85;
+}
+
+.react-datepicker__day--in-range:hover {
+    background-color: #55c6ab;
+}
