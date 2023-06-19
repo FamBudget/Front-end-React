@@ -3,15 +3,16 @@
 .wrap {
   display: flex;
   flex-direction: column;
-  gap: 42px;
-  padding-top: 76px;
-
+  gap: 16px;
+  padding-top: 60px;
 }
+
 .menuItem {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 16px;
+  height: 56px;
 
 }
 
@@ -42,4 +43,16 @@ a.active ::after {
 .menuItem svg {
   width: 24px;
   height: 24px;
+}
+
+@media (max-width: 1920px) {
+  .wrap {
+    gap: 12px;
+    padding-top: 40px;
+  }
+  .menuItem {
+    gap: 12px;
+    height: 48px;
+
+  }
 }

@@ -7,6 +7,7 @@ import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
 import {Modal} from "@mui/material";
 import {AddingAccount} from "../../components/AddingAccount/AddingAccount";
 import {MovingAccounts} from "../../components/MovingAccounts/MovingAccounts";
+import {Container} from "../../components/Container/Container";
 
 
 export const Accounts = () => {
@@ -28,7 +29,7 @@ export const Accounts = () => {
     return !isAuth ? (
         <Navigate to="/login"/>
     ) : (
-        <div className={styles.container}>
+        <Container >
 
             <div className={styles.wrapper}>
                 <div className={styles.accounts}>
@@ -63,6 +64,6 @@ export const Accounts = () => {
             >
                 <div><AddingAccount setOpen={setOpen}/></div>
             </Modal>
-        </div>
+        </Container>
     );
 };

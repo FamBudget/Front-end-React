@@ -2,6 +2,8 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {authApi} from "../api/api";
 
 
+
+
 export const fetchAccounts = createAsyncThunk(
     "Accounts/fetchAccounts",
     async (_, {getState}) => {
@@ -15,9 +17,10 @@ export const fetchAccounts = createAsyncThunk(
 );
 export const addAccount = createAsyncThunk(
     "Accounts/addAccount",
-    async (values, {getState}) => {
+    async (changedValues, {getState}) => {
+        alert('sfds')
         const email = getState().auth.email
-        const response = await authApi.addAccount(email, values)
+        const response = await authApi.addAccount(email, changedValues)
         return response.data
 
     }

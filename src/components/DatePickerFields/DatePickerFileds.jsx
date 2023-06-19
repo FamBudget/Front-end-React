@@ -8,15 +8,23 @@ function padTo2Digits(num) {
     return num.toString().padStart(2, '0');
 }
 
+
+
 export function formatDate(date) {
     return (
         [
             date.getFullYear(),
             padTo2Digits(date.getMonth() + 1),
             padTo2Digits(date.getDate()),
-        ].join('-') 
+        ].join('-') + ' '+
+            [
+                date.getHours() ,
+                padTo2Digits(date.getMinutes()),
+                padTo2Digits(date.getSeconds() )
+            ].join(':')
     );
 }
+
 export const DatePickerField = ({ ...props }) => {
     const { setFieldValue } = useFormikContext();
     const [field] = useField(props);
@@ -27,8 +35,7 @@ export const DatePickerField = ({ ...props }) => {
             {...field}
             {...props}
             selected={(field.value && new Date(field.value)) || null}
-            onChange={val => {
-                setFieldValue(field.name, formatDate((val)));
+            onChange={val => {setFieldValue(field.name, (val))
             }}
         />
     );

@@ -45,6 +45,7 @@ const buttonFilter = [
 ]
 
 
+
 function subtractMonths(date) {
     date.setMonth(date.getMonth() - 1);
     return date;
@@ -85,12 +86,11 @@ export const MovingAccounts = () => {
         dispatch(fetchMoving({...query, endDate: value}))
 
     }
-
+    console.log(new Date().getTimezoneOffset())
     const filterDate = (id) => {
         setActiveButton(id)
         let date = new Date()
         let startDate
-        dispatch(fetchMoving({...query, startDate}))
         if (id === 1) {
             startDate = subtractDay(date);
         } else if (id === 2) {
@@ -99,9 +99,8 @@ export const MovingAccounts = () => {
         } else if (id === 3) {
             startDate = subtractMonths(date);
         }
+        dispatch(fetchMoving({...query, startDate}))
         setQuery({...query, startDate})
-
-
     }
     // eslint-disable-next-line react/display-name
     const ExampleCustomInput = forwardRef(({value, onClick}, ref) => (
