@@ -51,12 +51,12 @@ export const authApi = {
     getAccounts(email) {
         return apiInstance.get(`/accounts?email=${email}&size=1000000000`);
     },
-    addAccount(email, changedValues) {
+    addAccount(email, {startAmount, createdOn, currency, iconNumber, name,}) {
         return apiInstance.post(`/accounts?email=${email}`, {
-            startAmount: changedValues.startAmount, createdOn: changedValues.createdOn, currency: changedValues.currency, iconNumber: changedValues.iconNumber, name: changedValues.name
+            startAmount, createdOn, currency, iconNumber, name,
         });
     },
-    getMoving(email, { endDate, startDate, sort}) {
+    getMoving(email, {endDate, startDate, sort}) {
         const formatEndDate = formatDate(endDate)
         const formatStartDate = formatDate(startDate)
         return apiInstance.get(`/operations/moving?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`);

@@ -7,7 +7,8 @@ import {DatePickerField, formatDate} from "../DatePickerFields/DatePickerFileds"
 import {addAccount} from "../../redux/reducers/AccountsReducer";
 import {SelectIcon} from "./SelectIcon";
 
-const hours = new Date().getTimezoneOffset()/60
+const hours = new Date().getTimezoneOffset() / 60
+
 export function subtractHours(date) {
     date.setHours(date.getHours() + hours);
     return formatDate(date);
@@ -21,8 +22,6 @@ export const AddingAccount = ({setOpen}) => {
     var newDate = new Date()
 
     const dispatchData = (values) => {
-        console.log(values)
-
         const changedValues = {...values, createdOn: subtractHours(values.createdOn)}
         dispatch(addAccount(changedValues))
 
@@ -47,7 +46,8 @@ export const AddingAccount = ({setOpen}) => {
                 >
                     {({isSubmitting, errors, values}) => (
                         <Form ref={forgetPasswordRef} className={styles.form}>
-                            <div className={styles.header}><h2>Добавить счет</h2><SelectIcon iconNumber={values.iconNumber}/></div>
+                            <div className={styles.header}><h2>Добавить счет</h2><SelectIcon
+                                iconNumber={values.iconNumber}/></div>
                             <label>Название счета</label>
                             <Field
                                 type="text"

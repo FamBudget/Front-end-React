@@ -18,7 +18,6 @@ export const fetchAccounts = createAsyncThunk(
 export const addAccount = createAsyncThunk(
     "Accounts/addAccount",
     async (changedValues, {getState}) => {
-        alert('sfds')
         const email = getState().auth.email
         const response = await authApi.addAccount(email, changedValues)
         return response.data
