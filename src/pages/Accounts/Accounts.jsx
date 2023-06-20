@@ -48,7 +48,7 @@ export const Accounts = () => {
                                 <svg>
                                     <use href={`#${t.iconNumber}`}/>
                                 </svg>
-                                <span>{t.name}</span></div>
+                                <span className={styles.titleAccounts}>{t.name}</span></div>
                             <span>{t.amount} {t.currency} </span>
                         </div>)}
 

@@ -150,7 +150,11 @@ h1 span {
 
 
 }
+
 @media screen and (min-width: 1220px) and (-webkit-min-device-pixel-ratio: 1.25) {
+  .container {
+    zoom: 0.8;
+  }
   .leftImage {
     height: 125vh;
   }
