@@ -16,7 +16,7 @@
   & .accountsHeader {
     display: flex;
     flex-direction: row;
-    gap: 255px;
+    justify-content: space-between;
 
     & h2 {
       font-weight: 600;
@@ -30,7 +30,7 @@
 .accountsButton {
   padding: 12px 24px;
   gap: 12px;
-  width: 100%;
+  width: 189px;
   height: 46px;
   background: $greenColor;
   white-space: nowrap;
@@ -57,24 +57,30 @@
   flex-direction: column;
   overflow: auto;
   height: calc(100vh - 250px);
-  gap: 72px;
-  padding: 48px 56px;
+  gap: 32px;
 }
+
 .AccountsItem {
   display: flex;
   flex-direction: row;
+  padding: 16px 32px;
+
+  height: 68px;
   justify-content: space-between;
   align-items: center;
+
   & svg {
     width: 36px;
     height: 36px;
   }
+
   & span {
     font-weight: 600;
     font-size: 20px;
     line-height: 28px;
   }
 }
+
 .itemLeft {
   display: flex;
   align-items: center;
@@ -82,4 +88,46 @@
 
 }
 
+@media (max-width: $maxBreakpoints) {
+  .wrapper {
+    gap: 32px;
+  }
 
+  .accounts {
+    width: 30vw;
+    padding: 20px;
+
+    & .accountsHeader {
+      & h2 {
+        font-size: 20px;
+        line-height: 27px;
+      }
+    }
+
+  }
+  .AccountsList {
+    gap: 24px;
+  }
+
+  .AccountsItem {
+    display: flex;
+    flex-direction: row;
+    padding: 12px 20px;
+    height: 68px;
+    justify-content: space-between;
+    align-items: center;
+
+    & span {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  .itemLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+  }
+}

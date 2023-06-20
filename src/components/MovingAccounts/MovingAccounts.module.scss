@@ -56,52 +56,61 @@
     }
 }
 
-.buttons {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 12px;
-    & .filterButton {
-        height: 52px;
-        border: 1px solid #D0D0D0;
-        border-radius: 10px;
-        padding: 12px 24px;
-        background-color: #FFFFFF;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 28px;
-        color: $darkColor;
+@media (max-width: $maxBreakpoints) {
+    .moving {
+        width: 100%;
+        & .tableContainer {
+            padding: 20px;
+        }
+        & .rowHeader {
+            & .itemHeader {
+                font-size: 16px;
+                line-height: 22px;
+            }}
 
+        & .row {
+            padding: 16px 0;
+            & .item {
+                font-size: 14px;
+                line-height: 20px;
+            }
+        }
     }
-    & .activeButton {
-        background: $greenColor;
-        border-radius: 10px;
-        border: none;
-        color: #FFFFFF;
+
+    .buttons {
+        gap: 8px;
+        & .filterButton {
+            height: 38px;
+            padding: 8px 16px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 22px;
+
+        }
     }
-}
-.filterDate {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    gap: 16px;
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 28px;
-    cursor: pointer;
-   & svg {
-       width: 32px;
-       height: 32px;
-   }
-}
+    .filterDate {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        gap: 12px;
+        font-size: 16px;
+        line-height: 22px;
+        cursor: pointer;
+        & svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
 
-.wrapperDatepicker {
-    display: flex;
-    flex-wrap: nowrap;
-}
+    .wrapperDatepicker {
+        display: flex;
+        flex-wrap: nowrap;
+    }
 
-.dush {
-    padding-right: 20px;
-    padding-left: 20px;
+    .dush {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
 }
