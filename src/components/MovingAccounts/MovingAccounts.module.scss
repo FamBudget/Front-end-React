@@ -55,6 +55,45 @@
         }
     }
 }
+.buttons {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 12px;
+    & .filterButton {
+        height: 52px;
+        border: 1px solid #D0D0D0;
+        border-radius: 10px;
+        padding: 12px 24px;
+        background-color: #FFFFFF;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 28px;
+        color: $darkColor;
+
+    }
+    & .activeButton {
+        background: $greenColor;
+        border-radius: 10px;
+        border: none;
+        color: #FFFFFF;
+    }
+}
+.filterDate {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    gap: 16px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    cursor: pointer;
+    & svg {
+        width: 32px;
+        height: 32px;
+    }
+}
 
 @media (max-width: $maxBreakpoints) {
     .moving {
@@ -89,14 +128,9 @@
         }
     }
     .filterDate {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        white-space: nowrap;
         gap: 12px;
         font-size: 16px;
         line-height: 22px;
-        cursor: pointer;
         & svg {
             width: 24px;
             height: 24px;
