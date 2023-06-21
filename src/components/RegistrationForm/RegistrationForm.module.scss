@@ -108,3 +108,8 @@ select {
     }
   }
 }
+@media screen and (min-width: 1220px) and (-webkit-min-device-pixel-ratio: 1.25) {
+  .wrapper {
+    zoom: 0.8;
+  }
+}
