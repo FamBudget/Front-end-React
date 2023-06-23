@@ -11,6 +11,8 @@ import { SelectField } from "../SelectField";
 import { Button } from "../Button";
 import { DatePickerField } from "../DatePickerFields";
 import { fetchAccounts } from "../../redux/reducers/AccountsReducer";
+import { fetchMoving } from "../../redux/reducers/MovingReducer";
+import { addExpense } from "../../redux/reducers/OperationsReducer";
 // import { setExpenses } from "../../redux/reducers/OperationsReducer";
 
 const FormSchema = yup.object().shape({
@@ -23,8 +25,10 @@ export const Expenses = () => {
   const expenses = useSelector((state) => state.operations.expenses);
   const dispatch = useDispatch();
   console.log(data);
+
   useEffect(() => {
     dispatch(fetchAccounts());
+    dispatch(fetchMoving());
   }, []);
 
   console.log(expenses);
@@ -46,7 +50,7 @@ export const Expenses = () => {
             id: "0",
           }}
           onSubmit={(values, { setSubmitting }) => {
-            console.log(values.sum);
+            dispatch(addExpense(values));
             setSubmitting(false);
           }}
           validationSchema={FormSchema}

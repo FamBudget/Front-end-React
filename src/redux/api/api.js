@@ -80,7 +80,11 @@ export const authApi = {
       id,
     });
   },
-  getExpenses(email) {
-    return apiInstance.get(`/operations/expense?email=${email}`);
+  getExpenses(email, { endDate, startDate, sort }) {
+    const formatEndDate = formatDate(endDate) + " " + "23:59:59";
+    const formatStartDate = formatDate(startDate) + " " + "00:00:00";
+    return apiInstance.get(
+      `/operations/expense?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`
+    );
   },
 };
