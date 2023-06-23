@@ -1,5 +1,5 @@
 import axios from "axios";
-import { formatDate } from "../../components/DatePickerFields/DatePickerFileds";
+import { formatDate } from "../../components";
 
 const settings = {
   headers: {
@@ -67,15 +67,12 @@ export const authApi = {
       `/operations/moving?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`
     );
   },
-  addExpense(
-    email,
-    { accountId, amount, categoryId, createdOn, description, id }
-  ) {
-    return apiInstance.post(`/operations/expense?email=${email}`, {
+  addExpense(email, accountId, amount, categoryId, createdOn, description, id) {
+    return apiInstance.post(`operations/expense?email=${email}`, {
       accountId,
       amount,
       categoryId,
-      createdOn: createdOn + " " + "00:00:00",
+      createdOn: createdOn + "" + "00:00:00",
       description,
       id,
     });
@@ -86,5 +83,8 @@ export const authApi = {
     return apiInstance.get(
       `/operations/expense?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`
     );
+  },
+  getExpenseCategory(email) {
+    return apiInstance.get(`/categories/expense?email=${email}`);
   },
 };

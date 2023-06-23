@@ -9,11 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { SelectField } from "../SelectField";
 import { Button } from "../Button";
-import { DatePickerField } from "../DatePickerFields";
+import { DatePickerField, formatDate } from "../DatePickerFields";
 import { fetchAccounts } from "../../redux/reducers/AccountsReducer";
 import { fetchMoving } from "../../redux/reducers/MovingReducer";
-import { addExpense } from "../../redux/reducers/OperationsReducer";
-// import { setExpenses } from "../../redux/reducers/OperationsReducer";
+import {
+  addExpense,
+  fetchExpenses,
+} from "../../redux/reducers/OperationsReducer";
 
 const FormSchema = yup.object().shape({
   sum: yup.string().matches(/\d+/, "Неверный формат"),
@@ -24,11 +26,14 @@ export const Expenses = () => {
   const data = useSelector((state) => state.accounts.data);
   const expenses = useSelector((state) => state.operations.expenses);
   const dispatch = useDispatch();
+  var newDate = formatDate(new Date());
   console.log(data);
+  console.log(localStorage.getItem("token"));
 
   useEffect(() => {
     dispatch(fetchAccounts());
     dispatch(fetchMoving());
+    dispatch(fetchExpenses());
   }, []);
 
   console.log(expenses);
@@ -42,12 +47,12 @@ export const Expenses = () => {
         </div>
         <Formik
           initialValues={{
-            accountId: "",
-            amount: "",
-            categoryId: "",
-            createdOn: new Date(),
+            accountId: 0,
+            amount: 0,
+            categoryId: 0,
+            createdOn: newDate,
             description: "",
-            id: "0",
+            id: 0,
           }}
           onSubmit={(values, { setSubmitting }) => {
             dispatch(addExpense(values));
@@ -55,8 +60,8 @@ export const Expenses = () => {
           }}
           validationSchema={FormSchema}
         >
-          {({ isSubmitting, errors }) => (
-            <form>
+          {({ handleSubmit, isSubmitting }) => (
+            <form onSubmit={handleSubmit}>
               <div className={styles.currency}>{currency}</div>
               <label>Сумма</label>
               <Field
@@ -65,7 +70,6 @@ export const Expenses = () => {
                 name="amount"
                 placeholder="0"
               />
-              {errors.sum && <p>{errors.sum}</p>}
               <SelectField
                 className={styles.input}
                 label="Категория"
@@ -76,7 +80,7 @@ export const Expenses = () => {
                 data={data}
                 className={styles.input}
                 label="Счет"
-                name="acoountId"
+                name="accountId"
                 placeholder="Cчет списания"
               />
               <label>Дата расхода</label>
@@ -88,7 +92,11 @@ export const Expenses = () => {
                 name="description"
                 as="textarea"
               />
-              <Button isSubmitting={isSubmitting} text="Ввести расход" />
+              <Button
+                disabled={isSubmitting}
+                type="submit"
+                text="Ввести расход"
+              />
             </form>
           )}
         </Formik>
