@@ -22,8 +22,6 @@ export const Accounts = () => {
     dispatch(fetchAccounts());
   }, []);
   const AccountsData = useSelector((state) => state.accounts.data);
-  console.log(AccountsData);
-
   return !isAuth ? (
     <Navigate to="/login" />
   ) : (
@@ -33,13 +31,11 @@ export const Accounts = () => {
           <div className={styles.accountsHeader}>
             <h2>Счета</h2>
 
-            {/* eslint-disable-next-line react/no-children-prop */}
             <Button
+              text={"Добавить счёт"}
               className={styles.accountsButton}
               handleOpen={handleOpen}
-              text={"Добавить счёт"}
             >
-              {" "}
               <svg>
                 <use href="#plus" />
               </svg>
@@ -52,9 +48,9 @@ export const Accounts = () => {
                 <div key={t.id} className={styles.AccountsItem}>
                   <div className={styles.itemLeft}>
                     <svg>
-                      <use href="#1" />
+                      <use href={`#${t.iconNumber}`} />
                     </svg>
-                    <span>{t.name}</span>
+                    <span className={styles.titleAccounts}>{t.name}</span>
                   </div>
                   <span>
                     {t.amount} {t.currency}{" "}
