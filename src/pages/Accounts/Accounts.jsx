@@ -29,7 +29,7 @@ export const Accounts = () => {
     return !isAuth ? (
         <Navigate to="/login"/>
     ) : (
-        <Container >
+        <Container>
 
             <div className={styles.wrapper}>
                 <div className={styles.accounts}>

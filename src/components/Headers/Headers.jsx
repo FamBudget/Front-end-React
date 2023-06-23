@@ -24,13 +24,20 @@ export const Headers = () => {
         localStorage.clear()
     };
 
-   return  <div className={styles.header}>
-        <h1>{title}</h1>
-        <button
-            style={{width: 50, height: 30, background: "#87d7ad"}}
-            onClick={logout}
-        >
-            Logout
-        </button>
-    </div>
+    return <>
+        <div className={styles.header}>
+            <h1 className={styles.title}>{title}</h1>
+            <h1 className={styles.logo}>BudgetFamily</h1>
+            <button
+                style={{width: 50, height: 30, background: "#87d7ad"}}
+                onClick={logout}
+            >
+                Logout
+            </button>
+        </div>
+        <div className={styles.subHeader}>
+            <h1 >{title}</h1>
+
+        </div>
+    </>
 }

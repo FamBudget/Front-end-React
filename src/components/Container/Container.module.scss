@@ -18,3 +18,16 @@
 
     }
 }
+
+@media (max-width: $mediumBreakpoints) {
+    .container {
+        margin-left: 0;
+        padding: 20px 32px;
+    }
+}
+@media (max-width: $minBreakpoints) {
+    .container {
+        margin-left: 0;
+        padding: 0px;
+    }
+}

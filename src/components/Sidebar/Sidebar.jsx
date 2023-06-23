@@ -6,7 +6,7 @@ import {Menu} from "../Menu/Menu";
 
 export const Sidebar = () => {
     return <div className={styles.sidebarContainer}>
-        <span className={styles.logo}> LOGO</span>
+        <span className={styles.logo}> FamilyBudget</span>
         <Menu/>
     </div>
 }

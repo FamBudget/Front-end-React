@@ -164,3 +164,41 @@
   }
 
 }
+
+@media (max-width: $minBreakpoints) {
+  .moving {
+    & .filters {
+      flex-direction: column;
+      gap: 20px;
+
+    }
+
+    & .rowHeader {
+      & .itemHeader {
+        font-size: 16px;
+        line-height: 2px;
+
+      }
+    }
+    & .row {
+      padding: 16px 0;
+      & .item {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+  }
+  .buttons {
+    gap: 12px;
+
+    & .filterButton {
+      height: 42px;
+      padding: 8px 16px;
+      font-size: 16px;
+      line-height: 22px;
+
+    }
+  }
+
+
+}
