@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Field } from "formik";
 
-import { ShowPassword } from "../../icons";
+import { HidePassword, ShowPassword } from "../../icons";
 
 export const PasswordField = ({ placeholder, name, label }) => {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
@@ -20,11 +20,9 @@ export const PasswordField = ({ placeholder, name, label }) => {
           onClick={() => setIsPasswordShown((prevState) => !prevState)}
           className="view-hide"
         >
-          <ShowPassword />
+          {isPasswordShown ? <ShowPassword /> : <HidePassword />}
         </button>
       </div>
     </>
   );
 };
-
-export default PasswordField;

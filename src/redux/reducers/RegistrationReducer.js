@@ -3,6 +3,7 @@ import { authApi } from "../api/api";
 
 const initialState = {
   status: null,
+  currency: null,
 };
 
 export const fetchRegistration = createAsyncThunk(
@@ -15,7 +16,11 @@ export const fetchRegistration = createAsyncThunk(
 export const RegistrationSlice = createSlice({
   name: "registration",
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrency(state, action) {
+      state.currency = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchRegistration.pending, (state) => {
       state.status = "pending";
@@ -28,5 +33,7 @@ export const RegistrationSlice = createSlice({
     });
   },
 });
+
+export const { setCurrency } = RegistrationSlice.actions;
 
 export default RegistrationSlice.reducer;
