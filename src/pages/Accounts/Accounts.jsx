@@ -5,7 +5,7 @@ import styles from "./Accaunts.module.scss";
 import { Button } from "../../components";
 import { fetchAccounts } from "../../redux/reducers/AccountsReducer";
 import { Modal } from "@mui/material";
-import { AddingAccount, MovingAccounts } from "../../components";
+import { AddingAccount, MovingAccounts, Container } from "../../components";
 
 export const Accounts = () => {
   const isAuth = useSelector((state) => state.auth.auth);
@@ -27,7 +27,7 @@ export const Accounts = () => {
   return !isAuth ? (
     <Navigate to="/login" />
   ) : (
-    <div className={styles.container}>
+    <Container>
       <div className={styles.wrapper}>
         <div className={styles.accounts}>
           <div className={styles.accountsHeader}>
@@ -76,6 +76,6 @@ export const Accounts = () => {
           <AddingAccount setOpen={setOpen} />
         </div>
       </Modal>
-    </div>
+    </Container>
   );
 };
