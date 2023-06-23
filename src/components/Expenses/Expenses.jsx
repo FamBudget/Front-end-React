@@ -16,6 +16,7 @@ import {
   addExpense,
   fetchExpenses,
 } from "../../redux/reducers/OperationsReducer";
+import { fetchExpenseCategories } from "../../redux/reducers/CategoriesReducer";
 
 const FormSchema = yup.object().shape({
   sum: yup.string().matches(/\d+/, "Неверный формат"),
@@ -23,20 +24,23 @@ const FormSchema = yup.object().shape({
 
 export const Expenses = () => {
   const currency = useSelector((state) => state.registration.currency);
-  const data = useSelector((state) => state.accounts.data);
+  const accounts = useSelector((state) => state.accounts.data);
   const expenses = useSelector((state) => state.operations.expenses);
+  const expenseCategories = useSelector(
+    (state) => state.categories.expenseCategories
+  );
   const dispatch = useDispatch();
   var newDate = formatDate(new Date());
-  console.log(data);
-  console.log(localStorage.getItem("token"));
+  console.log(accounts);
+  console.log(expenseCategories);
+  console.log(expenses);
 
   useEffect(() => {
     dispatch(fetchAccounts());
     dispatch(fetchMoving());
     dispatch(fetchExpenses());
+    dispatch(fetchExpenseCategories());
   }, []);
-
-  console.log(expenses);
 
   return (
     <div className={styles.wrapper}>
@@ -71,13 +75,14 @@ export const Expenses = () => {
                 placeholder="0"
               />
               <SelectField
+                categories={expenseCategories}
                 className={styles.input}
                 label="Категория"
                 name="categoryId"
                 placeholder="Выберите категорию"
               />
               <SelectField
-                data={data}
+                accounts={accounts}
                 className={styles.input}
                 label="Счет"
                 name="accountId"

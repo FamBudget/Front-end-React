@@ -84,7 +84,7 @@ export const authApi = {
       `/operations/expense?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`
     );
   },
-  getExpenseCategory(email) {
+  getExpenseCategories(email) {
     return apiInstance.get(`/categories/expense?email=${email}`);
   },
 };
