@@ -1,0 +1,70 @@
+@import "src/styles/variables";
+.wrapper {
+  display: flex;
+  gap: 40px;
+  width: 100%;
+}
+.wrapperForm {
+  position: relative;
+  background: #ffffff;
+  box-shadow: -2px -2px 16px rgba(39, 222, 191, 0.06),
+    2px 2px 16px rgba(39, 222, 191, 0.06);
+  border-radius: 20px;
+  padding: 32px;
+  width: 751px;
+}
+.wrapperStats {
+  background: #ffffff;
+  box-shadow: -2px -2px 16px rgba(39, 222, 191, 0.06),
+    2px 2px 16px rgba(39, 222, 191, 0.06);
+  border-radius: 20px;
+  padding: 32px;
+  flex-grow: 1;
+}
+.title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  & h3 {
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 42px;
+    color: $textRed;
+  }
+}
+.input {
+  padding-right: 70px;
+  margin-bottom: 20px;
+}
+label {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+}
+.currency {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: $darkColor;
+  position: absolute;
+  right: 60px;
+  top: 152px;
+}
+.comment {
+  width: 100%;
+  height: 105px;
+  background: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+  padding: 16px 24px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  resize: none;
+  &::placeholder {
+    color: $lightGrayColor;
+  }
+}

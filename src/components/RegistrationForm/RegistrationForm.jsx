@@ -3,7 +3,10 @@ import { Field, Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 
-import { fetchRegistration } from "../../redux/reducers/RegistrationReducer";
+import {
+  fetchRegistration,
+  setCurrency,
+} from "../../redux/reducers/RegistrationReducer";
 import { setAuth } from "../../redux/reducers/AuthReducer";
 
 import styles from "./RegistrationForm.module.scss";
@@ -76,7 +79,9 @@ export const RegistrationForm = ({ setIsOpenRegistration }) => {
           dispatch(fetchRegistration(values));
           if (status === "resolved") {
             dispatch(setAuth(values.email));
+            dispatch(setCurrency(values.currency));
             localStorage.email = values.email;
+            localStorage.currency = values.currency;
           }
           setSubmitting(false);
         }}
