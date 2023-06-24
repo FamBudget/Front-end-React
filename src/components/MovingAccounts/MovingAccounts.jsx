@@ -111,7 +111,7 @@ export const MovingAccounts = () => {
             </svg>
         </div>
     ));
-    const dataMoving = useSelector(state => state?.Moving?.data)
+    const dataMoving = useSelector(state => state?.moving?.data)
 
 
     return <div className={styles.moving}>
