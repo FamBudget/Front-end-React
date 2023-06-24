@@ -1,11 +1,11 @@
 import React from 'react'
 import {useDispatch} from "react-redux";
 import {setAuth} from "../../redux/reducers/AuthReducer";
-import styles from './Headers.module.scss'
+import styles from './Header.module.scss'
 import {useLocation} from "react-router-dom";
 
 
-export const Headers = () => {
+export const Header = () => {
     const dispatch = useDispatch();
     const url = useLocation()
     let title = ''
@@ -15,6 +15,9 @@ export const Headers = () => {
             break;
         case "/operations" :
             title = "Операции"
+            break;
+        case "/income" :
+            title = "Доходы"
             break;
 
     }
@@ -36,7 +39,7 @@ export const Headers = () => {
             </button>
         </div>
         <div className={styles.subHeader}>
-            <h1 >{title}</h1>
+            <h1>{title}</h1>
 
         </div>
     </>
