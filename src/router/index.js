@@ -5,6 +5,7 @@ import {Layout} from "../pages/Layouts/LayoutAuth";
 import {Operations} from "../pages/Operations/Operations";
 import {Accounts} from "../pages/Accounts/Accounts";
 import {LayoutMain} from "../pages/Layouts/LayoutMain/LayoutMain";
+import {Income} from "../pages/Income/Income";
 
 export const router = createBrowserRouter(
     createRoutesFromElements(
@@ -16,6 +17,7 @@ export const router = createBrowserRouter(
             <Route path="/" element={<LayoutMain/>}>
                 <Route path="/operations" element={<Operations/>}/>
                 <Route path="/accounts" element={<Accounts/>}/>
+                <Route path="/income" element={<Income/>}/>
             </Route>
         </>
     )
