@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {Navigate} from "react-router-dom";
 import styles from './Accaunts.module.scss'
 import {Button} from "../../components";
 import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
@@ -12,7 +11,6 @@ import {Container} from "../../components/Container/Container";
 
 export const Accounts = () => {
 
-    const isAuth = useSelector((state) => state.auth.auth);
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
@@ -26,10 +24,7 @@ export const Accounts = () => {
         dispatch(fetchAccounts())
     }, [])
     const AccountsData = useSelector(state => state.accounts.data)
-    return !isAuth ? (
-        <Navigate to="/login"/>
-    ) : (
-        <Container>
+    return <Container>
 
             <div className={styles.wrapper}>
                 <div className={styles.accounts}>
@@ -65,5 +60,5 @@ export const Accounts = () => {
                 <div><AddingAccount setOpen={setOpen}/></div>
             </Modal>
         </Container>
-    );
+
 };
