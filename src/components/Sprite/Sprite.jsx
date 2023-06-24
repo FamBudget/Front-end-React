@@ -318,6 +318,20 @@ export const Sprite = () => {
                     <path d="M22.6667 4L22.6667 8" stroke="#1B9B85" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
             </symbol>
+            <symbol
+                id="expenses-arrow"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <rect width="32" height="32" rx="16" fill="#FF3A3A" />
+                <path
+                    d="M9 12.5L16 19.5L23 12.5"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                />
+            </symbol>
         </svg>
     );
 };
