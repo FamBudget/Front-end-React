@@ -25,7 +25,7 @@ export const Accounts = () => {
     useEffect(() => {
         dispatch(fetchAccounts())
     }, [])
-    const AccountsData = useSelector(state => state.Accounts.data)
+    const AccountsData = useSelector(state => state.accounts.data)
     return !isAuth ? (
         <Navigate to="/login"/>
     ) : (
