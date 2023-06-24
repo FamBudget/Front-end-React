@@ -9,9 +9,14 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { SelectField } from "../SelectField";
 import { Button } from "../Button";
-import { DatePickerField } from "../DatePickerFields";
+import { DatePickerField, formatDate } from "../DatePickerFields";
 import { fetchAccounts } from "../../redux/reducers/AccountsReducer";
-// import { setExpenses } from "../../redux/reducers/OperationsReducer";
+import { fetchMoving } from "../../redux/reducers/MovingReducer";
+import {
+  addExpense,
+  fetchExpenses,
+} from "../../redux/reducers/OperationsReducer";
+import { fetchExpenseCategories } from "../../redux/reducers/CategoriesReducer";
 
 const FormSchema = yup.object().shape({
   sum: yup.string().matches(/\d+/, "Неверный формат"),
@@ -19,15 +24,23 @@ const FormSchema = yup.object().shape({
 
 export const Expenses = () => {
   const currency = useSelector((state) => state.registration.currency);
-  const data = useSelector((state) => state.accounts.data);
+  const accounts = useSelector((state) => state.accounts.data);
   const expenses = useSelector((state) => state.operations.expenses);
+  const expenseCategories = useSelector(
+    (state) => state.categories.expenseCategories
+  );
   const dispatch = useDispatch();
-  console.log(data);
+  var newDate = formatDate(new Date());
+  console.log(accounts);
+  console.log(expenseCategories);
+  console.log(expenses);
+
   useEffect(() => {
     dispatch(fetchAccounts());
+    dispatch(fetchMoving());
+    dispatch(fetchExpenses());
+    dispatch(fetchExpenseCategories());
   }, []);
-
-  console.log(expenses);
 
   return (
     <div className={styles.wrapper}>
@@ -38,21 +51,21 @@ export const Expenses = () => {
         </div>
         <Formik
           initialValues={{
-            accountId: "",
-            amount: "",
-            categoryId: "",
-            createdOn: new Date(),
+            accountId: 0,
+            amount: 0,
+            categoryId: 0,
+            createdOn: newDate,
             description: "",
-            id: "0",
+            id: 0,
           }}
           onSubmit={(values, { setSubmitting }) => {
-            console.log(values.sum);
+            dispatch(addExpense(values));
             setSubmitting(false);
           }}
           validationSchema={FormSchema}
         >
-          {({ isSubmitting, errors }) => (
-            <form>
+          {({ handleSubmit, isSubmitting }) => (
+            <form onSubmit={handleSubmit}>
               <div className={styles.currency}>{currency}</div>
               <label>Сумма</label>
               <Field
@@ -61,18 +74,18 @@ export const Expenses = () => {
                 name="amount"
                 placeholder="0"
               />
-              {errors.sum && <p>{errors.sum}</p>}
               <SelectField
+                categories={expenseCategories}
                 className={styles.input}
                 label="Категория"
                 name="categoryId"
                 placeholder="Выберите категорию"
               />
               <SelectField
-                data={data}
+                accounts={accounts}
                 className={styles.input}
                 label="Счет"
-                name="acoountId"
+                name="accountId"
                 placeholder="Cчет списания"
               />
               <label>Дата расхода</label>
@@ -84,7 +97,11 @@ export const Expenses = () => {
                 name="description"
                 as="textarea"
               />
-              <Button isSubmitting={isSubmitting} text="Ввести расход" />
+              <Button
+                disabled={isSubmitting}
+                type="submit"
+                text="Ввести расход"
+              />
             </form>
           )}
         </Formik>

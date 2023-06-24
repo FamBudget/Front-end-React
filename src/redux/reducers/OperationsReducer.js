@@ -7,11 +7,22 @@ const initialState = {
   moving: null,
 };
 
+export const fetchExpenses = createAsyncThunk(
+  "operations/fetchExpenses",
+  async (_, { getState }) => {
+    const email = getState().auth.email;
+    if (email != null) {
+      const response = await authApi.getExpenses(email);
+      return response.data;
+    }
+  }
+);
+
 export const addExpense = createAsyncThunk(
   "operations/addExpense",
-  async (values, { getState }) => {
+  async (newOperation, { getState }) => {
     const email = getState().auth.email;
-    const response = await authApi.addExpense(email, values);
+    const response = await authApi.addExpense(email, newOperation);
     return response.data;
   }
 );

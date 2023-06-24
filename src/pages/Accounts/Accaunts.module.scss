@@ -1,5 +1,8 @@
 @import "src/styles/variables";
 
+.container {
+}
+
 .wrapper {
   display: flex;
   flex-direction: row;
@@ -8,8 +11,9 @@
 
 .accounts {
   width: 562px;
-  background: #FFFFFF;
-  box-shadow: -2px -2px 16px rgba(39, 222, 191, 0.06), 2px 2px 16px rgba(39, 222, 191, 0.06);
+  background: #ffffff;
+  box-shadow: -2px -2px 16px rgba(39, 222, 191, 0.06),
+    2px 2px 16px rgba(39, 222, 191, 0.06);
   border-radius: 20px;
   padding: 24px;
 
@@ -24,7 +28,6 @@
       line-height: 32px;
     }
   }
-
 }
 
 .accountsButton {
@@ -34,7 +37,8 @@
   height: 46px;
   background: $greenColor;
   white-space: nowrap;
-  box-shadow: inset -5px -5px 32px rgba(255, 255, 255, 0.16), inset 5px 5px 32px rgba(255, 255, 255, 0.16);
+  box-shadow: inset -5px -5px 32px rgba(255, 255, 255, 0.16),
+    inset 5px 5px 32px rgba(255, 255, 255, 0.16);
   border-radius: 10px;
   font-weight: 500;
   font-size: 16px;
@@ -47,9 +51,8 @@
   }
 
   &:active {
-    border: none
+    border: none;
   }
-
 }
 
 .AccountsList {
@@ -89,7 +92,6 @@
   display: flex;
   align-items: center;
   gap: 12px;
-
 }
 
 @media (max-width: $maxBreakpoints) {
@@ -107,7 +109,6 @@
         line-height: 27px;
       }
     }
-
   }
   .AccountsList {
     gap: 24px;
@@ -132,7 +133,6 @@
     display: flex;
     align-items: center;
     gap: 12px;
-
   }
 }
 
@@ -145,7 +145,6 @@
     width: 100%;
     padding: 20px;
   }
-
 
   .AccountsList {
     max-height: 50vh;
@@ -177,7 +176,6 @@
     padding: 12px 24px;
     width: 100%;
     height: 48px;
-
   }
   .AccountsList {
     margin-top: 20px;
@@ -200,5 +198,4 @@
       line-height: 20px;
     }
   }
-
 }

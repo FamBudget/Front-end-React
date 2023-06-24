@@ -1,7 +1,13 @@
 import React from "react";
 import { Field } from "formik";
 
-export const SelectField = ({ label, name, placeholder, className, data }) => {
+export const SelectField = ({
+  label,
+  name,
+  placeholder,
+  className,
+  categories,
+}) => {
   return (
     <div>
       <label>{label}</label>
@@ -11,7 +17,7 @@ export const SelectField = ({ label, name, placeholder, className, data }) => {
         name={name}
         placeholder={placeholder}
       >
-        {data?.map(({ name, id }) => (
+        {categories?.map(({ name, id }) => (
           <option key={id}>{name}</option>
         ))}
       </Field>
