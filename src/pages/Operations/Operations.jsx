@@ -1,7 +1,7 @@
 import React from "react";
 import {useSelector} from "react-redux";
 import {Navigate} from "react-router-dom";
-import styles from './Operations.module.scss'
+import {Container, Expenses} from "../../components";
 
 export const Operations = () => {
     const isAuth = useSelector((state) => state.auth.auth);
@@ -10,9 +10,9 @@ export const Operations = () => {
     return !isAuth ? (
         <Navigate to="/login"/>
     ) : (
-        <div className={styles.container}>
+        <Container>
+            <Expenses/>
 
-
-        </div>
+        </Container>
     );
 };
