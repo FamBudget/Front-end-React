@@ -5,7 +5,6 @@ import ResetPasswordReducer from "./reducers/ResetPasswordReducer";
 import RecoveryPasswordReducer from "./reducers/RecoveryPasswordReducer";
 import AccountsReducer from "./reducers/AccountsReducer";
 import MovingReducer from "./reducers/MovingReducer";
-import OperationsReducer from "./reducers/OperationsReducer";
 
 export const store = configureStore({
   reducer: {
@@ -13,8 +12,7 @@ export const store = configureStore({
     registration: RegistrationReducer,
     resetPassword: ResetPasswordReducer,
     recoveryPassword: RecoveryPasswordReducer,
-    accounts: AccountsReducer,
-    moving: MovingReducer,
-    operations: OperationsReducer,
+    Accounts: AccountsReducer,
+    Moving: MovingReducer,
   },
 });

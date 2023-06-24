@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { Modal } from "@mui/material";
 
 import { apiInstance } from "../../redux/api/api";
 import { setAuth, setEmail, setError } from "../../redux/reducers/AuthReducer";
@@ -15,6 +14,7 @@ import {
   RegistrationForm,
 } from "../../components";
 import { Facebook, Google } from "../../icons";
+import { Modal } from "@mui/material";
 
 export const AuthForm = () => {
   const dispatch = useDispatch();
