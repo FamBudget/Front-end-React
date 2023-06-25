@@ -1,25 +1,22 @@
 import axios from "axios";
-import {formatDate} from "../../components/DatePickerFields/DatePickerFileds";
-
+import { formatDate } from "../../components";
 
 const settings = {
-    headers: {
-        "Content-Type": "application/json",
-        "X-Client-Platform": "REACT"
-    },
+  headers: {
+    "Content-Type": "application/json",
+    "X-Client-Platform": "REACT",
+  },
 };
 
-
 export const apiInstance = axios.create({
-    baseURL: "http://13.50.233.192:8080",
-    ...settings
-
+  baseURL: "http://13.50.233.192:8080",
+  ...settings,
 });
 apiInstance.interceptors.request.use(function (config) {
-    const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
-    config.headers.Authorization = token ? `Bearer ${token}` : '';
-    return config;
+  config.headers.Authorization = token ? `Bearer ${token}` : "";
+  return config;
 });
 
 export const authApi = {
@@ -61,5 +58,28 @@ export const authApi = {
         const formatStartDate = formatDate(startDate)
         return apiInstance.get(`/operations/moving?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`);
     },
+  addExpense(
+      email,
+      { accountId, amount, categoryId, createdOn, description, id }
+  ) {
+    return apiInstance.post(`operations/expense?email=${email}`, {
+      accountId,
+      amount,
+      categoryId,
+      createdOn: createdOn + " " + "00:00:00",
+      description,
+      id,
+    });
+  },
+  getExpenses(email, { endDate, startDate, sort }) {
+    const formatEndDate = formatDate(endDate) + " " + "23:59:59";
+    const formatStartDate = formatDate(startDate) + " " + "00:00:00";
+    return apiInstance.get(
+        `/operations/expense?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`
+    );
+  },
+  getExpenseCategories(email) {
+    return apiInstance.get(`/categories/expense?email=${email}`);
+  },
 };
 

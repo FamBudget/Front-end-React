@@ -6,6 +6,7 @@ export const SelectField = ({
   name,
   placeholder,
   className,
+  accounts,
   categories,
 }) => {
   return (
@@ -17,8 +18,15 @@ export const SelectField = ({
         name={name}
         placeholder={placeholder}
       >
+        {accounts?.map(({ name, id }) => (
+          <option value={id} key={id}>
+            {name}
+          </option>
+        ))}
         {categories?.map(({ name, id }) => (
-          <option key={id}>{name}</option>
+          <option value={id} key={id}>
+            {name}
+          </option>
         ))}
       </Field>
     </div>
