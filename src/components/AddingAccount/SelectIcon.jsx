@@ -39,14 +39,13 @@ export const SelectIcon = ({iconNumber}) => {
                                                                    onClick={() => setNumberIcon(t)}>
                     <use href={`#${t}`}/>
                 </svg>)}</div>
-                <div className={styles.buttonsIcon}>
+                <div className={styles.buttons}>
                     <div className={styles.WrapBtn} onClick={() => setOpen(false)}><Button
                         className={styles.cancelButton}
                         text="Отмена"
                     />
                     </div>
-                    <div className={styles.WrapBtn} onClick={submitSelect} ><Button
-
+                    <div className={styles.WrapBtn} onClick={submitSelect}><Button
                         className={styles.submitButton}
                         text="Ок"
                     /></div></div>
