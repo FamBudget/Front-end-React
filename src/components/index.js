@@ -8,7 +8,7 @@ export * from "./UserCheckField";
 export * from "./PasswordRecoveryInfo";
 export * from "./AddingAccount";
 export * from "./Expenses";
-export * from "./Headers";
+export * from "./Header";
 export * from "./DatePickerFields";
 export * from "./Menu";
 export * from "./MovingAccounts";
