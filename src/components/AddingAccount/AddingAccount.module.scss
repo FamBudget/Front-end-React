@@ -157,7 +157,17 @@
     width: 50%;
     height: 54px;
   }
+  .buttons {
+    height: 54px
+  }
 
+
+  .cancelButton {
+    height: 54px;
+  }
+  .submitButton {
+    height: 54px;
+  }
 }
 
 @media (max-width: $minBreakpoints) {
@@ -196,7 +206,7 @@
   }
 
 
-  .buttons {
+  .buttonsIcon {
     width: 100%;
     display: flex;
     flex-direction: column;

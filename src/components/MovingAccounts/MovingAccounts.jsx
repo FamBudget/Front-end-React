@@ -86,7 +86,6 @@ export const MovingAccounts = () => {
         dispatch(fetchMoving({...query, endDate: value}))
 
     }
-    console.log(new Date().getTimezoneOffset())
     const filterDate = (id) => {
         setActiveButton(id)
         let date = new Date()

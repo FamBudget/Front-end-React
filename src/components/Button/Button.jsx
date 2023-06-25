@@ -4,6 +4,7 @@ import classNames from "classnames";
 import styles from "./Button.module.scss";
 
 export const Button = ({ text, type, className, children, disabled, handleOpen}) => {
+
   return (
     <button
       disabled={disabled}
