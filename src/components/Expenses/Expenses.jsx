@@ -52,7 +52,7 @@ export const Expenses = () => {
         <Formik
           initialValues={{
             accountId: 0,
-            amount: 0,
+            amount: "",
             categoryId: 0,
             createdOn: newDate,
             description: "",
@@ -76,6 +76,7 @@ export const Expenses = () => {
               />
               <SelectField
                 categories={expenseCategories}
+                accounts={null}
                 className={styles.input}
                 label="Категория"
                 name="categoryId"
@@ -83,6 +84,7 @@ export const Expenses = () => {
               />
               <SelectField
                 accounts={accounts}
+                categories={null}
                 className={styles.input}
                 label="Счет"
                 name="accountId"
@@ -106,7 +108,9 @@ export const Expenses = () => {
           )}
         </Formik>
       </div>
-      <div className={styles.wrapperStats}>Статистика</div>
+      <div className={styles.wrapperStats}>
+        <h3>Сумма расходов</h3>
+      </div>
     </div>
   );
 };

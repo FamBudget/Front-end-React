@@ -20,9 +20,9 @@ export const fetchExpenses = createAsyncThunk(
 
 export const addExpense = createAsyncThunk(
   "operations/addExpense",
-  async (newOperation, { getState }) => {
+  async (values, { getState }) => {
     const email = getState().auth.email;
-    const response = await authApi.addExpense(email, newOperation);
+    const response = await authApi.addExpense(email, values);
     return response.data;
   }
 );
