@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Sidebar} from "../../../components/Sidebar/Sidebar";
 import styles from './LayoutMain.module.scss'
 import {Sprite} from "../../../components";
@@ -9,18 +9,29 @@ import {Header} from "../../../components/Header/Header";
 
 export const LayoutMain = () => {
     const dispatch = useDispatch();
+    const [open, setOpen] = useState(false)
+    const handleClose = () => setOpen(false)
+    const handleOpen = () => setOpen(true)
+
+    useEffect(() => {
+        open && (document.body.style.overflow = 'hidden')
+        !open && (document.body.style.overflow = 'unset')
+    }, [open])
 
     useEffect(() => {
 
         localStorage.token && dispatch(setAuth(localStorage.token));
         localStorage.email && dispatch(setEmail(localStorage.email)) && dispatch(setAuth(localStorage.email));
     }, []);
-
+    const sidebarClass = styles.container
+        + (open ? ' ' + styles.open : '')
     return (
         <>
-            <Header />
-            <div className={styles.container}>
-                <Sidebar/>
+            {open && <div className={styles.background} onClick={handleClose}/>}
+
+            <Header handleOpen={handleOpen}/>
+            <div className={sidebarClass}>
+                <Sidebar handleClose={handleClose}/>
             </div>
 
             <Sprite/>

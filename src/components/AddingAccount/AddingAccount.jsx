@@ -18,7 +18,7 @@ export const AddingAccount = ({setOpen}) => {
     const forgetPasswordRef = useRef();
     const dispatch = useDispatch()
 
-    const currency = useSelector(state => state.Accounts?.data[0]?.currency)
+    const currency = useSelector(state => state.accounts?.data[0]?.currency)
     var newDate = new Date()
 
     const dispatchData = (values) => {

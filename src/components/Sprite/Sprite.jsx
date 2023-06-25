@@ -332,6 +332,17 @@ export const Sprite = () => {
                     strokeLinejoin="round"
                 />
             </symbol>
+            <symbol
+                id="menuIcon"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <svg width="38" height="26" viewBox="0 0 38 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1H37" stroke="#263834" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M10 13H37" stroke="#263834" strokeWidth="2" strokeLinecap="round"/>
+                    <path d="M19 25H37" stroke="#263834" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+            </symbol>
         </svg>
     );
 };

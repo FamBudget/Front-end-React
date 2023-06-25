@@ -5,7 +5,7 @@ import styles from './Header.module.scss'
 import {useLocation} from "react-router-dom";
 
 
-export const Header = () => {
+export const Header = ({handleOpen}) => {
     const dispatch = useDispatch();
     const url = useLocation()
     let title = ''
@@ -31,6 +31,10 @@ export const Header = () => {
         <div className={styles.header}>
             <h1 className={styles.title}>{title}</h1>
             <h1 className={styles.logo}>BudgetFamily</h1>
+            <svg onClick={handleOpen}>
+                <use href="#menuIcon"/>
+            </svg>
+
             <button
                 style={{width: 50, height: 30, background: "#87d7ad"}}
                 onClick={logout}

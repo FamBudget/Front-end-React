@@ -42,11 +42,15 @@ const menuData = [
     },
 ]
 
-export const Menu = () => {
+export const Menu = ({handleClose}) => {
+    const setMenu = (id) => {
+        setActive(id)
+        handleClose()
+    }
 const [active, setActive] = useState(1)
 
     return <nav className={styles.wrap}>
-        {menuData.map(t => <NavLink key={t.id} onClick={() => setActive(t.id)} className={active === t.id  ? `${styles.menuItem} ${styles.active}` : styles.menuItem}
+        {menuData.map(t => <NavLink key={t.id} onClick={() => setMenu(t.id)} className={active === t.id  ? `${styles.menuItem} ${styles.active}` : styles.menuItem}
                  to={t.path}>
             <svg>
                 <use href={active === t.id ? t.iconActive : t.icon}/>
