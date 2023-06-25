@@ -20,53 +20,62 @@ apiInstance.interceptors.request.use(function (config) {
 });
 
 export const authApi = {
-    authentication(values) {
-        return apiInstance.post(`authentication`, {
-            email: values.email,
-            password: values.password,
-        });
-    },
-    registration(values) {
-        return apiInstance.post(`registration`, {
-            email: values.email,
-            firstName: values.firstName,
-            lastName: values.lastName,
-            currency: values.currency,
-            password: values.password,
-            confirmPassword: values.confirmPassword,
-        });
-    },
-    resetPassword(email) {
-        return apiInstance.post(`reset-password?email=${email}`);
-    },
-    recoveryPassword(values) {
-        return apiInstance.put(`/change-password/${values.code}?email=${values.email}`, {
-            confirmPassword: values.confirmPassword,
-            password: values.password
-        });
-    },
-    getAccounts(email) {
-        return apiInstance.get(`/accounts?email=${email}&size=1000000000`);
-    },
-    addAccount(email, {startAmount, createdOn, currency, iconNumber, name,}) {
-        return apiInstance.post(`/accounts?email=${email}`, {
-            startAmount, createdOn, currency, iconNumber, name,
-        });
-    },
-    getMoving(email, {endDate, startDate, sort}) {
-        const formatEndDate = formatDate(endDate)
-        const formatStartDate = formatDate(startDate)
-        return apiInstance.get(`/operations/moving?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`);
-    },
+  authentication(values) {
+    return apiInstance.post(`authentication`, {
+      email: values.email,
+      password: values.password,
+    });
+  },
+  registration(values) {
+    return apiInstance.post(`registration`, {
+      email: values.email,
+      firstName: values.firstName,
+      lastName: values.lastName,
+      currency: values.currency,
+      password: values.password,
+      confirmPassword: values.confirmPassword,
+    });
+  },
+  resetPassword(email) {
+    return apiInstance.post(`reset-password?email=${email}`);
+  },
+  recoveryPassword(values) {
+    return apiInstance.put(
+      `/change-password/${values.code}?email=${values.email}`,
+      {
+        confirmPassword: values.confirmPassword,
+        password: values.password,
+      }
+    );
+  },
+  getAccounts(email) {
+    return apiInstance.get(`/accounts?email=${email}&size=1000000000`);
+  },
+  addAccount(email, { startAmount, createdOn, currency, iconNumber, name }) {
+    return apiInstance.post(`/accounts?email=${email}`, {
+      startAmount,
+      createdOn,
+      currency,
+      iconNumber,
+      name,
+    });
+  },
+  getMoving(email, { endDate, startDate, sort }) {
+    const formatEndDate = formatDate(endDate);
+    const formatStartDate = formatDate(startDate);
+    return apiInstance.get(
+      `/operations/moving?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`
+    );
+  },
   addExpense(
-      email,
-      { accountId, amount, categoryId, createdOn, description, id }
+    email,
+    { accountId, amount, categoryId, createdOn, description, id }
   ) {
     return apiInstance.post(`operations/expense?email=${email}`, {
       accountId,
       amount,
       categoryId,
-      createdOn: createdOn + " " + "00:00:00",
+      createdOn,
       description,
       id,
     });
@@ -75,11 +84,10 @@ export const authApi = {
     const formatEndDate = formatDate(endDate) + " " + "23:59:59";
     const formatStartDate = formatDate(startDate) + " " + "00:00:00";
     return apiInstance.get(
-        `/operations/expense?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`
+      `/operations/expense?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`
     );
   },
   getExpenseCategories(email) {
     return apiInstance.get(`/categories/expense?email=${email}`);
   },
 };
-
