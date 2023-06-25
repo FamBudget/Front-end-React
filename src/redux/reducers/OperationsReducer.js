@@ -2,9 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { authApi } from "../api/api";
 
 const initialState = {
-  expenses: null,
-  incomes: null,
-  moving: null,
+  expenses: [],
+  incomes: [],
+  moving: [],
 };
 
 export const fetchExpenses = createAsyncThunk(

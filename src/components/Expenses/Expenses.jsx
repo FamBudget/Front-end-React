@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { SelectField } from "../SelectField";
 import { Button } from "../Button";
-import { DatePickerField, formatDate } from "../DatePickerFields";
+import { DatePickerField } from "../DatePickerFields";
 import { fetchAccounts } from "../../redux/reducers/AccountsReducer";
 import { fetchMoving } from "../../redux/reducers/MovingReducer";
 import {
@@ -17,6 +17,7 @@ import {
   fetchExpenses,
 } from "../../redux/reducers/OperationsReducer";
 import { fetchExpenseCategories } from "../../redux/reducers/CategoriesReducer";
+import { subtractHours } from "../AddingAccount";
 
 const FormSchema = yup.object().shape({
   sum: yup.string().matches(/\d+/, "Неверный формат"),
@@ -30,11 +31,20 @@ export const Expenses = () => {
     (state) => state.categories.expenseCategories
   );
   const dispatch = useDispatch();
-  var newDate = formatDate(new Date());
+
+  var newDate = new Date();
+
+  const dispatchData = (values) => {
+    const changedValues = {
+      ...values,
+      createdOn: subtractHours(values.createdOn),
+    };
+    dispatch(addExpense(changedValues));
+  };
+
+  console.log(expenses);
   console.log(accounts);
   console.log(expenseCategories);
-  console.log(expenses);
-
   useEffect(() => {
     dispatch(fetchAccounts());
     dispatch(fetchMoving());
@@ -51,15 +61,15 @@ export const Expenses = () => {
         </div>
         <Formik
           initialValues={{
-            accountId: 0,
+            accountId: accounts[0]?.id,
             amount: "",
-            categoryId: 0,
+            categoryId: expenseCategories ? expenseCategories[0].id : "",
             createdOn: newDate,
             description: "",
             id: 0,
           }}
           onSubmit={(values, { setSubmitting }) => {
-            dispatch(addExpense(values));
+            dispatchData(values);
             setSubmitting(false);
           }}
           validationSchema={FormSchema}
