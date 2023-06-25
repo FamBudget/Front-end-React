@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import styles from './Menu.module.scss'
 import {NavLink} from "react-router-dom";
+import {setAuth} from "../../redux/reducers/AuthReducer";
+import {useDispatch} from "react-redux";
 
 const menuData = [
     {
@@ -43,6 +45,11 @@ const menuData = [
 ]
 
 export const Menu = ({handleClose}) => {
+    const dispatch = useDispatch();
+    const logout = () => {
+        dispatch(setAuth(null));
+        localStorage.clear()
+    };
     const setMenu = (id) => {
         setActive(id)
         handleClose()
@@ -56,9 +63,8 @@ const [active, setActive] = useState(1)
                 <use href={active === t.id ? t.iconActive : t.icon}/>
             </svg>
 
-
             <span>{t.title}</span> </NavLink>)}
 
-
+        <button onClick={logout} className={styles.logout}>Logout</button>
     </nav>
 }
