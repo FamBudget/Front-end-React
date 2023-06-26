@@ -45,7 +45,6 @@ const buttonFilter = [
 ]
 
 
-
 function subtractMonths(date) {
     date.setMonth(date.getMonth() - 1);
     return date;
@@ -150,12 +149,14 @@ export const MovingAccounts = () => {
                     className={styles.arrow}/>
                 </div>)}
             </div>
-            {Array.isArray(dataMoving) && dataMoving?.map(t => <div key={t.id} className={styles.row}>
-                <div className={styles.item}>{t.accountFrom.name}</div>
-                <div className={styles.item}>{t.accountTo.name}</div>
-                <div className={styles.item}>{t.amount}{t.accountFrom.currency}</div>
-                <div className={styles.item}>{t.createdOn.split(' ')[0]}</div>
-            </div>)}
+            <div className={styles.bodyTable}>
+                {Array.isArray(dataMoving) && dataMoving?.map(t => <div key={t.id} className={styles.row}>
+                    <div className={styles.item}>{t.accountFrom.name}</div>
+                    <div className={styles.item}>{t.accountTo.name}</div>
+                    <div className={styles.item}>{t.amount}{t.accountFrom.currency}</div>
+                    <div className={styles.item}>{t.createdOn.split(' ')[0]}</div>
+                </div>)}
+            </div>
         </div>
     </div>
 

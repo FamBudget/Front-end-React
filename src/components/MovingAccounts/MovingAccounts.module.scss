@@ -20,6 +20,7 @@
     padding: 24px;
   }
 
+
   & .rowHeader {
     display: flex;
     flex-direction: row;
@@ -41,6 +42,11 @@
   & .arrow {
     width: 12px;
     height: 6px;
+  }
+
+  & .bodyTable {
+    overflow: auto;
+    max-height: calc(100vh - 250px);
   }
 
   & .row {
@@ -180,8 +186,10 @@
 
       }
     }
+
     & .row {
       padding: 16px 0;
+
       & .item {
         font-size: 14px;
         line-height: 20px;
