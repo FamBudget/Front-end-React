@@ -64,7 +64,7 @@ export const authApi = {
     const formatEndDate = formatDate(endDate);
     const formatStartDate = formatDate(startDate);
     return apiInstance.get(
-      `/operations/moving?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`
+      `/operations/moving?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}&size=100000`
     );
   },
   addExpense(
