@@ -25,40 +25,38 @@ export const Accounts = () => {
     }, [])
     const AccountsData = useSelector(state => state.accounts.data)
     return <Container>
-
-            <div className={styles.wrapper}>
-                <div className={styles.accounts}>
-                    <div className={styles.accountsHeader}>
-                        <h2>Счета</h2>
-
-                        {/* eslint-disable-next-line react/no-children-prop */}
-                        <Button className={styles.accountsButton} handleOpen={handleOpen} children={<svg>
+        <div className={styles.wrapper}>
+            <div className={styles.accounts}>
+                <div className={styles.accountsHeader}>
+                    <h2>Счета</h2>
+                    <Button className={styles.accountsButton} handleOpen={handleOpen} text={"Добавить счёт"}>
+                        <svg>
                             <use href="#plus"/>
-                        </svg>} text={"Добавить счёт"}/>
-                    </div>
-
-                    {Array.isArray(AccountsData) && <div className={styles.AccountsList}>
-                        {AccountsData?.map(t => <div key={t.id} className={styles.AccountsItem}>
-                            <div className={styles.itemLeft}>
-                                <svg>
-                                    <use href={`#${t.iconNumber}`}/>
-                                </svg>
-                                <span className={styles.titleAccounts}>{t.name}</span></div>
-                            <span>{t.amount} {t.currency} </span>
-                        </div>)}
-
-                    </div>}
+                        </svg>
+                    </Button>
                 </div>
-                <MovingAccounts/>
+                {Array.isArray(AccountsData) && <div className={styles.AccountsList}>
+                    {AccountsData?.map(t => <div key={t.id} className={styles.AccountsItem}>
+                        <div className={styles.itemLeft}>
+                            <svg>
+                                <use href={`#${t.iconNumber}`}/>
+                            </svg>
+                            <span className={styles.titleAccounts}>{t.name}</span></div>
+                        <span>{t.amount} {t.currency} </span>
+                    </div>)}
+
+                </div>}
             </div>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="parent-modal-title"
-                aria-describedby="parent-modal-description"
-            >
-                <div><AddingAccount setOpen={setOpen}/></div>
-            </Modal>
-        </Container>
+            <MovingAccounts/>
+        </div>
+        <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="parent-modal-title"
+            aria-describedby="parent-modal-description"
+        >
+            <div><AddingAccount setOpen={setOpen}/></div>
+        </Modal>
+    </Container>
 
 };

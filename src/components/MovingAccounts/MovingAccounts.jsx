@@ -45,7 +45,6 @@ const buttonFilter = [
 ]
 
 
-
 function subtractMonths(date) {
     date.setMonth(date.getMonth() - 1);
     return date;
@@ -67,14 +66,24 @@ export const MovingAccounts = () => {
         endDate: new Date(),
         startDate: subtractMonths(new Date()),
         sort: 'DATE',
+        sortDesc: false
     })
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchMoving(query))
     }, [])
     const sorts = (sortName) => {
-        setQuery({...query, sort: sortName})
-        dispatch(fetchMoving({...query, sort: sortName}))
+        if (sortName === query.sort && !query.sortDesc) {
+            setQuery({...query, sortDesc: true})
+            dispatch(fetchMoving({...query, sortDesc: true}))
+        } else if (sortName === query.sort && query.sortDesc) {
+            setQuery({...query, sortDesc: false})
+            dispatch(fetchMoving({...query, sortDesc: false}))
+
+        } else {
+            setQuery({...query, sort: sortName, sortDesc: false})
+            dispatch(fetchMoving({...query, sort: sortName, sortDesc: false}))
+        }
     }
 
     const setStartDate = (value) => {
@@ -86,7 +95,6 @@ export const MovingAccounts = () => {
         dispatch(fetchMoving({...query, endDate: value}))
 
     }
-    console.log(new Date().getTimezoneOffset())
     const filterDate = (id) => {
         setActiveButton(id)
         let date = new Date()
@@ -112,8 +120,25 @@ export const MovingAccounts = () => {
         </div>
     ));
     const dataMoving = useSelector(state => state?.moving?.data)
-
-
+    console.log(dataMoving)
+    let iconCurrency;
+    switch (dataMoving[0] && dataMoving[0]?.accountFrom?.currency) {
+        case ("RUB"):
+            iconCurrency = "₽"
+            break ;
+        case ("USD"):
+            iconCurrency = "$"
+            break
+        case ("BYN"):
+            iconCurrency = "Br"
+            break
+        case ("EUR"):
+            iconCurrency = "€"
+            break
+        case ("KZT"):
+            iconCurrency = "₸"
+            break
+    }
     return <div className={styles.moving}>
         <div className={styles.filters}>
             <div className={styles.wrapperDatepicker}>
@@ -151,12 +176,14 @@ export const MovingAccounts = () => {
                     className={styles.arrow}/>
                 </div>)}
             </div>
-            {Array.isArray(dataMoving) && dataMoving?.map(t => <div key={t.id} className={styles.row}>
-                <div className={styles.item}>{t.accountFrom.name}</div>
-                <div className={styles.item}>{t.accountTo.name}</div>
-                <div className={styles.item}>{t.amount}{t.accountFrom.currency}</div>
-                <div className={styles.item}>{t.createdOn.split(' ')[0]}</div>
-            </div>)}
+            <div className={styles.bodyTable}>
+                {Array.isArray(dataMoving) && dataMoving?.map(t => <div key={t.id} className={styles.row}>
+                    <div className={styles.item}>{t.accountFrom.name}</div>
+                    <div className={styles.item}>{t.accountTo.name}</div>
+                    <div className={styles.item}>{t.amount}{iconCurrency}</div>
+                    <div className={styles.item}>{t.createdOn.split(' ')[0]}</div>
+                </div>)}
+            </div>
         </div>
     </div>
 

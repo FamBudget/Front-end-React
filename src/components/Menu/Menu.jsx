@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import styles from './Menu.module.scss'
 import {NavLink} from "react-router-dom";
+import {setAuth} from "../../redux/reducers/AuthReducer";
+import {useDispatch} from "react-redux";
 
 const menuData = [
     {
@@ -23,7 +25,7 @@ const menuData = [
         iconActive: "#budgetActive"
     },{
         id: 4,
-        path: "/operations",
+        path: "/income",
         title: "Доходы",
         icon: "#revenues",
         iconActive: "#revenuesActive"
@@ -42,19 +44,27 @@ const menuData = [
     },
 ]
 
-export const Menu = () => {
+export const Menu = ({handleClose}) => {
+    const dispatch = useDispatch();
+    const logout = () => {
+        dispatch(setAuth(null));
+        localStorage.clear()
+    };
+    const setMenu = (id) => {
+        setActive(id)
+        handleClose()
+    }
 const [active, setActive] = useState(1)
 
     return <nav className={styles.wrap}>
-        {menuData.map(t => <NavLink key={t.id} onClick={() => setActive(t.id)} className={active === t.id  ? `${styles.menuItem} ${styles.active}` : styles.menuItem}
+        {menuData.map(t => <NavLink key={t.id} onClick={() => setMenu(t.id)} className={active === t.id  ? `${styles.menuItem} ${styles.active}` : styles.menuItem}
                  to={t.path}>
             <svg>
                 <use href={active === t.id ? t.iconActive : t.icon}/>
             </svg>
 
-
             <span>{t.title}</span> </NavLink>)}
 
-
+        <button onClick={logout} className={styles.logout}>Logout</button>
     </nav>
 }

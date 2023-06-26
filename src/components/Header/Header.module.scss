@@ -15,7 +15,9 @@
   flex-direction: row;
   margin-left: 340px;
   justify-content: space-between;
-
+  & svg {
+    display: none;
+  }
   & h1 {
     font-weight: 700;
     font-size: 36px;
@@ -29,7 +31,15 @@
   .header {
     margin: 0;
     padding: 24px 32px;
-
+    & svg {
+      display: block;
+      height: 24px;
+      width: 36px;
+      cursor: pointer;
+    }
+    & button {
+      display: none;
+    }
   }
   .title {
     display: none;
@@ -48,6 +58,7 @@
   }
 }
 @media (max-width: $minBreakpoints) {
+
   .header {
     padding: 20px;
   }

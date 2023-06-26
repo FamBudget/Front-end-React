@@ -60,11 +60,11 @@ export const authApi = {
       name,
     });
   },
-  getMoving(email, { endDate, startDate, sort }) {
+  getMoving(email, { endDate, startDate, sort, sortDesc }) {
     const formatEndDate = formatDate(endDate);
     const formatStartDate = formatDate(startDate);
     return apiInstance.get(
-      `/operations/moving?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}`
+      `/operations/moving?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}&sortDesc=${sortDesc}&size=100000`
     );
   },
   addExpense(
