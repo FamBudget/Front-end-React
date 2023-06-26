@@ -66,14 +66,24 @@ export const MovingAccounts = () => {
         endDate: new Date(),
         startDate: subtractMonths(new Date()),
         sort: 'DATE',
+        sortDesc: false
     })
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(fetchMoving(query))
     }, [])
     const sorts = (sortName) => {
-        setQuery({...query, sort: sortName})
-        dispatch(fetchMoving({...query, sort: sortName}))
+        if (sortName === query.sort && !query.sortDesc) {
+            setQuery({...query, sortDesc: true})
+            dispatch(fetchMoving({...query, sortDesc: true}))
+        } else if (sortName === query.sort && query.sortDesc) {
+            setQuery({...query, sortDesc: false})
+            dispatch(fetchMoving({...query, sortDesc: false}))
+
+        } else {
+            setQuery({...query, sort: sortName, sortDesc: false})
+            dispatch(fetchMoving({...query, sort: sortName, sortDesc: false}))
+        }
     }
 
     const setStartDate = (value) => {

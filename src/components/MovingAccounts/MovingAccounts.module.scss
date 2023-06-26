@@ -171,6 +171,12 @@
 
 }
 
+@media (max-width: $mediumBreakpoints) {
+  .bodyTable {
+    max-height: 50vh;
+  }
+}
+
 @media (max-width: $minBreakpoints) {
   .moving {
     & .filters {
@@ -186,6 +192,7 @@
 
       }
     }
+
 
     & .row {
       padding: 16px 0;
