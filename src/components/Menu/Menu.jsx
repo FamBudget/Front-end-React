@@ -25,7 +25,7 @@ const menuData = [
         iconActive: "#budgetActive"
     },{
         id: 4,
-        path: "/operations",
+        path: "/income",
         title: "Доходы",
         icon: "#revenues",
         iconActive: "#revenuesActive"
