@@ -120,8 +120,25 @@ export const MovingAccounts = () => {
         </div>
     ));
     const dataMoving = useSelector(state => state?.moving?.data)
-
-
+    console.log(dataMoving)
+    let iconCurrency;
+    switch (dataMoving[0] && dataMoving[0]?.accountFrom?.currency) {
+        case ("RUB"):
+            iconCurrency = "₽"
+            break ;
+        case ("USD"):
+            iconCurrency = "$"
+            break
+        case ("BYN"):
+            iconCurrency = "Br"
+            break
+        case ("EUR"):
+            iconCurrency = "€"
+            break
+        case ("KZT"):
+            iconCurrency = "₸"
+            break
+    }
     return <div className={styles.moving}>
         <div className={styles.filters}>
             <div className={styles.wrapperDatepicker}>
@@ -163,7 +180,7 @@ export const MovingAccounts = () => {
                 {Array.isArray(dataMoving) && dataMoving?.map(t => <div key={t.id} className={styles.row}>
                     <div className={styles.item}>{t.accountFrom.name}</div>
                     <div className={styles.item}>{t.accountTo.name}</div>
-                    <div className={styles.item}>{t.amount}{t.accountFrom.currency}</div>
+                    <div className={styles.item}>{t.amount}{iconCurrency}</div>
                     <div className={styles.item}>{t.createdOn.split(' ')[0]}</div>
                 </div>)}
             </div>
