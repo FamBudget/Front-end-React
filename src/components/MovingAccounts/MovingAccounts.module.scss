@@ -172,8 +172,10 @@
 }
 
 @media (max-width: $mediumBreakpoints) {
-  .bodyTable {
-    max-height: 50vh;
+  .moving {
+    & .bodyTable {
+      max-height: 50vh;
+    }
   }
 }
 
