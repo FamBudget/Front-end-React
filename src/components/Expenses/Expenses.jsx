@@ -18,6 +18,7 @@ import {
 } from "../../redux/reducers/OperationsReducer";
 import { fetchExpenseCategories } from "../../redux/reducers/CategoriesReducer";
 import { subtractHours } from "../AddingAccount";
+import { Diagram } from "../Diagram";
 
 const FormSchema = yup.object().shape({
   sum: yup.string().matches(/\d+/, "Неверный формат"),
@@ -47,9 +48,9 @@ export const Expenses = () => {
   console.log(expenseCategories);
   useEffect(() => {
     dispatch(fetchAccounts());
-    dispatch(fetchMoving());
-    dispatch(fetchExpenses());
     dispatch(fetchExpenseCategories());
+    dispatch(fetchExpenses());
+    dispatch(fetchMoving());
   }, []);
 
   return (
@@ -120,6 +121,7 @@ export const Expenses = () => {
       </div>
       <div className={styles.wrapperStats}>
         <h3>Сумма расходов</h3>
+        <Diagram expenses={expenses} expenseCategories={expenseCategories} />
       </div>
     </div>
   );
