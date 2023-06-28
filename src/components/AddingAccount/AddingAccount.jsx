@@ -14,6 +14,7 @@ export function subtractHours(date) {
     return formatDate(date);
 }
 
+const arrayIcon = [0, 1, 2, 3, 4, 5]
 export const AddingAccount = ({setOpen}) => {
     const forgetPasswordRef = useRef();
     const dispatch = useDispatch()
@@ -46,8 +47,11 @@ export const AddingAccount = ({setOpen}) => {
                 >
                     {({isSubmitting, errors, values}) => (
                         <Form ref={forgetPasswordRef} className={styles.form}>
-                            <div className={styles.header}><h2>Добавить счет</h2><SelectIcon
-                                iconNumber={values.iconNumber}/></div>
+                            <div className={styles.header}>
+                                <h2>Добавить счет</h2>
+                                <SelectIcon
+                                    iconNumber={values.iconNumber} arrayIcon={arrayIcon}/>
+                            </div>
                             <label>Название счета</label>
                             <Field
                                 type="text"

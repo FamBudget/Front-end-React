@@ -4,6 +4,7 @@ import { authApi } from "../api/api";
 const initialState = {
   status: null,
   expenseCategories: null,
+  incomeCategories: null,
 };
 
 export const fetchExpenseCategories = createAsyncThunk(
@@ -14,6 +15,25 @@ export const fetchExpenseCategories = createAsyncThunk(
       const response = await authApi.getExpenseCategories(email);
       return response.data;
     }
+  }
+);
+export const fetchIncomeCategories = createAsyncThunk(
+  "categories/fetchIncomeCategories",
+  async (_, { getState }) => {
+    const email = getState().auth.email;
+    if (email != null) {
+      const response = await authApi.getIncomeCategories(email);
+      return response.data;
+    }
+  }
+);
+export const addIncomeCategories = createAsyncThunk(
+  "categories/addIncomeCategories",
+  async (values, { getState }) => {
+    const email = getState().auth.email;
+      const response = await authApi.addIncomeCategories(email, values);
+      return response.data;
+
   }
 );
 
@@ -31,6 +51,14 @@ export const CategoriesSlice = createSlice({
     });
     builder.addCase(fetchExpenseCategories.rejected, (state) => {
       state.status = "rejected";
+    });
+    builder.addCase(fetchIncomeCategories.fulfilled, (state, action) => {
+      state.status = "resolved";
+      state.incomeCategories = action.payload;
+    });
+    builder.addCase(addIncomeCategories.fulfilled, (state, action) => {
+      state.status = "resolved";
+      state.incomeCategories = [...state.incomeCategories, action.payload]
     });
   },
 });

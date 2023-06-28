@@ -125,7 +125,7 @@ export const MovingAccounts = () => {
     switch (dataMoving[0] && dataMoving[0]?.accountFrom?.currency) {
         case ("RUB"):
             iconCurrency = "₽"
-            break ;
+            break;
         case ("USD"):
             iconCurrency = "$"
             break

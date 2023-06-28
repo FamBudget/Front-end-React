@@ -1,15 +1,7 @@
 @import "src/styles/variables";
 
-.container {
-}
 
-.wrapper {
-  display: flex;
-  flex-direction: row;
-  gap: 40px;
-}
-
-.accounts {
+.table {
   width: 562px;
   background: #ffffff;
   box-shadow: -2px -2px 16px rgba(39, 222, 191, 0.06),
@@ -17,20 +9,23 @@
   border-radius: 20px;
   padding: 24px;
 
-  & .accountsHeader {
+  & .Header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
 
     & h2 {
       font-weight: 600;
       font-size: 24px;
       line-height: 32px;
+      margin-bottom: 0;
     }
   }
 }
 
-.accountsButton {
+.Button {
   padding: 12px 24px;
   gap: 12px;
   width: 189px;
@@ -60,23 +55,22 @@
   flex-direction: column;
   overflow: auto;
   max-height: calc(100vh - 250px);
-  gap: 32px;
 }
 
-.AccountsItem {
+.Item {
   display: flex;
   flex-direction: row;
-  padding: 16px 32px;
-  background:  #F9FFFE;
-  height: 68px;
+  padding: 20px 0;
+  height: 76px;
   justify-content: space-between;
   align-items: center;
+  border-top: 1px solid #D0D0D0;
 
   & svg {
     width: 36px;
     height: 36px;
   }
-  .titleAccounts {
+  .title {
     font-weight: 600;
     font-size: 20px;
     line-height: 28px;
@@ -95,15 +89,12 @@
 }
 
 @media (max-width: $maxBreakpoints) {
-  .wrapper {
-    gap: 32px;
-  }
 
-  .accounts {
+  .table {
     width: 45vw;
     padding: 20px;
 
-    & .accountsHeader {
+    & .Header {
       & h2 {
         font-size: 20px;
         line-height: 27px;
@@ -111,10 +102,9 @@
     }
   }
   .tableList {
-    gap: 24px;
   }
 
-  .AccountsItem {
+  .Item {
     display: flex;
     flex-direction: row;
     padding: 12px 20px;
@@ -122,7 +112,7 @@
     justify-content: space-between;
     align-items: center;
 
-    .titleAccounts {
+    .title {
       font-weight: 700;
       font-size: 16px;
       line-height: 22px;
@@ -137,42 +127,36 @@
 }
 
 @media (max-width: $mediumBreakpoints) {
-  .wrapper {
-    flex-direction: column;
-    gap: 32px;
-  }
-  .accounts {
+  .table {
     width: 100%;
     padding: 20px;
   }
 
   .tableList {
     max-height: 50vh;
-    gap: 24px;
   }
 
-  .AccountsItem {
+  .Item {
     padding: 12px 20px;
     height: 60px;
   }
 }
 @media (max-width: $minBreakpoints) {
-  .wrapper {
-    flex-direction: column;
-    gap: 32px;
-  }
-  .accounts {
+
+  .table {
     width: 100%;
     padding: 20px;
 
-    & .accountsHeader {
+    & .Header {
       flex-direction: column;
+      align-items: start;
       & h2 {
         font-size: 20px;
+        margin-bottom: 24px;
       }
     }
   }
-  .accountsButton {
+  .Button {
     padding: 12px 24px;
     width: 100%;
     height: 48px;
@@ -181,7 +165,7 @@
     margin-top: 20px;
     gap: 20px;
   }
-  .AccountsItem {
+  .Item {
     padding: 12px 24px;
     height: 52px;
 
@@ -189,7 +173,7 @@
       width: 28px;
       height: 28px;
     }
-    .titleAccounts {
+    .title {
       font-size: 16px;
       line-height: 22px;
     }

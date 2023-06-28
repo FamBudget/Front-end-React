@@ -35,7 +35,7 @@ export const Accounts = () => {
                         </svg>
                     </Button>
                 </div>
-                {Array.isArray(AccountsData) && <div className={styles.AccountsList}>
+                {Array.isArray(AccountsData) && <div className={styles.tableList}>
                     {AccountsData?.map(t => <div key={t.id} className={styles.AccountsItem}>
                         <div className={styles.itemLeft}>
                             <svg>
