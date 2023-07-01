@@ -26,7 +26,6 @@ const FormSchema = yup.object().shape({
 export const Expenses = () => {
   const currency = useSelector((state) => state.registration.currency);
   const accounts = useSelector((state) => state.accounts.data);
-  const expenses = useSelector((state) => state.operations.expenses);
   const expenseCategories = useSelector(
     (state) => state.categories.expenseCategories
   );
@@ -42,9 +41,6 @@ export const Expenses = () => {
     dispatch(addExpense(changedValues));
   };
 
-  console.log(expenses);
-  console.log(accounts);
-  console.log(expenseCategories);
   useEffect(() => {
     dispatch(fetchAccounts());
     dispatch(fetchMoving());
@@ -63,7 +59,7 @@ export const Expenses = () => {
           initialValues={{
             accountId: accounts[0]?.id,
             amount: "",
-            categoryId: expenseCategories ? expenseCategories[0].id : "",
+            categoryId: expenseCategories ? expenseCategories[0]?.id : "",
             createdOn: newDate,
             description: "",
             id: 0,

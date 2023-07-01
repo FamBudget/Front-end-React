@@ -22,8 +22,13 @@
     margin-bottom: 32px;
   }
 
-}
+ .error {
+   position: absolute;
+   color: red;
+   top: 225px;
+ }
 
+}
 .categoriesButton {
   padding: 12px 24px;
   gap: 12px;

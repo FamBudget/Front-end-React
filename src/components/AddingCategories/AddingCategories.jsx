@@ -7,7 +7,7 @@ import {SelectIcon} from "../AddingAccount/SelectIcon";
 
 
 
-export const AddingCategories = ({arrayIcon, title, addCategories}) => {
+export const AddingCategories = ({arrayIcon, title, addCategories, dataCategories}) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
         setOpen(true);
@@ -17,7 +17,16 @@ export const AddingCategories = ({arrayIcon, title, addCategories}) => {
     };
     const forgetPasswordRef = useRef();
 
-
+    function validateName(value) {
+        let error;
+        if (!value) {
+            error = 'Поле не может быть пустым!';
+        }
+        else if (dataCategories.find(t => t.name === value)) {
+            error = 'Такая категория уже существует!';
+        }
+        return error;
+    }
     return (
         <>
             <Button className={styles.categoriesButton} handleOpen={handleOpen} text={"Добавить категорию"}>
@@ -45,7 +54,7 @@ export const AddingCategories = ({arrayIcon, title, addCategories}) => {
 
                             }}
                         >
-                            {({isSubmitting, values}) => (
+                            {({isSubmitting, values, errors, touched}) => (
                                 <Form ref={forgetPasswordRef} className={styles.form}>
                                     <div className={styles.header}>
                                         <h2>Добавить категорию</h2>
@@ -57,7 +66,9 @@ export const AddingCategories = ({arrayIcon, title, addCategories}) => {
                                         type="text"
                                         name="name"
                                         placeholder="Введите название категории"
+                                        validate={validateName}
                                     />
+                                    {errors.name && touched.name && <div className={styles.error}>{errors.name}</div>}
 
                                     <div className={styles.buttons}>
                                         <div className={styles.WrapBtn} onClick={() => setOpen(false)}>

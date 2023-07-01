@@ -8,7 +8,7 @@ console.log(dataCategories)
     return <div className={styles.table}>
         <div className={styles.Header}>
             <h2>Категории</h2>
-            <AddingCategories addCategories={addCategories} arrayIcon={arrayIcon} title={title}/>
+            <AddingCategories dataCategories={dataCategories} addCategories={addCategories} arrayIcon={arrayIcon} title={title}/>
 
         </div>
         {Array.isArray(dataCategories) && <div className={styles.tableList}>

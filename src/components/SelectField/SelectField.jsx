@@ -18,12 +18,12 @@ export const SelectField = ({
         name={name}
         placeholder={placeholder}
       >
-        {accounts?.map(({ name, id }) => (
+        { Array.isArray(accounts) && accounts?.map(({ name, id }) => (
           <option value={id} key={id}>
             {name}
           </option>
         ))}
-        {categories?.map(({ name, id }) => (
+        {Array.isArray(accounts) && categories?.map(({ name, id }) => (
           <option value={id} key={id}>
             {name}
           </option>

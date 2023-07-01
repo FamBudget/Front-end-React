@@ -25,6 +25,11 @@ export const Header = ({handleOpen}) => {
     const logout = () => {
         dispatch(setAuth(null));
         localStorage.clear()
+        caches.keys().then((names) => {
+            names.forEach((name) => {
+                caches.delete(name);
+            });
+        });
     };
 
     return <>
