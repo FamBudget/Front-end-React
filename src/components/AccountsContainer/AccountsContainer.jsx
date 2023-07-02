@@ -24,7 +24,7 @@ export const AccountsContainer = () => {
         dispatch(fetchAccounts())
     }, [])
     const AccountsData = useSelector(state => state.accounts.data)
-    return <Container>
+    return <>
         <div className={styles.wrapper}>
             <div className={styles.accounts}>
                 <div className={styles.accountsHeader}>
@@ -57,6 +57,6 @@ export const AccountsContainer = () => {
         >
             <div><AddingAccount setOpen={setOpen}/></div>
         </Modal>
-    </Container>
+    </>
 
 };
