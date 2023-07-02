@@ -19,7 +19,7 @@ const menuData = [
         iconActive: "#accountsActive"
     }, {
         id: 3,
-        path: "/operations",
+        path: "/",
         title: "Бюджет",
         icon: "#budget",
         iconActive: "#budgetActive"
@@ -31,13 +31,13 @@ const menuData = [
         iconActive: "#revenuesActive"
     }, {
         id: 5,
-        path: "/operations",
+        path: "/",
         title: "Расходы",
         icon: "#expenses",
         iconActive: "#expensesActive"
     }, {
         id: 6,
-        path: "/operations",
+        path: "/",
         title: "Отчеты",
         icon: "#reports",
         iconActive: "#reportsActive"
