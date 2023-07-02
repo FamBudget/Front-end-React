@@ -6,7 +6,6 @@ import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
 import {Modal} from "@mui/material";
 import {AddingAccount} from "../../components/AddingAccount/AddingAccount";
 import {MovingAccounts} from "../../components/MovingAccounts/MovingAccounts";
-import {Container} from "../../components/Container/Container";
 
 
 export const AccountsContainer = () => {
