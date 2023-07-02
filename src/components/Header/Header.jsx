@@ -2,11 +2,12 @@ import React from 'react'
 import {useDispatch} from "react-redux";
 import {setAuth} from "../../redux/reducers/AuthReducer";
 import styles from './Header.module.scss'
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 
 export const Header = ({handleOpen}) => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const url = useLocation()
     let title = ''
     switch (url.pathname) {
@@ -30,6 +31,7 @@ export const Header = ({handleOpen}) => {
                 caches.delete(name);
             });
         });
+        navigate('/login')
     };
 
     return <>

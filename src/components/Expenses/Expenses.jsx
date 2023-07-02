@@ -24,8 +24,8 @@ const FormSchema = yup.object().shape({
 });
 
 export const Expenses = () => {
-  const currency = useSelector((state) => state.registration.currency);
-  const accounts = useSelector((state) => state.accounts.data);
+  const currency = useSelector((state) => state?.registration?.currency);
+  const accounts = useSelector((state) => state?.accounts?.data);
   const expenseCategories = useSelector(
     (state) => state.categories.expenseCategories
   );
@@ -49,74 +49,75 @@ export const Expenses = () => {
   }, []);
 
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.wrapperForm}>
-        <div className={styles.title}>
-          <h3>Расходы</h3>
-          <ExpensesArrow />
-        </div>
-        <Formik
-          initialValues={{
-            accountId: accounts[0]?.id,
-            amount: "",
-            categoryId: expenseCategories ? expenseCategories[0]?.id : "",
-            createdOn: newDate,
-            description: "",
-            id: 0,
-          }}
-          onSubmit={(values, { setSubmitting }) => {
-            dispatchData(values);
-            setSubmitting(false);
-          }}
-          validationSchema={FormSchema}
-        >
-          {({ handleSubmit, isSubmitting }) => (
-            <form onSubmit={handleSubmit}>
-              <div className={styles.currency}>{currency}</div>
-              <label>Сумма</label>
-              <Field
-                className={styles.input}
-                type="text"
-                name="amount"
-                placeholder="0"
-              />
-              <SelectField
-                categories={expenseCategories}
-                accounts={null}
-                className={styles.input}
-                label="Категория"
-                name="categoryId"
-                placeholder="Выберите категорию"
-              />
-              <SelectField
-                accounts={accounts}
-                categories={null}
-                className={styles.input}
-                label="Счет"
-                name="accountId"
-                placeholder="Cчет списания"
-              />
-              <label>Дата расхода</label>
-              <DatePickerField name="createdOn" />
-              <label>Комментарий</label>
-              <Field
-                placeholder="Введите комментарий..."
-                className={styles.comment}
-                name="description"
-                as="textarea"
-              />
-              <Button
-                disabled={isSubmitting}
-                type="submit"
-                text="Ввести расход"
-              />
-            </form>
-          )}
-        </Formik>
+      <div className={styles.wrapper}>
+          <div className={styles.wrapperForm}>
+              <div className={styles.title}>
+                  <h3>Расходы</h3>
+                  <ExpensesArrow/>
+              </div>
+              <Formik
+                  initialValues={{
+                      accountId:accounts && accounts[0]?.id,
+                      amount: "",
+                      categoryId: expenseCategories ? expenseCategories[0]?.id : "",
+                      createdOn: newDate,
+                      description: "",
+                      id: 0,
+                  }}
+                  onSubmit={(values, {setSubmitting}) => {
+                      dispatchData(values);
+                      setSubmitting(false);
+                  }}
+                  validationSchema={FormSchema}
+              >
+                  {({handleSubmit, isSubmitting}) => (
+                      <form onSubmit={handleSubmit}>
+                          <div className={styles.currency}>{currency}</div>
+                          <label>Сумма</label>
+                          <Field
+                              className={styles.input}
+                              type="text"
+                              name="amount"
+                              placeholder="0"
+                          />
+                          <SelectField
+                              categories={expenseCategories}
+                              accounts={null}
+                              className={styles.input}
+                              label="Категория"
+                              name="categoryId"
+                              placeholder="Выберите категорию"
+                          />
+                          <SelectField
+                              accounts={accounts}
+                              categories={null}
+                              className={styles.input}
+                              label="Счет"
+                              name="accountId"
+                              placeholder="Cчет списания"
+                          />
+                          <label>Дата расхода</label>
+                          <DatePickerField name="createdOn"/>
+                          <label>Комментарий</label>
+                          <Field
+                              placeholder="Введите комментарий..."
+                              className={styles.comment}
+                              name="description"
+                              as="textarea"
+                          />
+                          <Button
+                              disabled={isSubmitting}
+                              type="submit"
+                              text="Ввести расход"
+                          />
+                      </form>
+                  )}
+              </Formik>
+          </div>
+          <div className={styles.wrapperStats}>
+              <h3>Сумма расходов</h3>
+          </div>
       </div>
-      <div className={styles.wrapperStats}>
-        <h3>Сумма расходов</h3>
-      </div>
-    </div>
+
   );
 };
