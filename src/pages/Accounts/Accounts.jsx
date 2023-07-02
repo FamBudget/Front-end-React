@@ -21,7 +21,7 @@ export const Accounts = () => {
     };
 
     useEffect(() => {
-        dispatch(fetchAccounts())
+         dispatch(fetchAccounts())
     }, [])
     const AccountsData = useSelector(state => state.accounts.data)
     return <Container>
