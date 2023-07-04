@@ -1,7 +1,5 @@
-import React, {forwardRef, useEffect, useState} from "react";
+import React, {forwardRef, useState} from "react";
 import styles from './FiltersOperations.module.scss'
-import {useDispatch} from "react-redux";
-import {fetchMoving} from "../../redux/reducers/MovingReducer";
 import DatePicker from "react-datepicker";
 import {Button} from "../Button";
 
@@ -35,27 +33,18 @@ function subtractDay(date) {
     return date;
 }
 
-export const FiltersOperations = () => {
+export const FiltersOperations = ({query, setQuery, getData}) => {
         const [activeButton, setActiveButton] = useState(3)
-        const [query, setQuery] = useState({
-            endDate: new Date(),
-            startDate: subtractMonths(new Date()),
-            sort: 'DATE',
-            sortDesc: false
-        })
-        const dispatch = useDispatch()
-        useEffect(() => {
-            dispatch(fetchMoving(query))
-        }, [])
+
 
 
         const setStartDate = (value) => {
+            getData({...query, startDate: value})
             setQuery({...query, startDate: value})
-            dispatch(fetchMoving({...query, startDate: value}))
         }
         const setEndDate = (value) => {
+            getData({...query, endDate: value})
             setQuery({...query, endDate: value})
-            dispatch(fetchMoving({...query, endDate: value}))
 
         }
         const filterDate = (id) => {
@@ -70,7 +59,7 @@ export const FiltersOperations = () => {
             } else if (id === 3) {
                 startDate = subtractMonths(date);
             }
-            dispatch(fetchMoving({...query, startDate}))
+            getData({...query, startDate})
             setQuery({...query, startDate})
         }
 // eslint-disable-next-line react/display-name

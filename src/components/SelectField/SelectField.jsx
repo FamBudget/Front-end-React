@@ -23,7 +23,7 @@ export const SelectField = ({
             {name}
           </option>
         ))}
-        {Array.isArray(accounts) && categories?.map(({ name, id }) => (
+        {Array.isArray(categories) && categories?.map(({ name, id }) => (
           <option value={id} key={id}>
             {name}
           </option>

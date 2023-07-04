@@ -18,12 +18,12 @@ export const IncomeTableContainer = () => {
         dispatch(fetchMoving(query))
     }, [])
 const getData  = (values) => {
-    dispatch(fetchMoving({...query, values}))
+    dispatch(fetchMoving( values))
 }
     const data = useSelector(state => state?.moving?.data)
 
     return <div className={styles.moving}>
-        <FiltersOperations query={query} setQuery={setQuery}/>
+        <FiltersOperations query={query} setQuery={setQuery} getData={getData}/>
         <TableOperations getData={getData} data={data} query={query} setQuery={setQuery}/>
     </div>
 

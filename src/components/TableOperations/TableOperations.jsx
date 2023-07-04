@@ -29,16 +29,17 @@ export const TableOperations = ({getData, data, query, setQuery}) => {
 
 
     const sorts = (sortName) => {
+
         if (sortName === query.sort && !query.sortDesc) {
-            getData({sortDesc: true})
+            getData({...query, sortDesc: true})
             setQuery({...query, sortDesc: true})
 
         } else if (sortName === query.sort && query.sortDesc) {
-            getData({sortDesc: false})
+            getData({...query, sortDesc: false})
             setQuery({...query, sortDesc: false})
 
         } else {
-            getData({sort: sortName, sortDesc: false})
+            getData({...query, sort: sortName, sortDesc: false})
             setQuery({...query, sort: sortName, sortDesc: false})
         }
     }
