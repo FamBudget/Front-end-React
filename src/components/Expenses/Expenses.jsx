@@ -11,7 +11,6 @@ import { SelectField } from "../SelectField";
 import { Button } from "../Button";
 import { DatePickerField } from "../DatePickerFields";
 import { fetchAccounts } from "../../redux/reducers/AccountsReducer";
-import { fetchMoving } from "../../redux/reducers/MovingReducer";
 import {
   addExpense,
   fetchExpenses,
@@ -21,11 +20,14 @@ import { subtractHours } from "../AddingAccount";
 import { Diagram } from "../Diagram";
 
 const FormSchema = yup.object().shape({
-  sum: yup.string().matches(/\d+/, "Неверный формат"),
+  amount: yup
+    .string()
+    .matches(/\d+/, "Неверный формат")
+    .required("Обязательное поле"),
 });
 
 export const Expenses = () => {
-  const currency = useSelector((state) => state.registration.currency);
+  const currency = useSelector((state) => state.accounts?.data[0]?.currency);
   const accounts = useSelector((state) => state.accounts.data);
   const expenses = useSelector((state) => state.operations.expenses);
   const expenseCategories = useSelector(
@@ -50,7 +52,6 @@ export const Expenses = () => {
     dispatch(fetchAccounts());
     dispatch(fetchExpenseCategories());
     dispatch(fetchExpenses());
-    dispatch(fetchMoving());
   }, []);
 
   return (
@@ -62,9 +63,9 @@ export const Expenses = () => {
         </div>
         <Formik
           initialValues={{
-            accountId: accounts[0]?.id,
+            accountId: "",
             amount: "",
-            categoryId: expenseCategories ? expenseCategories[0].id : "",
+            categoryId: "",
             createdOn: newDate,
             description: "",
             id: 0,
@@ -75,7 +76,7 @@ export const Expenses = () => {
           }}
           validationSchema={FormSchema}
         >
-          {({ handleSubmit, isSubmitting }) => (
+          {({ handleSubmit, isSubmitting, errors }) => (
             <form onSubmit={handleSubmit}>
               <div className={styles.currency}>{currency}</div>
               <label>Сумма</label>
@@ -85,13 +86,14 @@ export const Expenses = () => {
                 name="amount"
                 placeholder="0"
               />
+              {errors.amount && <p>{errors.amount}</p>}
               <SelectField
+                placeholder="Выбор категории"
                 categories={expenseCategories}
                 accounts={null}
                 className={styles.input}
                 label="Категория"
                 name="categoryId"
-                placeholder="Выберите категорию"
               />
               <SelectField
                 accounts={accounts}
@@ -121,7 +123,7 @@ export const Expenses = () => {
       </div>
       <div className={styles.wrapperStats}>
         <h3>Сумма расходов</h3>
-        <Diagram expenses={expenses} expenseCategories={expenseCategories} />
+        <Diagram expenses={expenses} expensesCategories={expenseCategories} />
       </div>
     </div>
   );

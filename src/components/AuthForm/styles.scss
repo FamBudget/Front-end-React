@@ -24,7 +24,8 @@ select {
   font-style: normal;
   font-weight: 500;
 
-  &::placeholder {
+  &::placeholder,
+  option[type="disabled"] {
     font-weight: 500;
     font-size: 16px;
     line-height: 22px;

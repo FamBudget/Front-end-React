@@ -9,20 +9,22 @@ export const SelectField = ({
   accounts,
   categories,
 }) => {
+  console.log(placeholder);
   return (
     <div>
       <label>{label}</label>
       <Field
-        className={className}
         as="select"
+        defaultValue={placeholder}
+        className={className}
         name={name}
-        placeholder={placeholder}
       >
         {accounts?.map(({ name, id }) => (
           <option value={id} key={id}>
             {name}
           </option>
         ))}
+
         {categories?.map(({ name, id }) => (
           <option value={id} key={id}>
             {name}

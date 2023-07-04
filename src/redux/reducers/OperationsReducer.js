@@ -13,7 +13,7 @@ export const fetchExpenses = createAsyncThunk(
   async (_, { getState }) => {
     const email = getState().auth.email;
     if (email != null) {
-      const response = await authApi.getExpenses(email, {});
+      const response = await authApi.getExpenses(email);
       return response.data;
     }
   }
