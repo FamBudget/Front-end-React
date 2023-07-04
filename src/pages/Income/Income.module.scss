@@ -9,7 +9,7 @@
   gap: 40px;
 }
 
-.accounts {
+.income {
   width: 562px;
   background: #ffffff;
   box-shadow: -2px -2px 16px rgba(39, 222, 191, 0.06),
@@ -17,7 +17,7 @@
   border-radius: 20px;
   padding: 24px;
 
-  & .accountsHeader {
+  & .incomeHeader {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -30,7 +30,7 @@
   }
 }
 
-.accountsButton {
+.incomeButton {
   padding: 12px 24px;
   gap: 12px;
   width: 189px;
@@ -55,7 +55,7 @@
   }
 }
 
-.AccountsList {
+.tableList {
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -110,7 +110,7 @@
       }
     }
   }
-  .AccountsList {
+  .tableList {
     gap: 24px;
   }
 
@@ -146,7 +146,7 @@
     padding: 20px;
   }
 
-  .AccountsList {
+  .tableList {
     max-height: 50vh;
     gap: 24px;
   }
@@ -177,7 +177,7 @@
     width: 100%;
     height: 48px;
   }
-  .AccountsList {
+  .tableList {
     margin-top: 20px;
     gap: 20px;
   }

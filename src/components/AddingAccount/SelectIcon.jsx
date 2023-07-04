@@ -4,12 +4,12 @@ import styles from "./AddingAccount.module.scss";
 import {useFormikContext} from "formik";
 import {Button} from "../Button";
 
-const array = [ 0, 1, 2, 3, 4, 5]
 
-export const SelectIcon = ({iconNumber}) => {
+
+export const SelectIcon = ({iconNumber, arrayIcon, title}) => {
     const {setFieldValue} = useFormikContext();
-    const [open, setOpen] = React.useState(false);
-    const [numberIcon, setNumberIcon] = useState(0)
+    const [open, setOpen] = useState(false);
+    const [numberIcon, setNumberIcon] = useState(iconNumber)
     const handleOpen = () => {
         setOpen(true);
     };
@@ -25,7 +25,7 @@ export const SelectIcon = ({iconNumber}) => {
     return <div>
 
         <svg onClick={() => handleOpen()}>
-            <use href={`#${iconNumber}`}/>
+            <use href={`#${title}${iconNumber}`}/>
         </svg>
         <Modal
             open={open}
@@ -34,10 +34,10 @@ export const SelectIcon = ({iconNumber}) => {
             aria-describedby="child-modal-description"
         >
             <div className={styles.selectContainer}><h3>Выберите иконку</h3>
-                <div className={styles.icons}>{array.map(t => <svg key={t}
+                <div className={styles.icons}>{arrayIcon.map(t => <svg key={t}
                                                                    className={numberIcon === t ? styles.activeIcon : ''}
                                                                    onClick={() => setNumberIcon(t)}>
-                    <use href={`#${t}`}/>
+                    <use href={`#${title}${t}`}/>
                 </svg>)}</div>
                 <div className={styles.buttons}>
                     <div className={styles.WrapBtn} onClick={() => setOpen(false)}><Button

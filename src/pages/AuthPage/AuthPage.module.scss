@@ -159,3 +159,12 @@ h1 span {
     height: 125vh;
   }
 }
+
+@media screen and (min-width: 1220px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .wrapper {
+    zoom: 0.65;
+  }
+  .leftImage {
+    height: 140vh;
+  }
+}

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Sidebar} from "../../../components/Sidebar/Sidebar";
 import styles from './LayoutMain.module.scss'
 import {Sprite} from "../../../components";
-import {Outlet} from "react-router-dom";
+import {useNavigate, Outlet} from "react-router-dom";
 import {setAuth, setEmail} from "../../../redux/reducers/AuthReducer";
 import {useDispatch} from "react-redux";
 import {Header} from "../../../components/Header/Header";
@@ -12,6 +12,7 @@ export const LayoutMain = () => {
     const [open, setOpen] = useState(false)
     const handleClose = () => setOpen(false)
     const handleOpen = () => setOpen(true)
+    const navigate = useNavigate();
 
     useEffect(() => {
         open && (document.body.style.overflow = 'hidden')
@@ -22,6 +23,7 @@ export const LayoutMain = () => {
 
         localStorage.token && dispatch(setAuth(localStorage.token));
         localStorage.email && dispatch(setEmail(localStorage.email)) && dispatch(setAuth(localStorage.email));
+        !localStorage.token && !localStorage.email && navigate('/login');
     }, []);
     const sidebarClass = styles.container
         + (open ? ' ' + styles.open : '')
