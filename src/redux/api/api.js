@@ -99,6 +99,13 @@ export const authApi = {
       `/operations/expense?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}&sortDesc=${sortDesc}&size=100000`
     );
   },
+  getIncomes(email, { endDate, startDate, sort, sortDesc }) {
+    const formatEndDate = formatDate(endDate);
+    const formatStartDate = formatDate(startDate);
+    return apiInstance.get(
+        `/operations/income?email=${email}&sort=${sort}&startDate=${formatStartDate}&endDate=${formatEndDate}&sortDesc=${sortDesc}&size=100000`
+    );
+  },
   getExpenseCategories(email) {
     return apiInstance.get(`/categories/expense?email=${email}`);
   },

@@ -26,7 +26,7 @@ const sortList = [
 ]
 
 export const TableOperations = ({getData, data, query, setQuery}) => {
-
+console.log(data)
 
     const sorts = (sortName) => {
 
@@ -44,7 +44,7 @@ export const TableOperations = ({getData, data, query, setQuery}) => {
         }
     }
     let iconCurrency;
-    switch (data[0] && data[0]?.accountFrom?.currency) {
+    switch (data[0] && data[0]?.account?.currency) {
         case ("RUB"):
             iconCurrency = "₽"
             break;
@@ -71,10 +71,10 @@ export const TableOperations = ({getData, data, query, setQuery}) => {
             </div>
             <div className={styles.bodyTable}>
                 {Array.isArray(data) && data?.map(t => <div key={t.id} className={styles.row}>
-                    <div className={styles.item}>{t.accountFrom.name}</div>
-                    <div className={styles.item}>{t.accountTo.name}</div>
-                    <div className={styles.item}>{t.amount}{iconCurrency}</div>
+                    <div className={styles.item}>{t.category.name}</div>
                     <div className={styles.item}>{t.createdOn.split(' ')[0]}</div>
+                    <div className={styles.item}>{t.amount}{iconCurrency}</div>
+                    <div className={styles.item}>{t.account.name}</div>
                 </div>)}
             </div>
         </div>

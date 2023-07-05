@@ -7,6 +7,7 @@ import styles from './Categories.module.scss'
 import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
 import {addIncome} from "../../redux/reducers/OperationsReducer";
 
+const arrayIconIncome = [0, 1, 2, 3, 4, 5]
 
 export const IncomeCategories = () => {
     const dispatch = useDispatch();
@@ -24,8 +25,6 @@ export const IncomeCategories = () => {
     }, [])
     const dataAccounts = useSelector(state => state.accounts.data)
     const dataCategories = useSelector(state => state?.categories?.incomeCategories)
-    const arrayIconIncome = [0, 1, 2, 3, 4, 5]
-    console.log(dataCategories)
     return <div className={styles.wrapper}>
         <AddingOperation title={'Добавить доход'} dataCategories={dataCategories} dataAccounts={dataAccounts} addOperations={addIncomeCallback}/>
         <Categories addCategories={addIncomeCategoriesCallback} dataCategories={dataCategories} title={"income"} arrayIcon={arrayIconIncome}/>
