@@ -80,6 +80,18 @@ export const authApi = {
       id,
     });
   },
+  addIncome(
+    email,
+    { accountId, amount, categoryId, createdOn, description }
+  ) {
+    return apiInstance.post(`operations/income?email=${email}`, {
+      accountId,
+      amount,
+      categoryId,
+      createdOn,
+      description
+    });
+  },
   getExpenses(email) {
     return apiInstance.get(`/operations/expense?email=${email}&size=100000`);
   },

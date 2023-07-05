@@ -1,5 +1,9 @@
 @import "src/styles/variables";
-
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
 
 .table {
   width: 562px;

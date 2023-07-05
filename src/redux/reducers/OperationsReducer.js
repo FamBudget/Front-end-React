@@ -27,6 +27,14 @@ export const addExpense = createAsyncThunk(
     return response.data;
   }
 );
+export const addIncome = createAsyncThunk(
+  "operations/addIncome",
+  async (values, { getState }) => {
+    const email = getState().auth.email;
+    const response = await authApi.addIncome(email, values);
+    return response.data;
+  }
+);
 
 export const OperationsSlice = createSlice({
   name: "operations",
@@ -49,6 +57,9 @@ export const OperationsSlice = createSlice({
     });
     builder.addCase(fetchExpenses.rejected, (state) => {
       state.status = "rejected";
+    });
+    builder.addCase(addIncome.fulfilled, (state, action) => {
+      state.incomes = [...state.incomes, action.payload];
     });
   },
 });
