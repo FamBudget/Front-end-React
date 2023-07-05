@@ -5,14 +5,45 @@ import "./Diagram.scss";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const Diagram = ({ expenses }) => {
+export const Diagram = ({ expenses, currency }) => {
   console.log(expenses);
   let res = Object.fromEntries(expenses.map((item) => [item.category.name, 0]));
   expenses.forEach((item) => {
     res[item.category.name] += item.amount;
   });
+  console.log(currency);
+
+  const textCenter = {
+    id: "textCenter",
+    beforeDatasetDraw(chart) {
+      const { ctx, data } = chart;
+
+      const xCoor = chart.getDatasetMeta(0).data[0]?.x;
+      const yCoor = chart.getDatasetMeta(0).data[0]?.y;
+      ctx.save();
+      ctx.font = "bolder 36px Gilroy ";
+      ctx.fillStyle = "rgba(255, 58, 58, 1)";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillText(
+        `- ${data.datasets[0].data.reduce(
+          (acc, el) => acc + el,
+          0
+        )} ${currency}`,
+        xCoor,
+        yCoor
+      );
+
+      ctx.font = "bolder 20px Gilroy ";
+      ctx.fontStyle = "uppercase";
+      ctx.fillStyle = "rgba(144, 144, 144, 1)";
+      ctx.fillText(`за эту неделю`, xCoor, yCoor + 40);
+    },
+  };
 
   const options = {
+    maintainAspectRatio: false,
+    cutout: 120,
     plugins: {
       legend: {
         position: "bottom",
@@ -24,7 +55,6 @@ export const Diagram = ({ expenses }) => {
           padding: 24,
           boxWidth: 38,
           boxHeight: 12,
-          radius: 0,
           font: {
             size: 16,
             lineHeight: 1.375,
@@ -46,10 +76,26 @@ export const Diagram = ({ expenses }) => {
           "rgba(93, 136, 248, 1)",
           "rgba(248, 214, 93, 1)",
           "rgba(152, 93, 248, 1)",
+          "rgba(86, 153, 144, 1)",
+          "rgba(130, 43, 102, 1)",
+          "rgba(170, 63, 57, 1)",
+          "rgba(113, 113, 113, 1)",
+          "rgba(196, 122, 90, 1)",
+          "rgba(233, 183, 56, 1)",
+          "rgba(23, 84, 174, 1)",
+          "rgba(122, 221, 24, 1)",
+          "rgba(0, 17, 105, 1)",
+          "rgba(229, 0, 55, 1)",
+          "rgba(198, 138, 22, 1)",
+          "rgba(245, 170, 43, 1)",
         ],
       },
     ],
   };
 
-  return <Doughnut width={500} height={300} data={data} options={options} />;
+  return (
+    <div className="chartBox">
+      <Doughnut plugins={[textCenter]} data={data} options={options} />
+    </div>
+  );
 };

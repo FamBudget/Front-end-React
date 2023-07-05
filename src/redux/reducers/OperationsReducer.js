@@ -10,10 +10,10 @@ const initialState = {
 
 export const fetchExpenses = createAsyncThunk(
   "operations/fetchExpenses",
-  async (_, { getState }) => {
+  async (query, { getState }) => {
     const email = getState().auth.email;
     if (email != null) {
-      const response = await authApi.getExpenses(email);
+      const response = await authApi.getExpenses(email, query);
       return response.data;
     }
   }

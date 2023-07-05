@@ -27,6 +27,34 @@
     color: $darkColor;
   }
 }
+.titleBlock {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & h4 {
+    color: $darkColor;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+  }
+  & select {
+    margin: 0;
+    width: 174px;
+    height: 54px;
+    border: 1px solid #d0d0d0;
+    border-radius: 10px;
+    background-color: transparent;
+    transition: all 200ms;
+  }
+}
+.popupSort {
+  position: absolute;
+  right: 0;
+  top: 100px;
+  border: 1px solid #d0d0d0;
+  border-radius: 10px;
+}
 .title {
   display: flex;
   align-items: center;
@@ -73,4 +101,11 @@ label {
   &::placeholder {
     color: $lightGrayColor;
   }
+}
+.devideLine {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  width: 100%;
+  background-color: $textRed;
+  height: 1px;
 }
