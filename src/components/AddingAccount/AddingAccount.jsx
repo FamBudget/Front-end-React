@@ -13,6 +13,7 @@ export function subtractHours(date) {
     date.setHours(date.getHours() + hours);
     return formatDate(date);
 }
+export const newDate = new Date()
 
 const arrayIcon = [0, 1, 2, 3, 4, 5]
 export const AddingAccount = ({setOpen}) => {
@@ -20,7 +21,6 @@ export const AddingAccount = ({setOpen}) => {
     const dispatch = useDispatch()
 
     const currency = useSelector(state => state.accounts?.data[0]?.currency)
-    var newDate = new Date()
 
     const dispatchData = (values) => {
         const changedValues = {...values, createdOn: subtractHours(values.createdOn)}

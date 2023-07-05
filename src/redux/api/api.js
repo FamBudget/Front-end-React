@@ -80,6 +80,18 @@ export const authApi = {
       id,
     });
   },
+  addIncome(
+      email,
+      { accountId, amount, categoryId, createdOn, description }
+  ) {
+    return apiInstance.post(`operations/income?email=${email}`, {
+      accountId,
+      amount,
+      categoryId,
+      createdOn,
+      description
+    });
+  },
   getExpenses(email, { endDate, startDate, sort, sortDesc }) {
     const formatEndDate = formatDate(endDate);
     const formatStartDate = formatDate(startDate);
@@ -93,10 +105,9 @@ export const authApi = {
   getIncomeCategories(email) {
     return apiInstance.get(`/categories/income?email=${email}`);
   },
-  addIncomeCategories(email, { iconNumber, name }) {
+  addIncomeCategories(email, {iconNumber, name}) {
     return apiInstance.post(`/categories/income?email=${email}`, {
-      iconNumber,
-      name,
+      iconNumber, name
     });
   },
 };

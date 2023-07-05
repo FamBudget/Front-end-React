@@ -27,48 +27,53 @@
 }
 
 
-@media (max-width: $mediumBreakpoints) {
+@media (max-width: $maxBreakpoints) {
   .header {
-    margin: 0;
-    padding: 24px 32px;
-    & svg {
-      display: block;
-      height: 24px;
-      width: 36px;
-      cursor: pointer;
+    margin-left: 267px;
+  }
+  @media (max-width: $mediumBreakpoints) {
+    .header {
+      margin: 0;
+      padding: 24px 32px;
+      & svg {
+        display: block;
+        height: 24px;
+        width: 36px;
+        cursor: pointer;
+      }
+      & button {
+        display: none;
+      }
     }
-    & button {
+    .title {
       display: none;
     }
+    .logo {
+      display: block;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .subHeader {
+      display: block;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 42px;
+      padding: 24px 32px;
+    }
   }
-  .title {
-    display: none;
-  }
-  .logo {
-    display: block;
-    font-size: 24px;
-    font-weight: 700;
-  }
-  .subHeader {
-    display: block;
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 42px;
-    padding: 24px 32px;
-  }
-}
-@media (max-width: $minBreakpoints) {
+  @media (max-width: $minBreakpoints) {
 
-  .header {
-    padding: 20px;
-  }
-  .logo {
-    font-size: 20px;
-  }
-  .subHeader {
-    font-size: 24px;
-    line-height: 31px;
-    padding: 24px 20px;
+    .header {
+      padding: 20px;
+    }
+    .logo {
+      font-size: 20px;
+    }
+    .subHeader {
+      font-size: 24px;
+      line-height: 31px;
+      padding: 24px 20px;
 
+    }
   }
 }
