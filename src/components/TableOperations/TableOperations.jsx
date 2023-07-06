@@ -5,28 +5,22 @@ import {ArrowDown} from "../../icons";
 const sortList = [
     {
         id: 1,
-        title: "Откуда",
-        sortName: "ACCOUNT_FROM"
+        title: "Дата",
+        sortName: "DATE"
     },
     {
         id: 2,
-        title: "Куда",
-        sortName: "ACCOUNT_TO"
-    },
-    {
-        id: 3,
         title: "Сумма",
         sortName: "AMOUNT"
     },
     {
-        id: 4,
-        title: "Дата",
-        sortName: "DATE"
+        id: 3,
+        title: "Счет",
+        sortName: "ACCOUNT"
     },
 ]
 
 export const TableOperations = ({getData, data, query, setQuery}) => {
-console.log(data)
 
     const sorts = (sortName) => {
 
@@ -64,6 +58,7 @@ console.log(data)
     return <div className={styles.moving}>
         <div className={styles.tableContainer}>
             <div className={styles.rowHeader}>
+                <div className={styles.itemHeader}>Категория</div>
                 {sortList.map(t => <div key={t.id} className={styles.itemHeader}
                                         onClick={() => sorts(t.sortName)}>{t.title} <ArrowDown
                     className={styles.arrow}/>

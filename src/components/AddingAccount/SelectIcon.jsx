@@ -25,7 +25,7 @@ export const SelectIcon = ({iconNumber, arrayIcon, title}) => {
     return <div>
 
         <svg onClick={() => handleOpen()}>
-            <use href={`#${title}${iconNumber}`}/>
+            <use href={title ? `#${title}${iconNumber}` : `#${iconNumber}`}/>
         </svg>
         <Modal
             open={open}
@@ -37,7 +37,7 @@ export const SelectIcon = ({iconNumber, arrayIcon, title}) => {
                 <div className={styles.icons}>{arrayIcon.map(t => <svg key={t}
                                                                    className={numberIcon === t ? styles.activeIcon : ''}
                                                                    onClick={() => setNumberIcon(t)}>
-                    <use href={`#${title}${t}`}/>
+                    <use href={title ? `#${title}${t}` : `#${t}`}/>
                 </svg>)}</div>
                 <div className={styles.buttons}>
                     <div className={styles.WrapBtn} onClick={() => setOpen(false)}><Button

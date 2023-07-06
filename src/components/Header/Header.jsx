@@ -20,6 +20,9 @@ export const Header = ({handleOpen}) => {
         case "/income" :
             title = "Доходы"
             break;
+        case "/expense" :
+            title = "Расходы"
+            break;
 
     }
 

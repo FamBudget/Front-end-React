@@ -81,6 +81,7 @@
 }
 
 .selectContainer {
+  max-width: 704px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -104,7 +105,7 @@
 .icons {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-between;
 
   & svg {

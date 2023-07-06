@@ -112,6 +112,11 @@ export const authApi = {
   getIncomeCategories(email) {
     return apiInstance.get(`/categories/income?email=${email}`);
   },
+  addExpenseCategories(email, {iconNumber, name}) {
+    return apiInstance.post(`/categories/expense?email=${email}`, {
+      iconNumber, name
+    });
+  },
   addIncomeCategories(email, {iconNumber, name}) {
     return apiInstance.post(`/categories/income?email=${email}`, {
       iconNumber, name

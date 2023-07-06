@@ -13,6 +13,7 @@ export const IncomeCategories = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchIncomeCategories())
+        dispatch(fetchAccounts())
     }, [])
     const addIncomeCategoriesCallback = (values) => {
         dispatch(addIncomeCategories(values))
@@ -20,9 +21,6 @@ export const IncomeCategories = () => {
     const addIncomeCallback = (values) => {
         dispatch(addIncome(values))
     }
-    useEffect(() => {
-        dispatch(fetchAccounts())
-    }, [])
     const dataAccounts = useSelector(state => state.accounts.data)
     const dataCategories = useSelector(state => state?.categories?.incomeCategories)
     return <div className={styles.wrapper}>

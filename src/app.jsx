@@ -6,6 +6,7 @@ import {LayoutMain} from "./pages/Layouts/LayoutMain";
 import {Operations} from "./pages/Operations";
 import {Accounts} from "./pages/Accounts";
 import {Income} from "./pages/Income/Income";
+import {Expense} from "./pages/Expense/Expense";
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
                     <Route path="/operations" element={<Operations/>}/>
                     <Route path="/accounts" element={<Accounts/>}/>
                     <Route path="/income" element={<Income/>}/>
+                    <Route path="/expense" element={<Expense/>}/>
                 </Route>
             </Routes>
         </>

@@ -27,13 +27,20 @@ export const fetchIncomeCategories = createAsyncThunk(
     }
   }
 );
+export const addExpenseCategories = createAsyncThunk(
+  "categories/addExpenseCategories",
+  async (values, { getState }) => {
+    const email = getState().auth.email;
+      const response = await authApi.addExpenseCategories(email, values);
+      return response.data;
+  }
+);
 export const addIncomeCategories = createAsyncThunk(
   "categories/addIncomeCategories",
   async (values, { getState }) => {
     const email = getState().auth.email;
       const response = await authApi.addIncomeCategories(email, values);
       return response.data;
-
   }
 );
 
@@ -55,6 +62,10 @@ export const CategoriesSlice = createSlice({
     builder.addCase(fetchIncomeCategories.fulfilled, (state, action) => {
       state.status = "resolved";
       state.incomeCategories = action.payload;
+    });
+    builder.addCase(addExpenseCategories.fulfilled, (state, action) => {
+      state.status = "resolved";
+      state.expenseCategories = [...state.expenseCategories, action.payload]
     });
     builder.addCase(addIncomeCategories.fulfilled, (state, action) => {
       state.status = "resolved";

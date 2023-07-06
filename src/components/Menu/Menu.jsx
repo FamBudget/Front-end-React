@@ -31,7 +31,7 @@ const menuData = [
         iconActive: "#revenuesActive"
     }, {
         id: 5,
-        path: "/",
+        path: "/expense",
         title: "Расходы",
         icon: "#expenses",
         iconActive: "#expensesActive"
