@@ -47,6 +47,11 @@
   & .bodyTable {
     overflow: auto;
     max-height: calc(100vh - 300px);
+    svg {
+      width: 36px;
+      height: 36px;
+      margin-right: 12px;
+    }
   }
 
   & .row {

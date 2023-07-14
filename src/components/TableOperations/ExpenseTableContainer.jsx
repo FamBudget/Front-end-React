@@ -24,7 +24,7 @@ export const ExpenseTableContainer = () => {
 
     return <div className={styles.moving}>
         <FiltersOperations query={query} setQuery={setQuery} getData={getData}/>
-        <TableOperations getData={getData} data={dataIncomes} query={query} setQuery={setQuery}/>
+        <TableOperations getData={getData} data={dataIncomes} query={query} setQuery={setQuery} title={'expense'}/>
     </div>
 
 

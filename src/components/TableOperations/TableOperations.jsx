@@ -20,7 +20,7 @@ const sortList = [
     },
 ]
 
-export const TableOperations = ({getData, data, query, setQuery}) => {
+export const TableOperations = ({getData, data, query, setQuery, title}) => {
 
     const sorts = (sortName) => {
 
@@ -55,6 +55,7 @@ export const TableOperations = ({getData, data, query, setQuery}) => {
             iconCurrency = "₸"
             break
     }
+    console.log(data)
     return <div className={styles.moving}>
         <div className={styles.tableContainer}>
             <div className={styles.rowHeader}>
@@ -66,9 +67,13 @@ export const TableOperations = ({getData, data, query, setQuery}) => {
             </div>
             <div className={styles.bodyTable}>
                 {Array.isArray(data) && data?.map(t => <div key={t.id} className={styles.row}>
-                    <div className={styles.item}>{t.category.name}</div>
+                    <div className={styles.item}>
+                        <svg>
+                            <use href={`#${title}${t.category.iconNumber}`}/>
+                        </svg>
+                        {t.category.name}</div>
                     <div className={styles.item}>{t.createdOn.split(' ')[0]}</div>
-                    <div className={styles.item}>{t.amount}{iconCurrency}</div>
+                    <div style={title === 'expense' ? {color: '#FF3A3A'} : {color: '#1B9B85'}} className={styles.item}>{title === 'expense' ? '-' : '+'}{t.amount}{iconCurrency}</div>
                     <div className={styles.item}>{t.account.name}</div>
                 </div>)}
             </div>
