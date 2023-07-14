@@ -1,0 +1,33 @@
+@import "src/styles/variables";
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 340px;
+    padding-top: 34px;
+    padding-right: 32px;
+    background: #F9FFFE;
+
+}
+
+@media (max-width: $maxBreakpoints) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        margin-left: 267px;
+
+    }
+}
+
+@media (max-width: $mediumBreakpoints) {
+    .container {
+        margin-left: 0;
+        padding: 20px 32px;
+    }
+}
+@media (max-width: $minBreakpoints) {
+    .container {
+        margin-left: 0;
+        padding: 0px;
+    }
+}

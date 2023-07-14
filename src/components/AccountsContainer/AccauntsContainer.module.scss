@@ -1,0 +1,201 @@
+@import "src/styles/variables";
+
+.container {
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.accounts {
+  width: 562px;
+  background: #ffffff;
+  box-shadow: -2px -2px 16px rgba(39, 222, 191, 0.06),
+    2px 2px 16px rgba(39, 222, 191, 0.06);
+  border-radius: 20px;
+  padding: 24px;
+
+  & .accountsHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    & h2 {
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+}
+
+.accountsButton {
+  padding: 12px 24px;
+  gap: 12px;
+  width: 189px;
+  height: 46px;
+  background: $greenColor;
+  white-space: nowrap;
+  box-shadow: inset -5px -5px 32px rgba(255, 255, 255, 0.16),
+    inset 5px 5px 32px rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  text-align: center;
+
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:active {
+    border: none;
+  }
+}
+
+.tableList {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  max-height: calc(100vh - 250px);
+  gap: 32px;
+}
+
+.AccountsItem {
+  display: flex;
+  flex-direction: row;
+  padding: 16px 32px;
+  background:  #F9FFFE;
+  height: 68px;
+  justify-content: space-between;
+  align-items: center;
+
+  & svg {
+    width: 36px;
+    height: 36px;
+  }
+  .titleAccounts {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+  }
+  & span {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+.itemLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+@media (max-width: $maxBreakpoints) {
+  .wrapper {
+    gap: 32px;
+  }
+
+  .accounts {
+    width: 45vw;
+    padding: 20px;
+
+    & .accountsHeader {
+      & h2 {
+        font-size: 20px;
+        line-height: 27px;
+      }
+    }
+  }
+  .tableList {
+    gap: 24px;
+  }
+
+  .AccountsItem {
+    display: flex;
+    flex-direction: row;
+    padding: 12px 20px;
+    height: 68px;
+    justify-content: space-between;
+    align-items: center;
+
+    .titleAccounts {
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  .itemLeft {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+}
+
+@media (max-width: $mediumBreakpoints) {
+  .wrapper {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .accounts {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .tableList {
+    max-height: 50vh;
+    gap: 24px;
+  }
+
+  .AccountsItem {
+    padding: 12px 20px;
+    height: 60px;
+  }
+}
+@media (max-width: $minBreakpoints) {
+  .wrapper {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .accounts {
+    width: 100%;
+    padding: 20px;
+
+    & .accountsHeader {
+      flex-direction: column;
+      & h2 {
+        font-size: 20px;
+      }
+    }
+  }
+  .accountsButton {
+    padding: 12px 24px;
+    width: 100%;
+    height: 48px;
+  }
+  .tableList {
+    margin-top: 20px;
+    gap: 20px;
+  }
+  .AccountsItem {
+    padding: 12px 24px;
+    height: 52px;
+
+    & svg {
+      width: 28px;
+      height: 28px;
+    }
+    .titleAccounts {
+      font-size: 16px;
+      line-height: 22px;
+    }
+    & span {
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}
