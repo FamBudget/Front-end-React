@@ -3,7 +3,7 @@ import styles from './TableOperations.module.scss'
 import {useDispatch, useSelector} from "react-redux";
 import {FiltersOperations, subtractMonths} from "../FIlterOperations/FiltersOperations";
 import {TableOperations} from "./TableOperations";
-import {fetchExpenses} from "../../redux/reducers/OperationsReducer";
+import {addExpense, fetchExpenses} from "../../redux/reducers/OperationsReducer";
 
 let startDate = subtractMonths(new Date())
 export const ExpenseTableContainer = () => {
@@ -20,11 +20,14 @@ export const ExpenseTableContainer = () => {
     const getData = (values) => {
         dispatch(fetchExpenses(values))
     }
-    const dataIncomes = useSelector(state => state?.operations?.expenses)
+    const addExpenseCallback = (values) => {
+        dispatch(addExpense(values))
+    }
+    const dataExpenses = useSelector(state => state?.operations?.expenses)
 
     return <div className={styles.moving}>
         <FiltersOperations query={query} setQuery={setQuery} getData={getData}/>
-        <TableOperations getData={getData} data={dataIncomes} query={query} setQuery={setQuery} title={'expense'}/>
+        <TableOperations addOperation={addExpenseCallback} getData={getData} data={dataExpenses} query={query} setQuery={setQuery} title={'expense'}/>
     </div>
 
 

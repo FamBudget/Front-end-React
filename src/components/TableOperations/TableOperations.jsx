@@ -1,6 +1,7 @@
 import React from "react";
 import styles from './TableOperations.module.scss'
 import {ArrowDown} from "../../icons";
+import {CopyOperation} from "../CopyOperation/CopyOperation";
 
 const sortList = [
     {
@@ -20,7 +21,7 @@ const sortList = [
     },
 ]
 
-export const TableOperations = ({getData, data, query, setQuery, title}) => {
+export const TableOperations = ({getData, data, query, setQuery, title, addOperation}) => {
 
     const sorts = (sortName) => {
 
@@ -68,13 +69,17 @@ export const TableOperations = ({getData, data, query, setQuery, title}) => {
             <div className={styles.bodyTable}>
                 {Array.isArray(data) && data?.map(t => <div key={t.id} className={styles.row}>
                     <div className={styles.item}>
-                        <svg>
+                        <svg className={styles.iconCategory}>
                             <use href={`#${title}${t.category.iconNumber}`}/>
                         </svg>
                         {t.category.name}</div>
                     <div className={styles.item}>{t.createdOn.split(' ')[0]}</div>
                     <div style={title === 'expense' ? {color: '#FF3A3A'} : {color: '#1B9B85'}} className={styles.item}>{title === 'expense' ? '-' : '+'}{t.amount}{iconCurrency}</div>
-                    <div className={styles.item}>{t.account.name}</div>
+                    <div className={styles.itemLast}>{t.account.name}
+                        <div>
+                            <CopyOperation title={title} addOperation={addOperation} data={t}/>
+                        </div>
+                    </div>
                 </div>)}
             </div>
         </div>

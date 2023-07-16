@@ -15,18 +15,18 @@ export const ExpenseCategories = () => {
         dispatch(fetchExpenseCategories())
         dispatch(fetchAccounts())
     }, [])
-    const addIncomeCategoriesCallback = (values) => {
+    const addExpensesCategoriesCallback = (values) => {
         dispatch(addExpenseCategories(values))
     }
-    const addIncomeCallback = (values) => {
+    const addExpenseCallback = (values) => {
         dispatch(addExpense(values))
     }
 
     const dataAccounts = useSelector(state => state.accounts.data)
     const dataCategories = useSelector(state => state?.categories?.expenseCategories)
     return <div className={styles.wrapper}>
-        <AddingOperation title={'Добавить расход'} dataCategories={dataCategories} dataAccounts={dataAccounts} addOperations={addIncomeCallback}/>
-        <Categories addCategories={addIncomeCategoriesCallback} dataCategories={dataCategories} title={"expense"} arrayIcon={arrayIconExpense}/>
+        <AddingOperation title={'Добавить расход'} dataCategories={dataCategories} dataAccounts={dataAccounts} addOperations={addExpenseCallback}/>
+        <Categories addCategories={addExpensesCategoriesCallback} dataCategories={dataCategories} title={"expense"} arrayIcon={arrayIconExpense}/>
 
 
     </div>
