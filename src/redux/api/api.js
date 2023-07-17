@@ -92,6 +92,30 @@ export const authApi = {
       description
     });
   },
+  updateIncome(
+      email,
+      { accountId, amount, categoryId, createdOn, description }
+  ) {
+    return apiInstance.put(`operations/income?email=${email}`, {
+      accountId,
+      amount,
+      categoryId,
+      createdOn,
+      description
+    });
+  },
+  updateExpense(
+      email,
+      { accountId, amount, categoryId, createdOn, description }
+  ) {
+    return apiInstance.put(`operations/expense?email=${email}`, {
+      accountId,
+      amount,
+      categoryId,
+      createdOn,
+      description
+    });
+  },
   getExpenses(email, { endDate, startDate, sort, sortDesc }) {
     const formatEndDate = formatDate(endDate);
     const formatStartDate = formatDate(startDate);

@@ -34,9 +34,9 @@ export const CopyOperation = ({title, data,  addOperation}) => {
     console.log(data)
     return (
         <>
-            <svg onClick={handleOpen} className={styles.icon}>
-                <use href={`#copy`}/>
-            </svg>
+           <div className={styles.icon}><svg onClick={handleOpen}>
+               <use href={`#copy`}/>
+           </svg></div>
 
             <Modal
                 open={open}

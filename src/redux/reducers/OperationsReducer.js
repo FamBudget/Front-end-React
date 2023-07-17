@@ -45,6 +45,22 @@ export const addIncome = createAsyncThunk(
         return response.data;
     }
 );
+export const updateIncome = createAsyncThunk(
+    "operations/updateIncome",
+    async (values, {getState}) => {
+        const email = getState().auth.email;
+        const response = await authApi.updateIncome(email, values);
+        return response.data;
+    }
+);
+export const updateExpense = createAsyncThunk(
+    "operations/updateExpense",
+    async (values, {getState}) => {
+        const email = getState().auth.email;
+        const response = await authApi.updateExpense(email, values);
+        return response.data;
+    }
+);
 
 export const OperationsSlice = createSlice({
     name: "operations",
@@ -62,6 +78,7 @@ export const OperationsSlice = createSlice({
             state.status = "pending";
         });
         builder.addCase(fetchExpenses.fulfilled, (state, action) => {
+            console.log(action.payload)
             state.status = "resolved";
             state.expenses = action.payload;
         });
@@ -74,6 +91,10 @@ export const OperationsSlice = createSlice({
         builder.addCase(fetchIncomes.fulfilled, (state, action) => {
             state.status = "resolved";
             state.incomes = action.payload;
+        });
+        builder.addCase(updateExpense.fulfilled, (state, action) => {
+            state.status = "resolved";
+            state.expense = [...state.incomes, action.payload];
         });
     },
 });
