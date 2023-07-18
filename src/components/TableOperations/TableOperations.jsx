@@ -2,6 +2,7 @@ import React from "react";
 import styles from './TableOperations.module.scss'
 import {ArrowDown} from "../../icons";
 import {CopyOperation} from "../CopyOperation/CopyOperation";
+import {ChangeOperation} from "../ChangeOperation/ChangeOperation";
 
 const sortList = [
     {
@@ -21,7 +22,7 @@ const sortList = [
     },
 ]
 
-export const TableOperations = ({getData, data, query, setQuery, title, addOperation}) => {
+export const TableOperations = ({getData, data, query, setQuery, title, addOperation, changeOperation}) => {
 
     const sorts = (sortName) => {
 
@@ -76,8 +77,9 @@ export const TableOperations = ({getData, data, query, setQuery, title, addOpera
                     <div className={styles.item}>{t.createdOn.split(' ')[0]}</div>
                     <div style={title === 'expense' ? {color: '#FF3A3A'} : {color: '#1B9B85'}} className={styles.item}>{title === 'expense' ? '-' : '+'}{t.amount}{iconCurrency}</div>
                     <div className={styles.itemLast}>{t.account.name}
-                        <div>
+                        <div className={styles.modals}>
                             <CopyOperation title={title} addOperation={addOperation} data={t}/>
+                            <ChangeOperation title={title} changeOperation={changeOperation} data={t}/>
                         </div>
                     </div>
                 </div>)}

@@ -77,6 +77,11 @@
       align-items: center;
       justify-content: space-between;
     }
+    & .modals {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
   }
 }
 

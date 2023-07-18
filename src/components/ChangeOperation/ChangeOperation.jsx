@@ -1,6 +1,6 @@
 import React, {useRef, useState} from "react";
 import {Field, Form, Formik} from "formik";
-import styles from "./CopyOperation.module.scss";
+import styles from "./ChangeOperation.module.scss";
 import {Modal} from "@mui/material";
 import {Button} from "../Button";
 import {DatePickerField} from "../DatePickerFields";
@@ -8,7 +8,7 @@ import {subtractHours} from "../AddingAccount";
 import {useSelector} from "react-redux";
 
 
-export const CopyOperation = ({title, data,  addOperation}) => {
+export const ChangeOperation = ({title, data,  changeOperation}) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
         setOpen(true);
@@ -18,7 +18,7 @@ export const CopyOperation = ({title, data,  addOperation}) => {
     };
     const forgetPasswordRef = useRef();
     const dispatchData = (values) => {
-        addOperation({...values, createdOn: subtractHours(values.createdOn)})
+        changeOperation({...values, createdOn: subtractHours(values.createdOn)})
 
     }
     let dataAccounts;
@@ -31,11 +31,10 @@ export const CopyOperation = ({title, data,  addOperation}) => {
         dataCategories = useSelector(state => state?.categories?.incomeCategories)
 
     }
-    console.log(data)
     return (
         <>
            <div className={styles.icon}><svg onClick={handleOpen}>
-               <use href={`#copy`}/>
+               <use href={`#edit`}/>
            </svg></div>
 
             <Modal
@@ -53,7 +52,7 @@ export const CopyOperation = ({title, data,  addOperation}) => {
                                 categoryId: data.category.id,
                                 createdOn: new Date(data.createdOn),
                                 description: data.description,
-                                id: 1
+                                id: data.id
                             }}
                             onSubmit={(values, {setSubmitting}) => {
                                 dispatchData(values)
@@ -65,7 +64,7 @@ export const CopyOperation = ({title, data,  addOperation}) => {
                             {({isSubmitting}) => (
                                 <Form ref={forgetPasswordRef} className={styles.form}>
                                     <div className={styles.header}>
-                                        <h2>{title === 'expense' ? 'Добавить расход' : "Добавить доход"}</h2>
+                                        <h2>{title === 'expense' ? 'Редактировать расход' : "Редактировать доход"}</h2>
                                     </div>
                                     <label>Сумма</label>
                                     <div className={styles.row}><Field

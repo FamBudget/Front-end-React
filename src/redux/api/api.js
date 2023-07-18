@@ -94,26 +94,28 @@ export const authApi = {
   },
   updateIncome(
       email,
-      { accountId, amount, categoryId, createdOn, description }
+      { accountId, amount, categoryId, createdOn, description, id }
   ) {
     return apiInstance.put(`operations/income?email=${email}`, {
       accountId,
       amount,
       categoryId,
       createdOn,
-      description
+      description,
+      id
     });
   },
   updateExpense(
       email,
-      { accountId, amount, categoryId, createdOn, description }
+      { accountId, amount, categoryId, createdOn, description, id }
   ) {
     return apiInstance.put(`operations/expense?email=${email}`, {
       accountId,
       amount,
       categoryId,
       createdOn,
-      description
+      description,
+      id
     });
   },
   getExpenses(email, { endDate, startDate, sort, sortDesc }) {

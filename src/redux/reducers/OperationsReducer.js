@@ -1,4 +1,4 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, original} from "@reduxjs/toolkit";
 import {authApi} from "../api/api";
 
 const initialState = {
@@ -94,7 +94,13 @@ export const OperationsSlice = createSlice({
         });
         builder.addCase(updateExpense.fulfilled, (state, action) => {
             state.status = "resolved";
-            state.expense = [...state.incomes, action.payload];
+            let currentState = original(state)
+            state.expenses = currentState.expenses.map(t=> t.id ===action.payload.id ? t = action.payload : t)
+        });
+        builder.addCase(updateIncome.fulfilled, (state, action) => {
+            state.status = "resolved";
+            let currentState = original(state)
+            state.incomes = currentState.incomes.map(t=> t.id ===action.payload.id ? t = action.payload : t)
         });
     },
 });
