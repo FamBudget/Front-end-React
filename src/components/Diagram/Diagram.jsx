@@ -6,12 +6,10 @@ import "./Diagram.scss";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const Diagram = ({ expenses, currency }) => {
-  console.log(expenses);
   let res = Object.fromEntries(expenses.map((item) => [item.category.name, 0]));
   expenses.forEach((item) => {
     res[item.category.name] += item.amount;
   });
-  console.log(currency);
 
   const textCenter = {
     id: "textCenter",

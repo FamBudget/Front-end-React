@@ -4,7 +4,6 @@ import {AddingCategories} from "../AddingCategories/AddingCategories";
 
 
 export const Categories = ({dataCategories, arrayIcon, title, addCategories}) => {
-console.log(dataCategories)
     return <div className={styles.table}>
         <div className={styles.Header}>
             <h2>Категории</h2>

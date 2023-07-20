@@ -62,6 +62,26 @@ export const updateExpense = createAsyncThunk(
     }
 );
 
+export const deleteIncome = createAsyncThunk(
+    "operations/deleteIncome",
+    async (value, {getState}) => {
+        const email = getState().auth.email;
+        const response = await authApi.deleteIncome(email, value);
+        response.data.id = value
+        return response.data;
+    }
+);
+
+export const deleteExpense = createAsyncThunk(
+    "operations/deleteExpense",
+    async (value, {getState}) => {
+        const email = getState().auth.email;
+        const response = await authApi.deleteExpense(email, value);
+        response.data.id = value
+        return response.data;
+    }
+);
+
 export const OperationsSlice = createSlice({
     name: "operations",
     initialState,
@@ -69,6 +89,14 @@ export const OperationsSlice = createSlice({
         setExpenses(state, action) {
             state.expenses = action.payload;
         },
+        deleteIncomes(state, action) {
+            let currentState = original(state)
+            state.incomes = currentState.incomes.filter(t=> t.id !==action.payload)
+        } ,
+        deleteExpenses(state, action) {
+            let currentState = original(state)
+            state.expenses = currentState.expenses.filter(t=> t.id !==action.payload)
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(addExpense.fulfilled, (state, action) => {
@@ -102,9 +130,10 @@ export const OperationsSlice = createSlice({
             let currentState = original(state)
             state.incomes = currentState.incomes.map(t=> t.id ===action.payload.id ? t = action.payload : t)
         });
+
     },
 });
 
-export const {setExpenses} = OperationsSlice.actions;
+export const {setExpenses, deleteIncomes, deleteExpenses} = OperationsSlice.actions;
 
 export default OperationsSlice.reducer;

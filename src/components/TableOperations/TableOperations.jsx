@@ -3,6 +3,7 @@ import styles from './TableOperations.module.scss'
 import {ArrowDown} from "../../icons";
 import {CopyOperation} from "../CopyOperation/CopyOperation";
 import {ChangeOperation} from "../ChangeOperation/ChangeOperation";
+import {DeleteOperation} from "../DeleteOperation/DeleteOperation";
 
 const sortList = [
     {
@@ -22,7 +23,7 @@ const sortList = [
     },
 ]
 
-export const TableOperations = ({getData, data, query, setQuery, title, addOperation, changeOperation}) => {
+export const TableOperations = ({getData, data, query, setQuery, title, addOperation, changeOperation, deleteOperation}) => {
 
     const sorts = (sortName) => {
 
@@ -57,7 +58,6 @@ export const TableOperations = ({getData, data, query, setQuery, title, addOpera
             iconCurrency = "₸"
             break
     }
-    console.log(data)
     return <div className={styles.moving}>
         <div className={styles.tableContainer}>
             <div className={styles.rowHeader}>
@@ -80,6 +80,7 @@ export const TableOperations = ({getData, data, query, setQuery, title, addOpera
                         <div className={styles.modals}>
                             <CopyOperation title={title} addOperation={addOperation} data={t}/>
                             <ChangeOperation title={title} changeOperation={changeOperation} data={t}/>
+                            <DeleteOperation deleteOperation={deleteOperation} data={t}/>
                         </div>
                     </div>
                 </div>)}

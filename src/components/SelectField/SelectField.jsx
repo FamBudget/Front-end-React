@@ -9,7 +9,6 @@ export const SelectField = ({
   accounts,
   categories,
 }) => {
-  console.log(placeholder);
   return (
     <div>
       <label>{label}</label>

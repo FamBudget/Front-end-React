@@ -29,7 +29,7 @@ export const AddingCategories = ({arrayIcon, title, addCategories, dataCategorie
     }
     return (
         <>
-            <Button className={styles.categoriesButton} handleOpen={handleOpen} text={"Добавить категорию"}>
+            <Button className={styles.categoriesButton} onClick={handleOpen} text={"Добавить категорию"}>
                 <svg>
                     <use href="#PlusGreen"/>
                 </svg>

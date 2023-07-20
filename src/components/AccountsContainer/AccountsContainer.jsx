@@ -28,7 +28,7 @@ export const AccountsContainer = () => {
             <div className={styles.accounts}>
                 <div className={styles.accountsHeader}>
                     <h2>Счета</h2>
-                    <Button className={styles.accountsButton} handleOpen={handleOpen} text={"Добавить счёт"}>
+                    <Button className={styles.accountsButton} onClick={handleOpen} text={"Добавить счёт"}>
                         <svg>
                             <use href="#plus"/>
                         </svg>

@@ -14,7 +14,6 @@ export const apiInstance = axios.create({
 });
 apiInstance.interceptors.request.use(function (config) {
   const token = localStorage.getItem("token");
-
   config.headers.Authorization = token ? `Bearer ${token}` : "";
   return config;
 });
@@ -117,6 +116,16 @@ export const authApi = {
       description,
       id
     });
+  },
+  deleteIncome(email, value) {
+    return apiInstance.delete(
+        `/operations/income/${value}?email=${email}`
+    );
+  },
+  deleteExpense(email, value) {
+    return apiInstance.delete(
+        `/operations/expense/${value}?email=${email}`
+    );
   },
   getExpenses(email, { endDate, startDate, sort, sortDesc }) {
     const formatEndDate = formatDate(endDate);

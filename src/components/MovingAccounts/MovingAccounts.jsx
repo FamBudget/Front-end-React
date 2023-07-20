@@ -115,7 +115,6 @@ export const MovingAccounts = () => {
     </div>
   ));
   const dataMoving = useSelector((state) => state?.moving?.data);
-  console.log(dataMoving);
   let iconCurrency;
   switch (dataMoving[0] && dataMoving[0]?.accountFrom?.currency) {
     case "RUB":

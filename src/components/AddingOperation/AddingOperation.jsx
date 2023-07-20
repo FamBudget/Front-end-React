@@ -22,7 +22,7 @@ export const AddingOperation = ({title, dataCategories, dataAccounts, addOperati
     }
     return (
         <>
-            <Button className={styles.addingOperation} handleOpen={handleOpen}
+            <Button className={styles.addingOperation} onClick={handleOpen}
                     text={title === "Добавить доход" ? "Ввести доход" : "Ввести расход"}>
             </Button>
             <Modal

@@ -31,7 +31,6 @@ export const CopyOperation = ({title, data,  addOperation}) => {
         dataCategories = useSelector(state => state?.categories?.incomeCategories)
 
     }
-    console.log(data)
     return (
         <>
            <div className={styles.icon}><svg onClick={handleOpen}>

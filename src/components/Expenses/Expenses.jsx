@@ -76,7 +76,6 @@ export const Expenses = () => {
   }, []);
 
   const handleChange = (e) => {
-    console.log(e.target.value);
     setSelected(e.target.value);
     let date = new Date();
     let startDate;
