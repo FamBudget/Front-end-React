@@ -133,7 +133,15 @@
   }
 
 }
-
+@media (max-width: $maxBreakpoints) {
+  .icon {
+    cursor: pointer;
+    & svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
 
 @media (max-width: $mediumBreakpoints) {
 

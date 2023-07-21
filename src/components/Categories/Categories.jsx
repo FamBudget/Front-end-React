@@ -3,7 +3,8 @@ import styles from './Categories.module.scss'
 import {AddingCategories} from "../AddingCategories/AddingCategories";
 
 
-export const Categories = ({dataCategories, arrayIcon, title, addCategories}) => {
+export const Categories = ({dataCategories, arrayIcon, title, addCategories, amountTransactions, iconCurrency}) => {
+
     return <div className={styles.table}>
         <div className={styles.Header}>
             <h2>Категории</h2>
@@ -17,7 +18,7 @@ export const Categories = ({dataCategories, arrayIcon, title, addCategories}) =>
                         <use href={`#${title}${t.iconNumber}`}/>
                     </svg>
                     <span className={styles.title}>{t.name}</span></div>
-                <span>{t.amount} {t.currency} </span>
+                <span style={title === 'expense' ? {color: '#FF3A3A'} : {color: '#1B9B85'}} className={styles.amount}> {title === 'expense' ? '-' : '+'} {amountTransactions[t.id] || 0} {iconCurrency} </span>
             </div>)}
 
         </div>}

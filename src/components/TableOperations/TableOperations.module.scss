@@ -30,8 +30,8 @@
     & .itemHeader {
       display: flex;
       width: 25%;
-      font-weight: 600;
       font-size: 20px;
+      font-weight: 500;
       line-height: 28px;
       align-items: center;
       gap: 12px;
@@ -46,7 +46,7 @@
 
   & .bodyTable {
     overflow: auto;
-    max-height: calc(100vh - 300px);
+    max-height: calc(100vh - 330px);
     .iconCategory {
       width: 36px;
       height: 36px;
@@ -61,14 +61,14 @@
     flex-wrap: nowrap;
     border-top: 1px solid #D0D0D0;
     padding: 20px 0;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
 
     & .item {
       display: flex;
       width: 25%;
       align-items: center;
-      font-weight: 600;
-      font-size: 16px;
-      line-height: 22px;
     }
     & .itemLast {
       width: 25%;
@@ -156,11 +156,14 @@
 
     & .row {
       padding: 16px 0;
-
-      & .item {
-        font-size: 14px;
-        line-height: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      & .iconCategory {
+        height: 24px;
+        width: 24px;
       }
+
     }
   }
 
@@ -199,6 +202,8 @@
 
 @media (max-width: $minBreakpoints) {
   .moving {
+    padding-top: 24px;
+
     & .filters {
       flex-direction: column;
       gap: 20px;

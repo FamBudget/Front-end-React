@@ -24,9 +24,37 @@ export const ExpenseCategories = () => {
 
     const dataAccounts = useSelector(state => state.accounts.data)
     const dataCategories = useSelector(state => state?.categories?.expenseCategories)
+    const dataExpenses = useSelector(state => state?.operations?.expenses)
+
+    let iconCurrency;
+    switch (dataAccounts[0] && dataAccounts[0]?.currency) {
+        case ("RUB"):
+            iconCurrency = "₽"
+            break;
+        case ("USD"):
+            iconCurrency = "$"
+            break
+        case ("BYN"):
+            iconCurrency = "Br"
+            break
+        case ("EUR"):
+            iconCurrency = "€"
+            break
+        case ("KZT"):
+            iconCurrency = "₸"
+            break
+    }
+    let amountTransactions = []
+    for (let item of dataExpenses) {
+        amountTransactions[item.category.id] = amountTransactions[item.category.id] ? amountTransactions[item.category.id] + item.amount : item.amount
+    }
+
     return <div className={styles.wrapper}>
-        <AddingOperation title={'Добавить расход'} dataCategories={dataCategories} dataAccounts={dataAccounts} addOperations={addExpenseCallback}/>
-        <Categories addCategories={addExpensesCategoriesCallback} dataCategories={dataCategories} title={"expense"} arrayIcon={arrayIconExpense}/>
+        <AddingOperation title={'Добавить расход'} dataCategories={dataCategories} dataAccounts={dataAccounts}
+                         addOperations={addExpenseCallback}/>
+        <Categories iconCurrency={iconCurrency} amountTransactions={amountTransactions}
+                    addCategories={addExpensesCategoriesCallback} dataCategories={dataCategories} title={"expense"}
+                    arrayIcon={arrayIconExpense}/>
 
 
     </div>

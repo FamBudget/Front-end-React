@@ -21,9 +21,9 @@
     margin-bottom: 24px;
 
     & h2 {
-      font-weight: 600;
-      font-size: 24px;
-      line-height: 32px;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 28px;
       margin-bottom: 0;
     }
   }
@@ -79,10 +79,12 @@
     font-size: 20px;
     line-height: 28px;
   }
-  & span {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 22px;
+
+  & .amount {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 28px;
   }
 }
 
@@ -95,7 +97,7 @@
 @media (max-width: $maxBreakpoints) {
 
   .table {
-    width: 45vw;
+    width: 30vw;
     padding: 20px;
 
     & .Header {
@@ -116,10 +118,19 @@
     justify-content: space-between;
     align-items: center;
 
+    & svg {
+      width: 32px;
+      height: 32px;
+    }
     .title {
-      font-weight: 700;
       font-size: 16px;
-      line-height: 22px;
+      font-weight: 600;
+      line-height: 22px
+    }
+    & .amount {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22px
     }
   }
 

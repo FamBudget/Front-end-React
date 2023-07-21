@@ -188,6 +188,15 @@
 }
 
 @media (max-width: $minBreakpoints) {
+  .categoriesButton {
+    padding: 12px 24px;
+    gap: 12px;
+    height: 46px;
+    width: 100%;
+    & svg {
+      width: 20px;
+    }
+  }
   .wrapper {
     padding: 20px;
     width: 335px;

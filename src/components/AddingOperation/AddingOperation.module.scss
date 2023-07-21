@@ -122,10 +122,26 @@
   }
 
 }
+@media (max-width: $maxBreakpoints) {
+  .addingOperation {
+    width: 190px;
+    height: 52px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
 
+  }
+}
 
 @media (max-width: $mediumBreakpoints) {
+  .addingOperation {
+    width: 190px;
+    height: 52px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 28px;
 
+  }
   .wrapper {
     position: absolute;
     padding: 24px;
@@ -160,6 +176,9 @@
 }
 
 @media (max-width: $minBreakpoints) {
+.addingOperation {
+  width: 100%;
+}
   .wrapper {
     padding: 20px;
     width: 335px;
