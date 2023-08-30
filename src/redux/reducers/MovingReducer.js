@@ -10,6 +10,14 @@ export const fetchMoving = createAsyncThunk(
         return response.data
     }
 );
+export const addMoving = createAsyncThunk(
+    "Moving/addMoving",
+    async (values, {getState}) => {
+        const email = getState().auth.email
+        const response = await authApi.addMoving(email, values)
+        return response.data
+    }
+);
 
 
 const initialState = {
@@ -29,7 +37,11 @@ export const MovingSlice = createSlice({
         builder.addCase(fetchMoving.fulfilled, (state, action) => {
             state.data = action.payload
         });
+        builder.addCase(addMoving.fulfilled, (state, action) => {
+            state.data = [...state.data, action.payload];
+        });
     },
+
 });
 
 

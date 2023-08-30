@@ -23,14 +23,17 @@ export const Header = ({handleOpen}) => {
         case "/expense" :
             title = "Расходы"
             break;
+        case "/settings" :
+            title = "Настройки"
+            break;
 
     }
-
     const logout = () => {
         dispatch(setAuth(null));
         localStorage.clear()
         navigate('/login')
     };
+
 
     return <>
         <div className={styles.header}>

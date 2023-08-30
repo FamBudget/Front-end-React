@@ -42,6 +42,13 @@ const menuData = [
         icon: "#reports",
         iconActive: "#reportsActive"
     },
+    {
+        id: 7,
+        path: "/settings",
+        title: "Настройки",
+        icon: "#settings",
+        iconActive: "#settingsActive"
+    },
 ]
 
 export const Menu = ({handleClose}) => {

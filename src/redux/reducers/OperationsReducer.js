@@ -106,7 +106,6 @@ export const OperationsSlice = createSlice({
             state.status = "pending";
         });
         builder.addCase(fetchExpenses.fulfilled, (state, action) => {
-            console.log(action.payload)
             state.status = "resolved";
             state.expenses = action.payload;
         });

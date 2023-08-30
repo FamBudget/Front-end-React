@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import styles from './AccauntsContainer.module.scss'
-import {Button} from "../../components";
-import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
+import styles from './AccauntsSettings.module.scss'
+import {delAccount, deleteAccount, fetchAccounts} from "../../redux/reducers/AccountsReducer";
 import {Modal} from "@mui/material";
-import {AddingAccount} from "../../components/AddingAccount/AddingAccount";
-import {MovingAccounts} from "../../components/MovingAccounts/MovingAccounts";
+import {Button} from "../Button";
+import {AddingAccount} from "../AddingAccount";
+import {DeleteAccaunt} from "../DeleteAccount/DeleteAccaunt";
 
 
-export const AccountsContainer = () => {
+export const AccountsSettings = () => {
 
     const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
@@ -23,13 +23,14 @@ export const AccountsContainer = () => {
         dispatch(fetchAccounts())
     }, [])
 
-
+    const deleteAccountCallback = (value) => {
+        dispatch(deleteAccount(value)).then(() => dispatch(delAccount(value)))
+    }
     const AccountsData = useSelector(state => state.accounts.data)
     return <>
         <div className={styles.wrapper}>
             <div className={styles.accounts}>
                 <div className={styles.accountsHeader}>
-                    <h2>Счета</h2>
                     <Button className={styles.accountsButton} onClick={handleOpen} text={"Добавить счёт"}>
                         <svg>
                             <use href="#plus"/>
@@ -42,13 +43,13 @@ export const AccountsContainer = () => {
                             <svg>
                                 <use href={`#${t.iconNumber}`}/>
                             </svg>
-                            <span className={styles.titleAccounts}>{t.name}</span></div>
-                        <span>{t.amount} {t.currency} </span>
+                            <span className={styles.titleAccounts}>{t.name}</span>
+                        </div>
+                        <div><DeleteAccaunt data={t} deleteAccount={deleteAccountCallback}/></div>
                     </div>)}
 
                 </div>}
             </div>
-            <MovingAccounts/>
         </div>
         <Modal
             open={open}

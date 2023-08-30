@@ -64,7 +64,7 @@
     font-weight: 600;
     font-size: 32px;
     line-height: 42px;
-    color: $textRed;
+    color: $darkColor;
   }
 
   & select {
@@ -130,7 +130,7 @@ label {
   margin-top: 24px;
   margin-bottom: 24px;
   width: 100%;
-  background-color: $textRed;
+  background-color: $darkColor;
   height: 1px;
 }
 
@@ -172,7 +172,7 @@ label {
   }
 }
 .amount {
-  color: #FF3A3A;
+  color: $darkColor;
   font-size: 16px;
   font-weight: 600;
   line-height: 22px;

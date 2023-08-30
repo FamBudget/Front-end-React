@@ -2,19 +2,17 @@ import React, {useEffect, useState} from "react";
 import {Field, Formik} from "formik";
 import * as yup from "yup";
 
-import styles from "./Expenses.module.scss";
+import styles from "./Movings.module.scss";
 
 import {ExpensesArrow} from "../../icons";
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "../Button";
 import {DatePickerField} from "../DatePickerFields";
 import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
-import {addExpense, fetchExpenses,} from "../../redux/reducers/OperationsReducer";
-import {fetchExpenseCategories} from "../../redux/reducers/CategoriesReducer";
 import {subtractHours} from "../AddingAccount";
-import {Diagram} from "../Diagram";
 import {subtractMonths} from "../FIlterOperations/FiltersOperations";
 import {subtractDay, subtractWeek} from "../MovingAccounts";
+import {addMoving, fetchMoving} from "../../redux/reducers/MovingReducer";
 
 const FormSchema = yup.object().shape({
     amount: yup
@@ -24,14 +22,12 @@ const FormSchema = yup.object().shape({
 });
 
 
-export const Expenses = ({operations, setActive, active}) => {
+export const Movings = ({operations, setActive, active}) => {
     const currency = useSelector((state) => state.accounts?.data[0]?.currency);
     const accounts = useSelector((state) => state.accounts.data);
-    const operationsArray = useSelector((state) => state.operations.expenses);
-    const expenseCategories = useSelector(
-        (state) => state?.categories?.expenseCategories
-    );
-    const dispatch = useDispatch();
+    const operationsArray = useSelector((state) => state.moving.data);
+
+     const dispatch = useDispatch();
     const options = [
         {value: 1, text: "За день"},
         {value: 2, text: "За неделю"},
@@ -53,14 +49,12 @@ export const Expenses = ({operations, setActive, active}) => {
             ...values,
             createdOn: subtractHours(values.createdOn),
         };
-        dispatch(addExpense(changedValues));
+        dispatch(addMoving(changedValues));
     };
     useEffect(() => {
         dispatch(fetchAccounts());
-        dispatch(fetchExpenseCategories());
-        dispatch(fetchExpenses(query));
+        dispatch(fetchMoving(query))
     }, []);
-
     const handleChange = (e) => {
         setSelected(e.target.value);
         let date = new Date();
@@ -74,7 +68,7 @@ export const Expenses = ({operations, setActive, active}) => {
         }
 
 
-        dispatch(fetchExpenses({...query, startDate}));
+        dispatch(fetchMoving({...query, startDate}));
         setQuery({...query, startDate});
     };
     let sorted = []
@@ -93,13 +87,13 @@ export const Expenses = ({operations, setActive, active}) => {
         }
 
     }
-
+console.log(sorted)
     return (
         <div className={styles.wrapper}>
             <div className={styles.wrapperForm}>
                 <div className={styles.title}>
-                    <h3>Расходы</h3><label id="lab"><ExpensesArrow/></label>
-                    <select id='s' onChange={(e) => setActive(e.target.value)} value={active}>
+                    <h3>Перемещения</h3><label id="lab"><ExpensesArrow/></label>
+                    <select  onChange={(e) => setActive(e.target.value)} value={active} >
                         {operations.map((item) => (
                             <option key={item.id} value={item.id}>
                                 {item.title}
@@ -108,14 +102,13 @@ export const Expenses = ({operations, setActive, active}) => {
                     </select>
 
                 </div>
-                {expenseCategories && operationsArray && accounts && <Formik
+                { accounts && <Formik
                     initialValues={{
-                        accountId: accounts[0]?.id,
+                        accountFromId: accounts[0]?.id,
+                        accountToId: accounts[0]?.id,
                         amount: 0,
-                        categoryId: expenseCategories[0]?.id,
                         createdOn: newDate,
                         description: "",
-                        id: 1
                     }}
                     onSubmit={(values, {setSubmitting}) => {
                         dispatchData(values);
@@ -134,19 +127,18 @@ export const Expenses = ({operations, setActive, active}) => {
                                 <span>{currency}</span>
                             </div>
                             {errors.amount && <p>{errors.amount}</p>}
-                            <label>Категория</label>
-                            <Field name="categoryId" as="select">
-                                <option disabled value="">Выберите категорию</option>
-
-                                {expenseCategories?.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
-                            </Field>
-                            <label>Счет</label>
-                            <Field name="accountId" as="select">
-                                <option disabled value="">Выберите счет</option>
+                            <label>Счета</label>
+                            <Field name="accountFromId" as="select">
+                                <option disabled value="">Счет списания</option>
 
                                 {accounts?.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
                             </Field>
-                            <label>Дата расхода</label>
+                            <Field name="accountToId" as="select">
+                                <option disabled value="">Счет зачисления</option>
+
+                                {accounts?.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
+                            </Field>
+                            <label>Дата перевода</label>
                             <DatePickerField name="createdOn"/>
                             <label>Комментарий</label>
                             <Field
@@ -158,7 +150,7 @@ export const Expenses = ({operations, setActive, active}) => {
                             <Button
                                 disabled={isSubmitting}
                                 type="submit"
-                                text="Ввести расход"
+                                text="Совершить перевод"
                             />
                         </form>
                     )}
@@ -166,7 +158,7 @@ export const Expenses = ({operations, setActive, active}) => {
             </div>
             <div className={styles.wrapperStats}>
                 <div className={styles.titleBlock}>
-                    <h3>Сумма расходов</h3>
+                    <h3>Сумма переводов</h3>
                     <select onChange={handleChange} value={selected}>
                         {options.map((item) => (
                             <option key={item.value} value={item.value}>
@@ -176,24 +168,28 @@ export const Expenses = ({operations, setActive, active}) => {
                     </select>
                 </div>
 
-                {operationsArray && currency && <Diagram
-                    currency={currency}
-                    operation={operationsArray}
-                    expensesCategories={expenseCategories}
-                    selected={options[selected - 1].text}
-                />}
+
                 <div className={styles.devideLine}></div>
                 <div className={styles.tableOperations}>
                     {Object.keys(sorted).map(t => <div key={t.key}><span>{t}</span>
                         <div className={styles.dayTable}>
                             {sorted[t].map(y => <div key={y.key} className={styles.rowTable}>
                                 <div className={styles.left}>
-                                    <svg className={styles.iconCategory}>
-                                        <use href={`#expense${y.category.iconNumber}`}/>
+                                    <svg>
+                                        <use href={`#${y.accountFrom.iconNumber}`}/>
                                     </svg>
-                                    {y.category.name}</div>
-                                <span>{y.account.name}</span>
-                                <span className={styles.amount}>-{y.amount} {currency}</span></div>)}</div>
+                                    <span>{y.accountFrom.name}</span>
+                                    <svg>
+                                        <use href={`#arrow`}/>
+                                    </svg>
+                                    <svg>
+                                        <use href={`#${y.accountTo.iconNumber}`}/>
+                                    </svg>
+                                    <span>{y.accountTo.name}</span>
+                                 </div>
+
+                                <span></span>
+                                <span className={styles.amount}>{y.amount} {currency}</span></div>)}</div>
                     </div>)}
                 </div>
             </div>

@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import styles from "./DeleteOperation.module.scss";
+import styles from "./DeleteAccaunt.module.scss";
 import {Modal} from "@mui/material";
 import {Button} from "../Button";
 
 
-export const DeleteOperation = ({data, deleteOperation}) => {
+export const DeleteAccaunt= ({data, deleteAccount}) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
         setOpen(true);
@@ -14,7 +14,7 @@ export const DeleteOperation = ({data, deleteOperation}) => {
     };
 
     const submitDelete = () => {
-        deleteOperation(data.id)
+        deleteAccount(data.id)
         setOpen(false)
     }
     return (
@@ -34,7 +34,15 @@ export const DeleteOperation = ({data, deleteOperation}) => {
                 <div>
                     {data && <div className={styles.wrapper}>
                         <div className={styles.header}>
-                            <h2>Вы уверены, что хотите удалить транзакцию?</h2>
+                            <h2>Вы уверены, что
+                                хотите удалить счет</h2>
+                            <h3> Вместе с текущим счетом будут удалены
+                                все связанные данные:</h3>
+                            <ul>
+                                <li>Доходы</li>
+                                <li>Расходы</li>
+                                <li>Переводы</li>
+                            </ul>
                         </div>
 
                         <div className={styles.buttons}>

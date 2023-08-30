@@ -7,6 +7,7 @@ import AccountsReducer from "./reducers/AccountsReducer";
 import MovingReducer from "./reducers/MovingReducer";
 import OperationsReducer from "./reducers/OperationsReducer";
 import CategoriesReducer from "./reducers/CategoriesReducer";
+import UserReducer from "./reducers/UserReducer";
 
 export const store = configureStore({
   reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
     moving: MovingReducer,
     operations: OperationsReducer,
     categories: CategoriesReducer,
+    user: UserReducer
   },
 });

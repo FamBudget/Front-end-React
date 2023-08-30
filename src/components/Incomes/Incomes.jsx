@@ -2,15 +2,15 @@ import React, {useEffect, useState} from "react";
 import {Field, Formik} from "formik";
 import * as yup from "yup";
 
-import styles from "./Expenses.module.scss";
+import styles from "./Incomes.module.scss";
 
 import {ExpensesArrow} from "../../icons";
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "../Button";
 import {DatePickerField} from "../DatePickerFields";
 import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
-import {addExpense, fetchExpenses,} from "../../redux/reducers/OperationsReducer";
-import {fetchExpenseCategories} from "../../redux/reducers/CategoriesReducer";
+import {addIncome, fetchIncomes,} from "../../redux/reducers/OperationsReducer";
+import {fetchIncomeCategories} from "../../redux/reducers/CategoriesReducer";
 import {subtractHours} from "../AddingAccount";
 import {Diagram} from "../Diagram";
 import {subtractMonths} from "../FIlterOperations/FiltersOperations";
@@ -24,12 +24,12 @@ const FormSchema = yup.object().shape({
 });
 
 
-export const Expenses = ({operations, setActive, active}) => {
+export const Incomes = ({operations, setActive, active}) => {
     const currency = useSelector((state) => state.accounts?.data[0]?.currency);
     const accounts = useSelector((state) => state.accounts.data);
-    const operationsArray = useSelector((state) => state.operations.expenses);
+    const operationsArray = useSelector((state) => state.operations.incomes);
     const expenseCategories = useSelector(
-        (state) => state?.categories?.expenseCategories
+        (state) => state?.categories?.incomeCategories
     );
     const dispatch = useDispatch();
     const options = [
@@ -53,12 +53,12 @@ export const Expenses = ({operations, setActive, active}) => {
             ...values,
             createdOn: subtractHours(values.createdOn),
         };
-        dispatch(addExpense(changedValues));
+        dispatch(addIncome(changedValues));
     };
     useEffect(() => {
         dispatch(fetchAccounts());
-        dispatch(fetchExpenseCategories());
-        dispatch(fetchExpenses(query));
+        dispatch(fetchIncomeCategories());
+        dispatch(fetchIncomes(query));
     }, []);
 
     const handleChange = (e) => {
@@ -74,9 +74,10 @@ export const Expenses = ({operations, setActive, active}) => {
         }
 
 
-        dispatch(fetchExpenses({...query, startDate}));
+        dispatch(fetchIncomes({...query, startDate}));
         setQuery({...query, startDate});
     };
+
     let sorted = []
 
     let sortedOperations = [...operationsArray]
@@ -93,13 +94,12 @@ export const Expenses = ({operations, setActive, active}) => {
         }
 
     }
-
     return (
         <div className={styles.wrapper}>
             <div className={styles.wrapperForm}>
                 <div className={styles.title}>
-                    <h3>Расходы</h3><label id="lab"><ExpensesArrow/></label>
-                    <select id='s' onChange={(e) => setActive(e.target.value)} value={active}>
+                    <h3>Доходы</h3><label id="lab"><ExpensesArrow/></label>
+                    <select id='s' onChange={(e) => setActive(e.target.value)} value={active} >
                         {operations.map((item) => (
                             <option key={item.id} value={item.id}>
                                 {item.title}
@@ -146,7 +146,7 @@ export const Expenses = ({operations, setActive, active}) => {
 
                                 {accounts?.map(t => <option key={t.id} value={t.id}>{t.name}</option>)}
                             </Field>
-                            <label>Дата расхода</label>
+                            <label>Дата дохода</label>
                             <DatePickerField name="createdOn"/>
                             <label>Комментарий</label>
                             <Field
@@ -158,7 +158,7 @@ export const Expenses = ({operations, setActive, active}) => {
                             <Button
                                 disabled={isSubmitting}
                                 type="submit"
-                                text="Ввести расход"
+                                text="Ввести доход"
                             />
                         </form>
                     )}
@@ -166,7 +166,7 @@ export const Expenses = ({operations, setActive, active}) => {
             </div>
             <div className={styles.wrapperStats}>
                 <div className={styles.titleBlock}>
-                    <h3>Сумма расходов</h3>
+                    <h3>Сумма доходов</h3>
                     <select onChange={handleChange} value={selected}>
                         {options.map((item) => (
                             <option key={item.value} value={item.value}>
@@ -177,6 +177,7 @@ export const Expenses = ({operations, setActive, active}) => {
                 </div>
 
                 {operationsArray && currency && <Diagram
+                    incomes={true}
                     currency={currency}
                     operation={operationsArray}
                     expensesCategories={expenseCategories}
@@ -193,9 +194,10 @@ export const Expenses = ({operations, setActive, active}) => {
                                     </svg>
                                     {y.category.name}</div>
                                 <span>{y.account.name}</span>
-                                <span className={styles.amount}>-{y.amount} {currency}</span></div>)}</div>
+                                <span className={styles.amount}>+{y.amount} {currency}</span></div>)}</div>
                     </div>)}
                 </div>
+
             </div>
         </div>
     );

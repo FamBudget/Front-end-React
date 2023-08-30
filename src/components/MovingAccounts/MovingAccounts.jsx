@@ -43,17 +43,17 @@ const buttonFilter = [
   },
 ];
 
-function subtractMonths(date) {
+export function subtractMonths(date) {
   date.setMonth(date.getMonth() - 1);
   return date;
 }
 
-function subtractWeek(date) {
+export function subtractWeek(date) {
   date.setDate(date.getDate() - 7);
   return date;
 }
 
-function subtractDay(date) {
+export function subtractDay(date) {
   date.setDate(date.getDate() - 1);
   return date;
 }
