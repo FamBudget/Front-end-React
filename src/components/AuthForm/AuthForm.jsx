@@ -69,7 +69,7 @@ export const AuthForm = () => {
                 onClick={() => setIsOpenForgetPassword(true)}
                 className="forget-password"
               >
-                Забыли пароль?
+                Забыли пароль??
               </div>
             </div>
 
