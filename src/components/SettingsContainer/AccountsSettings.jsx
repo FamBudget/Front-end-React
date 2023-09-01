@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import styles from './AccauntsSettings.module.scss'
-import {delAccount, deleteAccount, fetchAccounts} from "../../redux/reducers/AccountsReducer";
+import {delAccount, deleteAccount, editAccount, fetchAccounts} from "../../redux/reducers/AccountsReducer";
 import {Modal} from "@mui/material";
 import {Button} from "../Button";
 import {AddingAccount} from "../AddingAccount";
 import {DeleteAccaunt} from "../DeleteAccount/DeleteAccaunt";
+import {EditAccount} from "../EditAccount";
 
 
 export const AccountsSettings = () => {
@@ -26,6 +27,9 @@ export const AccountsSettings = () => {
     const deleteAccountCallback = (value) => {
         dispatch(deleteAccount(value)).then(() => dispatch(delAccount(value)))
     }
+    const editAccountCallback = (values) => {
+        dispatch(editAccount(values))
+    }
     const AccountsData = useSelector(state => state.accounts.data)
     return <>
         <div className={styles.wrapper}>
@@ -45,7 +49,9 @@ export const AccountsSettings = () => {
                             </svg>
                             <span className={styles.titleAccounts}>{t.name}</span>
                         </div>
-                        <div><DeleteAccaunt data={t} deleteAccount={deleteAccountCallback}/></div>
+                        <div className={styles.setWrap}>
+                            <EditAccount data={t} editAccount={editAccountCallback}/>
+                            <DeleteAccaunt data={t} deleteAccount={deleteAccountCallback}/></div>
                     </div>)}
 
                 </div>}
@@ -57,7 +63,8 @@ export const AccountsSettings = () => {
             aria-labelledby="parent-modal-title"
             aria-describedby="parent-modal-description"
         >
-            <div><AddingAccount setOpen={setOpen}/></div>
+            <div>
+                <AddingAccount setOpen={setOpen}/></div>
         </Modal>
     </>
 

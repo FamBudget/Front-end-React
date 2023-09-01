@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import styles from "./DeleteAccaunt.module.scss";
+import styles from "./DeleteCategory.module.scss";
 import {Modal} from "@mui/material";
 import {Button} from "../Button";
 
 
-export const DeleteAccaunt= ({data, deleteAccount}) => {
+export const DeleteCategory= ({data, deleteCategory}) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
         setOpen(true);
@@ -14,7 +14,7 @@ export const DeleteAccaunt= ({data, deleteAccount}) => {
     };
 
     const submitDelete = () => {
-        deleteAccount(data.id)
+        deleteCategory(data.id)
         setOpen(false)
     }
     return (
@@ -34,15 +34,11 @@ export const DeleteAccaunt= ({data, deleteAccount}) => {
                 <div>
                     {data && <div className={styles.wrapper}>
                         <div className={styles.header}>
-                            <h2>Вы уверены, что
-                                хотите удалить счет?</h2>
-                            <h3> Вместе с текущим счетом будут удалены
-                                все связанные данные:</h3>
-                            <ul>
-                                <li>·Доходы</li>
-                                <li>·Расходы</li>
-                                <li>·Переводы</li>
-                            </ul>
+                            <h2>Вы уверены, что хотите
+                                удалить категорию расхода?</h2>
+                            <h3> Вместе с ней из истории будут удалены
+                                все проведенные операции</h3>
+
                         </div>
 
                         <div className={styles.buttons}>

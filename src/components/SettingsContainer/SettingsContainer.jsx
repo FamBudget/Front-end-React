@@ -7,6 +7,7 @@ import {setAuth} from "../../redux/reducers/AuthReducer";
 import {useNavigate} from "react-router-dom";
 import {EditPassword} from "./EditPassword";
 import {AccountsSettings} from "./AccountsSettings";
+import {CategorySettings} from "./CategorySettings";
 
 
 export const SettingsContainer = () => {
@@ -40,7 +41,7 @@ export const SettingsContainer = () => {
         {
             (active === 0) ? <Profile dataUser={dataUser} editUSer={editUSer} deleteProfile={deleteProfile}/> :
                 (active === 1) ? <EditPassword changePassword={changePasswordUser}/> :
-                    (active===2) ? <AccountsSettings /> : <>dsa</>
+                    (active===2) ? <AccountsSettings /> : <CategorySettings />
         }
 
     </div>

@@ -1,10 +1,62 @@
+@import "src/styles/variables";
+
 .accounts {
   width: 713px;
   padding: 32px;
   background: #FFFFFF;
 }
+
 .wrapper {
   margin-top: 35px;
+}
+
+.categoryButton {
+  padding: 12px 24px;
+  gap: 12px;
+  width: auto;
+  height: 46px;
+  border-radius: 10px;
+  border: 1.5px solid $greenColor;
+  color: $greenColor;
+  background: #FFFFFF;
+  box-shadow: 5px 5px 32px 0px rgba(255, 255, 255, 0.16) inset, -5px -5px 32px 0px rgba(255, 255, 255, 0.16) inset;
+
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.accountsHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rightButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.button {
+  padding: 12px 24px;
+  gap: 12px;
+  width: auto;
+  height: 52px;
+  border-radius: 10px;
+  border: 1px solid var(--elements-elements-gray, #D0D0D0);
+  background: #FFFFFF;
+  color: $darkColor;
+
+}
+
+.activeButton {
+  padding: 12px 24px;
+  gap: 12px;
+  width: auto;
+  height: 52px;
 }
 
 .accountsButton {
@@ -12,17 +64,32 @@
   gap: 12px;
   width: auto;
   height: 46px;
+
   & svg {
     width: 20px;
     height: 20px;
   }
 }
+
 .tableList {
   margin-top: 32px;
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
+.List {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryItem {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #D0D0D0;
+  padding: 20px 0;
+}
+
 .AccountsItem {
   display: flex;
   justify-content: space-between;
@@ -38,13 +105,22 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
+
   & svg {
     width: 36px;
     height: 36px;
   }
+
   span {
     font-size: 24px;
     font-weight: 600;
     line-height: 32px;
   }
+}
+
+.setWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
 }

@@ -22,6 +22,16 @@ export const addAccount = createAsyncThunk(
 
     }
 );
+export const editAccount = createAsyncThunk(
+    "Accounts/editAccount",
+    async (changedValues, {getState}) => {
+        console.log(changedValues)
+        const email = getState().auth.email
+        const response = await authApi.editAccount(email, changedValues)
+        return response.data
+
+    }
+);
 export const deleteAccount = createAsyncThunk(
     "Accounts/deleteAccount",
     async (value, {getState}) => {
@@ -65,6 +75,10 @@ export const AccountsSlice = createSlice({
         });
         builder.addCase(addAccount.fulfilled, (state, action) => {
             state.data = [...state.data, action.payload]
+        });
+        builder.addCase(editAccount.fulfilled, (state, action) => {
+            let currentState = original(state)
+            state.data = currentState.data.map(t=> t.id ===action.payload.id ? t = action.payload : t)
         });
     },
 });

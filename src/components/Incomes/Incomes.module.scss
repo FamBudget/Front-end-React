@@ -178,3 +178,20 @@ label {
   font-weight: 600;
   line-height: 22px;
 }
+
+@media (max-width: $mediumBreakpoints) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  .wrapperForm {
+    width: 100%;
+  }
+}
+@media (max-width: $minBreakpoints) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}

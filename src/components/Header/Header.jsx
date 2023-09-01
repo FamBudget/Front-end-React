@@ -39,16 +39,15 @@ export const Header = ({handleOpen}) => {
         <div className={styles.header}>
             <h1 className={styles.title}>{title}</h1>
             <h1 className={styles.logo}>BudgetFamily</h1>
-            <svg onClick={handleOpen}>
+            <div className={styles.menuIcon}><svg onClick={handleOpen}>
                 <use href="#menuIcon"/>
-            </svg>
+            </svg></div>
 
-            <button
-                style={{width: 50, height: 30, background: "#87d7ad"}}
-                onClick={logout}
-            >
-                Logout
-            </button>
+            <div className={styles.exit} onClick={() => logout()}>
+                <svg onClick={handleOpen}>
+                    <use href={`#exit`}/>
+                </svg>
+            </div>
         </div>
         <div className={styles.subHeader}>
             <h1>{title}</h1>
