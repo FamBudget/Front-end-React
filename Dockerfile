@@ -1,9 +1,9 @@
 # Base image
-FROM node:14-alpine
+FROM node:18-alpine
 
 # Set working directory
 WORKDIR /app
-
+COPY package*.json ./
 # Copy app files
 COPY . .
 
