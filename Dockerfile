@@ -13,10 +13,5 @@ RUN npm install
 # Build app
 RUN npm run build
 
-# Create a production-ready image
-FROM nginx:alpine
-RUN rm /etc/nginx/conf.d/default.conf
-COPY default.conf /etc/nginx/conf.d/default.conf
-COPY --from=0 /app/build /usr/share/nginx/html
 EXPOSE 3000
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npm", "start"]
