@@ -10,7 +10,7 @@ const settings = {
 };
 
 export const apiInstance = axios.create({
-    baseURL: "http://13.50.233.192:8080",
+    baseURL: "http://fambudget_back:8080",
     ...settings,
 });
 apiInstance.interceptors.request.use(function (config) {
