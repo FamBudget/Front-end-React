@@ -46,4 +46,4 @@ jobs:
              docker stop $CONTAINER_NAME
              docker rm $CONTAINER_NAME
              docker rmi $DOCKER_HUB_REPOSITORY:$DOCKERHUB_TAG
-             docker run -d --name '($CONTAINER_NAME)' -p 3000:3000 $DOCKER_HUB_REPOSITORY:$DOCKERHUB_TAG
+             docker run -d --name $CONTAINER_NAME -p 3000:3000 $DOCKER_HUB_REPOSITORY:$DOCKERHUB_TAG
