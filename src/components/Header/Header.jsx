@@ -1,13 +1,11 @@
 import React from 'react'
-import {useDispatch} from "react-redux";
-import {setAuth} from "../../redux/reducers/AuthReducer";
 import styles from './Header.module.scss'
-import {useLocation, useNavigate} from "react-router-dom";
+import {useLocation} from "react-router-dom";
+import {Logout} from "../Logout/Logout";
 
 
 export const Header = ({handleOpen}) => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+
     const url = useLocation()
     let title = ''
     switch (url.pathname) {
@@ -28,11 +26,6 @@ export const Header = ({handleOpen}) => {
             break;
 
     }
-    const logout = () => {
-        dispatch(setAuth(null));
-        localStorage.clear()
-        navigate('/login')
-    };
 
 
     return <>
@@ -43,10 +36,8 @@ export const Header = ({handleOpen}) => {
                 <use href="#menuIcon"/>
             </svg></div>
 
-            <div className={styles.exit} onClick={() => logout()}>
-                <svg onClick={handleOpen}>
-                    <use href={`#exit`}/>
-                </svg>
+            <div className={styles.exit} >
+                <Logout />
             </div>
         </div>
         <div className={styles.subHeader}>
