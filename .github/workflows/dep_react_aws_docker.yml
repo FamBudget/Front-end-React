@@ -39,4 +39,4 @@ jobs:
              docker stop ${{ vars.CONTAINER_NAME }}
              docker rm ${{ vars.CONTAINER_NAME }}
              docker rmi {{ secrets.DOCKER_HUB_REPOSITORY }}:${{ vars.DOCKERHUB_TAG }}
-             docker run -d --name '${{ vars.CONTAINER_NAME }}' ${{ secrets.DOCKER_HUB_REPOSITORY}}:${{ vars.DOCKERHUB_TAG }}
+             docker run -d --name '${{ vars.CONTAINER_NAME }}' -p 3000:3000 ${{ secrets.DOCKER_HUB_REPOSITORY}}:${{ vars.DOCKERHUB_TAG }}
