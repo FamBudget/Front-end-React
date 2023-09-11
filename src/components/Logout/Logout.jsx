@@ -41,14 +41,7 @@ export const Logout= () => {
                     <div className={styles.wrapper}>
                         <div className={styles.header}>
                             <h2>Вы уверены, что
-                                хотите удалить счет?</h2>
-                            <h3> Вместе с текущим счетом будут удалены
-                                все связанные данные:</h3>
-                            <ul>
-                                <li>·Доходы</li>
-                                <li>·Расходы</li>
-                                <li>·Переводы</li>
-                            </ul>
+                                хотите выйти?</h2>
                         </div>
 
                         <div className={styles.buttons}>
@@ -63,7 +56,7 @@ export const Logout= () => {
                                     className={styles.submitButton}
                                     onClick={submit}
                                     type="submit"
-                                    text="Ок"
+                                    text="Подтвердить"
                                 />
                             </div>
                         </div>
