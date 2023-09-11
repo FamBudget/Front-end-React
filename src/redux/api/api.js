@@ -10,7 +10,7 @@ const settings = {
 };
 
 export const apiInstance = axios.create({
-    baseURL: "http://fambudget_back:8080",
+    baseURL: "https://fambudget.serveblog.net",
     ...settings,
 });
 apiInstance.interceptors.request.use(function (config) {
