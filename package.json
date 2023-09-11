@@ -1,7 +1,7 @@
 {
   "name": "family-budget",
   "version": "0.1.0",
-  "homepage": "https://fambudget.serveblog.net/",
+  "homepage": "https://fambudget.github.io/Front-end-React/",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -30,6 +30,8 @@
     "yup": "^1.2.0"
   },
   "scripts": {
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
