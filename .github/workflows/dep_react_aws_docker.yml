@@ -32,7 +32,7 @@ jobs:
       with:
          host: ${{ vars.HOSTNAME }}
          username: ${{ vars.USER_NAME }}
-         key: ${{ secrets.SSH_AWS_FAMBUDGET }}
+         key: ${{ secrets.SSH_FAMBUDGET }}
          port: ${{ vars.SSH_PORT }}
          script: | 
              docker login --username=${{ secrets.DOCKER_USER}} --password=${{ secrets.DOCKER_PASSWORD }}
