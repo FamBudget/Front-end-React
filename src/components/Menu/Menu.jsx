@@ -17,13 +17,13 @@ const menuData = [
         title: "Счета",
         icon: "#accounts",
         iconActive: "#accountsActive"
-    }, {
+    }, /*{
         id: 3,
-        path: "/",
+        path: "/budget",
         title: "Бюджет",
         icon: "#budget",
         iconActive: "#budgetActive"
-    }, {
+    },*/ {
         id: 4,
         path: "/income",
         title: "Доходы",
@@ -35,13 +35,13 @@ const menuData = [
         title: "Расходы",
         icon: "#expenses",
         iconActive: "#expensesActive"
-    }, {
+    }, /*{
         id: 6,
-        path: "/",
+        path: "/reports",
         title: "Отчеты",
         icon: "#reports",
         iconActive: "#reportsActive"
-    },
+    },*/
     {
         id: 7,
         path: "/settings",
