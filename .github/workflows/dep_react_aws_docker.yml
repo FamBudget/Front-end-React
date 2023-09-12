@@ -29,14 +29,21 @@ jobs:
         
     - name: Deploy to AWS EC2
       uses: appleboy/ssh-action@v1.0.0
+      env:
+        DOCKER_USER: ${{ secrets.DOCKER_USER }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        CONTAINER_NAME: ${{ vars.CONTAINER_NAME }}
+        DOCKER_HUB_REPOSITORY: ${{ secrets.DOCKER_HUB_REPOSITORY }}
+        DOCKERHUB_TAG: ${{ vars.DOCKERHUB_TAG }}
       with:
+         envs: DOCKER_USER,DOCKER_PASSWORD,CONTAINER_NAME,DOCKER_HUB_REPOSITORY,DOCKERHUB_TAG
          host: ${{ vars.HOSTNAME }}
          username: ${{ vars.USER_NAME }}
          password: ${{ secrets.PASSWORD }}
          port: ${{ vars.SSH_PORT }}
          script: | 
-             docker login --username=${{ secrets.DOCKER_USER}} --password=${{ secrets.DOCKER_PASSWORD }}
-             docker stop ${{ vars.CONTAINER_NAME }}
-             docker rm ${{ vars.CONTAINER_NAME }}
-             docker rmi {{ secrets.DOCKER_HUB_REPOSITORY }}:${{ vars.DOCKERHUB_TAG }}
-             docker run -d --name '${{ vars.CONTAINER_NAME }}' -p 3000:3000 ${{ secrets.DOCKER_HUB_REPOSITORY}}:${{ vars.DOCKERHUB_TAG }}
+             docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
+             docker stop $CONTAINER_NAME
+             docker rm $CONTAINER_NAME
+             docker rmi $DOCKER_HUB_REPOSITORY:$DOCKERHUB_TAG
+             docker run -d --name $CONTAINER_NAME -p 3000:3000 $DOCKER_HUB_REPOSITORY:$DOCKERHUB_TAG
