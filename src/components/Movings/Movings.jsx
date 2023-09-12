@@ -4,7 +4,7 @@ import * as yup from "yup";
 
 import styles from "./Movings.module.scss";
 
-import {ExpensesArrow} from "../../icons";
+import {Arrow} from "../../icons";
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "../Button";
 import {DatePickerField} from "../DatePickerFields";
@@ -92,7 +92,7 @@ console.log(sorted)
         <div className={styles.wrapper}>
             <div className={styles.wrapperForm}>
                 <div className={styles.title}>
-                    <h3>Перемещения</h3><label id="lab"><ExpensesArrow/></label>
+                    <h3>Перемещения</h3><label id="lab"><Arrow operation={'movings'}/></label>
                     <select  onChange={(e) => setActive(e.target.value)} value={active} >
                         {operations.map((item) => (
                             <option key={item.id} value={item.id}>

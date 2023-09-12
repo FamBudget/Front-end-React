@@ -2,10 +2,10 @@ import React from "react";
 
 import styles from "./ExpensesArrow.module.scss";
 
-export const ExpensesArrow = () => {
+export const Arrow = ({operation}) => {
   return (
     <svg className={styles.icon}>
-      <use href="#expenses-arrow"></use>
+      <use href={`#${operation}-arrow`}></use>
     </svg>
   );
 };

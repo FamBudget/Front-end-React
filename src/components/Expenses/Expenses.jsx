@@ -4,7 +4,7 @@ import * as yup from "yup";
 
 import styles from "./Expenses.module.scss";
 
-import {ExpensesArrow} from "../../icons";
+import {Arrow} from "../../icons";
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "../Button";
 import {DatePickerField} from "../DatePickerFields";
@@ -98,7 +98,7 @@ export const Expenses = ({operations, setActive, active}) => {
         <div className={styles.wrapper}>
             <div className={styles.wrapperForm}>
                 <div className={styles.title}>
-                    <h3>Расходы</h3><label id="lab"><ExpensesArrow/></label>
+                    <h3>Расходы</h3><label id="lab"><Arrow operation={"expenses"}/></label>
                     <select id='s' onChange={(e) => setActive(e.target.value)} value={active}>
                         {operations.map((item) => (
                             <option key={item.id} value={item.id}>

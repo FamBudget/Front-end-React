@@ -972,6 +972,36 @@ export const Sprite = () => {
                 />
             </symbol>
             <symbol
+                id="incomes-arrow"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <rect width="32" height="32" rx="16" fill="#1b9b85"/>
+                <path
+                    d="M9 12.5L16 19.5L23 12.5"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                />
+
+            </symbol>
+            <symbol
+                id="movings-arrow"
+                viewBox="0 0 32 32"
+                xmlns="http://www.w3.org/2000/svg"
+            >
+                <rect width="32" height="32" rx="16" fill="#263834"/>
+                <path
+                    d="M9 12.5L16 19.5L23 12.5"
+                    stroke="white"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                />
+
+            </symbol>
+            <symbol
                 id="menuIcon"
                 viewBox="0 0 32 32"
                 xmlns="http://www.w3.org/2000/svg"
