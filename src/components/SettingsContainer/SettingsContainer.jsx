@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 import {EditPassword} from "./EditPassword";
 import {AccountsSettings} from "./AccountsSettings";
 import {CategorySettings} from "./CategorySettings";
+import styles from './Settings.module.scss'
 
 
 export const SettingsContainer = () => {
@@ -36,7 +37,7 @@ export const SettingsContainer = () => {
 
     const dataUser = useSelector(state => state.user)
     const [active, setActive] = useState(0)
-    return <div>
+    return <div className={styles.wrapper}>
         <SettingsMenu active={active} setActive={setActive}/>
         {
             (active === 0) ? <Profile dataUser={dataUser} editUSer={editUSer} deleteProfile={deleteProfile}/> :
