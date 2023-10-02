@@ -1,0 +1,115 @@
+@import "src/styles/variables";
+
+
+.rowMenu {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+  }
+}
+
+.buttonActive {
+  border-radius: 10px;
+  background: $greenColor;
+  padding: 12px 24px;
+  width: auto;
+  height: 52px;
+  color: #FFFFFF
+}
+
+.button {
+  border-radius: 10px;
+  border: 1px solid var(--bg-bg-green-light-one, #B6DFD8);
+  background-color: $bgLight;
+  color: var(--text-text-green-light-one, #B6DFD8);
+  padding: 12px 24px;
+  width: auto;
+  height: 52px;
+
+}
+
+
+
+.EditButton {
+  width: 308px;
+  padding: 16px 10px;
+  gap: 16px;
+}
+
+.deleteButton {
+  padding: 16px 10px;
+  color: $greenColor;
+  background: #ffffff;
+  border: 1px solid $greenColor;
+  width: 308px;
+}
+.WrapBtn {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+.wrapper {
+  margin-top: 36px;
+  width: 640px;
+}
+.editPassworWrapper {
+  width: 640px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  padding: 40px;
+  gap: 20px;
+  background: #FFFFFF;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: -2px -2px 16px rgba(39, 222, 191, 0.06), 2px 2px 16px rgba(39, 222, 191, 0.06);
+  border-radius: 20px;
+
+  & h3 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 46px
+  }
+}
+.form {
+  width: 100%
+}
+.selectContainer {
+  max-width: 704px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  padding: 40px;
+  gap: 20px;
+  background: #FFFFFF;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: -2px -2px 16px rgba(39, 222, 191, 0.06), 2px 2px 16px rgba(39, 222, 191, 0.06);
+  border-radius: 20px;
+
+  & h3 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 46px
+  }
+  & h4 {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+  }
+
+}

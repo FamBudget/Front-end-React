@@ -1,0 +1,92 @@
+@import "src/styles/variables";
+
+.subHeader {
+  display: none;
+}
+
+.logo {
+  display: none;
+}
+.menuIcon {
+  & svg {
+    display: none;
+  }
+}
+.exit {
+  cursor: pointer;
+  & svg {
+    width: 88px;
+    height: 48px;
+  }
+
+}
+.header {
+  padding-top: 40px;
+  padding-right: 32px;
+  display: flex;
+  flex-direction: row;
+  margin-left: 340px;
+  justify-content: space-between;
+
+  & h1 {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 46px;
+    padding-bottom: 0;
+  }
+}
+
+
+@media (max-width: $maxBreakpoints) {
+  .header {
+    margin-left: 267px;
+  }
+  @media (max-width: $mediumBreakpoints) {
+    .menuIcon {
+      & svg {
+        display: block;
+        height: 24px;
+        width: 36px;
+        cursor: pointer;
+      }
+    }
+    .header {
+      margin: 0;
+      padding: 24px 32px;
+
+    }
+    .exit {
+      display: none;
+    }
+    .title {
+      display: none;
+    }
+    .logo {
+      display: block;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .subHeader {
+      display: block;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 42px;
+      padding: 24px 32px;
+    }
+  }
+  @media (max-width: $minBreakpoints) {
+
+    .header {
+      padding: 20px;
+    }
+    .logo {
+      font-size: 20px;
+    }
+    .subHeader {
+      font-size: 24px;
+      line-height: 31px;
+      padding: 24px 20px;
+
+    }
+  }
+}

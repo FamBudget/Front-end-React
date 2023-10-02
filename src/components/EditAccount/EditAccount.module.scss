@@ -1,0 +1,249 @@
+@import "src/styles/variables";
+
+.wrapper {
+  position: absolute;
+  padding: 32px;
+  width: 704px;
+  background: #FFFFFF;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: -2px -2px 16px rgba(39, 222, 191, 0.06), 2px 2px 16px rgba(39, 222, 191, 0.06);
+  border-radius: 20px;
+
+  & .inputs {
+    width: 100%;
+    height: 54px;
+    background: #FFFFFF;
+    border: 1px solid #D0D0D0;
+    border-radius: 10px;
+  }
+
+}
+.icon {
+  & svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  & h2 {
+    font-size: 36px;
+    line-height: 46px;
+  }
+
+  & svg {
+    width: 64px;
+    height: 64px;
+    cursor: pointer;
+  }
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+
+  & span {
+    position: absolute;
+    right: 16px;
+    margin-top: 10px;
+    margin-bottom: 24px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+  }
+}
+
+
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.submitButton {
+}
+
+.WrapBtn {
+  width: 50%;
+}
+
+.cancelButton {
+  border: 2px solid $greenColor;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  color: $greenColor
+
+}
+
+.selectContainer {
+  max-width: 704px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  padding: 32px;
+  gap: 20px;
+  background: #FFFFFF;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: -2px -2px 16px rgba(39, 222, 191, 0.06), 2px 2px 16px rgba(39, 222, 191, 0.06);
+  border-radius: 20px;
+
+  & h3 {
+    font-size: 28px;
+  }
+
+}
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  & svg {
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+
+  }
+}
+
+.activeIcon {
+  border-radius: 30px;
+  border: 2px solid $greenColor;
+}
+
+@media (max-width: $mediumBreakpoints) {
+
+  .wrapper {
+    position: absolute;
+    padding: 24px;
+    width: 458px;
+  }
+
+  .header {
+
+    & h2 {
+      font-size: 32px;
+      line-height: 42px;
+    }
+
+    & svg {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  .row {
+
+    & span {
+      position: absolute;
+      right: 16px;
+      margin-top: 10px;
+      margin-bottom: 24px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+  .WrapBtn {
+    width: 50%;
+    height: 54px;
+  }
+
+}
+
+@media (max-width: $minBreakpoints) {
+  .wrapper {
+    padding: 20px;
+    width: 335px;
+    & .inputs {
+      height: 46px;
+    }
+  }
+
+  .header {
+
+    & h2 {
+      font-size: 24px;
+      line-height: 31px;
+    }
+
+    & svg {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .row {
+
+    & span {
+      position: absolute;
+      right: 16px;
+      margin-top: 10px;
+      margin-bottom: 24px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+
+  .buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .WrapBtn {
+    width: 100%;
+    height: 54px;
+  }
+
+  .cancelButton {
+    height: 54px;
+  }
+  .submitButton {
+    height: 54px;
+  }
+  .selectContainer {
+
+    padding: 20px;
+    gap: 20px;
+
+    & h3 {
+      font-size: 22px;
+    }
+
+  }
+
+  .icons {
+
+
+    & svg {
+      height: 45px;
+      width: 45px;
+      cursor: pointer;
+
+    }
+  }
+
+  .activeIcon {
+    border-radius: 10px;
+    border: 2px solid $greenColor;
+  }
+}

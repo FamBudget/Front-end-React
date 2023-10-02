@@ -1,0 +1,73 @@
+@import "src/styles/variables";
+.logout {
+  display: none;
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 60px;
+}
+
+.menuItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  height: 56px;
+
+}
+
+.menuItem span {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
+  color: $darkColor;
+
+}
+
+a.active span{
+  color: $greenColor;
+  font-weight: 600;
+
+
+}
+
+a.active ::after {
+  position: absolute;
+  left: 0;
+  content: '';
+  width: 4px;
+  height: 32px;
+  background: $greenColor;
+  border-radius: 100px;
+}
+.menuItem svg {
+  width: 24px;
+  height: 24px;
+}
+
+@media (max-width: $maxBreakpoints) {
+  .wrap {
+    gap: 12px;
+    padding-top: 40px;
+  }
+  .menuItem {
+    gap: 12px;
+    height: 48px;
+
+  }
+  .menuItem span {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+  }
+
+}
+
+@media (max-width: $mediumBreakpoints) {
+  .logout {
+    display: block;
+    height: 40px;
+  }
+}

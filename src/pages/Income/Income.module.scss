@@ -1,0 +1,33 @@
+@import "src/styles/variables";
+
+.container {
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 25px;
+}
+
+
+@media (max-width: $maxBreakpoints) {
+  .wrapper {
+    gap: 32px;
+  }
+}
+
+
+@media (max-width: $mediumBreakpoints) {
+  .wrapper {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+}
+@media (max-width: $minBreakpoints) {
+  .wrapper {
+    flex-direction: column;
+    gap: 32px;
+  }
+}
