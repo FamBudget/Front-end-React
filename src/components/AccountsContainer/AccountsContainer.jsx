@@ -1,8 +1,7 @@
-import React, {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import React, {useState} from "react";
+import {useSelector} from "react-redux";
 import styles from './AccauntsContainer.module.scss'
 import {Button} from "../../components";
-import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
 import {Modal} from "@mui/material";
 import {AddingAccount} from "../../components/AddingAccount/AddingAccount";
 import {MovingAccounts} from "../../components/MovingAccounts/MovingAccounts";
@@ -10,7 +9,6 @@ import {MovingAccounts} from "../../components/MovingAccounts/MovingAccounts";
 
 export const AccountsContainer = () => {
 
-    const dispatch = useDispatch();
     const [open, setOpen] = useState(false);
     const handleOpen = () => {
         setOpen(true);
@@ -19,9 +17,7 @@ export const AccountsContainer = () => {
         setOpen(false);
     };
 
-    useEffect(() => {
-        dispatch(fetchAccounts())
-    }, [])
+
 
 
     const AccountsData = useSelector(state => state.accounts.data)

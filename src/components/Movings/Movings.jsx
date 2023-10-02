@@ -8,7 +8,6 @@ import {Arrow} from "../../icons";
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "../Button";
 import {DatePickerField} from "../DatePickerFields";
-import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
 import {subtractHours} from "../AddingAccount";
 import {subtractMonths} from "../FIlterOperations/FiltersOperations";
 import {subtractDay, subtractWeek} from "../MovingAccounts";
@@ -52,7 +51,6 @@ export const Movings = ({operations, setActive, active}) => {
         dispatch(addMoving(changedValues));
     };
     useEffect(() => {
-        dispatch(fetchAccounts());
         dispatch(fetchMoving(query))
     }, []);
     const handleChange = (e) => {

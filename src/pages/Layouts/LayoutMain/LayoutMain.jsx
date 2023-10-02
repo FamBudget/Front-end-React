@@ -6,6 +6,7 @@ import {useNavigate, Outlet} from "react-router-dom";
 import {setAuth, setEmail} from "../../../redux/reducers/AuthReducer";
 import {useDispatch} from "react-redux";
 import {Header} from "../../../components/Header/Header";
+import {fetchAccounts} from "../../../redux/reducers/AccountsReducer";
 
 export const LayoutMain = () => {
     const dispatch = useDispatch();
@@ -15,6 +16,7 @@ export const LayoutMain = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        dispatch(fetchAccounts())
         open && (document.body.style.overflow = 'hidden')
         !open && (document.body.style.overflow = 'unset')
     }, [open])

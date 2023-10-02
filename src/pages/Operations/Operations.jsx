@@ -19,7 +19,6 @@ export const Operations = () => {
         },
     ]
     const [active, setActive] = useState(0)
-    console.log(active)
     return <Container>
         {active == 0 ? <Expenses setActive={setActive} operations={operations} active={active}/> : active == 1 ?
             <Incomes setActive={setActive} operations={operations} active={active}/> : active == 2 ? <Movings setActive={setActive} operations={operations} active={active} /> : <></> }

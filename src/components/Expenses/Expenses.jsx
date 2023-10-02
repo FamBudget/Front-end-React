@@ -8,7 +8,6 @@ import {Arrow} from "../../icons";
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "../Button";
 import {DatePickerField} from "../DatePickerFields";
-import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
 import {addExpense, fetchExpenses,} from "../../redux/reducers/OperationsReducer";
 import {fetchExpenseCategories} from "../../redux/reducers/CategoriesReducer";
 import {subtractHours} from "../AddingAccount";
@@ -56,7 +55,6 @@ export const Expenses = ({operations, setActive, active}) => {
         dispatch(addExpense(changedValues));
     };
     useEffect(() => {
-        dispatch(fetchAccounts());
         dispatch(fetchExpenseCategories());
         dispatch(fetchExpenses(query));
     }, []);

@@ -8,7 +8,6 @@ import {Arrow} from "../../icons";
 import {useDispatch, useSelector} from "react-redux";
 import {Button} from "../Button";
 import {DatePickerField} from "../DatePickerFields";
-import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
 import {addIncome, fetchIncomes,} from "../../redux/reducers/OperationsReducer";
 import {fetchIncomeCategories} from "../../redux/reducers/CategoriesReducer";
 import {subtractHours} from "../AddingAccount";
@@ -56,7 +55,6 @@ export const Incomes = ({operations, setActive, active}) => {
         dispatch(addIncome(changedValues));
     };
     useEffect(() => {
-        dispatch(fetchAccounts());
         dispatch(fetchIncomeCategories());
         dispatch(fetchIncomes(query));
     }, []);

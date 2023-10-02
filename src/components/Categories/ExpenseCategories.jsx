@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {addExpenseCategories, fetchExpenseCategories} from "../../redux/reducers/CategoriesReducer";
 import {AddingOperation} from "../AddingOperation/AddingOperation";
 import styles from './Categories.module.scss'
-import {fetchAccounts} from "../../redux/reducers/AccountsReducer";
 import {addExpense} from "../../redux/reducers/OperationsReducer";
 
 const arrayIconExpense = [...Array(15).keys()]
@@ -13,7 +12,6 @@ export const ExpenseCategories = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(fetchExpenseCategories())
-        dispatch(fetchAccounts())
     }, [])
     const addExpensesCategoriesCallback = (values) => {
         dispatch(addExpenseCategories(values))
